@@ -553,3 +553,20 @@ strong,.hl,b{font-weight:600}
 .tbl th{background:var(--surface-2);font-weight:700;color:var(--ink);font-size:12.5px;white-space:nowrap}
 .tbl td{color:var(--ink-soft)}
 .tbl strong,.tbl b{color:var(--ink);font-weight:700}
+
+/* 读数据挑词 keywordCards */
+.kwcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:4px}
+.kwcard{text-align:left;font-family:inherit;background:var(--surface);border:1.5px solid var(--line);padding:13px 15px;cursor:pointer;transition:border-color .15s ease,background-color .15s ease;display:flex;flex-direction:column;gap:8px;color:inherit}
+.kwcard:hover{border-color:var(--accent)}
+.kwcard .kwc-term{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink)}
+.kwcard .kwc-chips{display:flex;gap:6px;flex-wrap:wrap}
+.kwcard .kwc-note{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.kwcard.correct{border-color:var(--hue-green);background:color-mix(in srgb,var(--hue-green) 8%,var(--surface))}
+.kwcard.wrong{border-color:var(--hue-red);background:color-mix(in srgb,var(--hue-red) 8%,var(--surface))}
+
+/* 网页骨架 pageAnatomy（复用 .serp / .serp-block 的高亮机制） */
+.pg-url-txt{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft)}
+.pg-url-txt b{color:var(--ink)}
+.pg-h1{font-size:19px;font-weight:800;letter-spacing:-.01em;margin:0;color:var(--ink)}
+.pg-h2{font-size:14px;font-weight:700;color:var(--ink-soft);margin:2px 0}
+.pg-p{font-size:13px;color:var(--ink-soft);margin:0;line-height:1.55}

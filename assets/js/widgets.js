@@ -418,4 +418,75 @@
     });
     refresh();
   };
+
+  /* ---------- 读数据挑词 ----------
+     给几张关键词「数据卡」（含 SV / KD / 备注），让用户判断哪个最值得做。
+     opts: { q?, cards:[{kw, sv, kd, note?, ok, why?}] } */
+  W.keywordCards = function(host, opts){
+    opts = opts || {};
+    var cards = opts.cards || [];
+    host.innerHTML =
+      '<div class="card pad">'+
+        (opts.q ? '<p class="qtext" style="margin-top:0">'+opts.q+'</p>' : '')+
+        '<div class="kwcards" data-el="cards">'+cards.map(function(c,i){
+          return '<button class="kwcard" data-i="'+i+'" data-ok="'+(c.ok?1:0)+'" type="button">'+
+            '<span class="kwc-term">'+esc(c.kw)+'</span>'+
+            '<span class="kwc-chips"><span class="chip">SV '+esc(c.sv)+'</span><span class="chip">KD '+esc(c.kd)+'</span></span>'+
+            (c.note ? '<span class="kwc-note">'+esc(c.note)+'</span>' : '')+
+          '</button>';
+        }).join('')+'</div>'+
+        '<div class="fb" data-el="fb"></div>'+
+        '<div class="quiz-foot"><button class="btn ghost mini" data-act="reset" type="button" style="display:none">重选</button></div>'+
+      '</div>';
+    var btns = host.querySelectorAll('.kwcard'), fb = host.querySelector('[data-el="fb"]'), reset = host.querySelector('[data-act="reset"]');
+    function clr(){ Array.prototype.forEach.call(btns, function(b){ b.classList.remove('correct','wrong'); }); }
+    Array.prototype.forEach.call(btns, function(b){
+      b.addEventListener('click', function(){
+        clr();
+        var ok = b.dataset.ok === '1', why = (cards[+b.dataset.i]||{}).why || '';
+        b.classList.add(ok ? 'correct' : 'wrong');
+        fb.className = 'fb show ' + (ok ? 'ok' : 'no');
+        fb.innerHTML = '<span class="fb-tag">'+(ok ? '✓ 就是它' : '✗ 再想想')+'</span><span class="fb-body">'+why+'</span>';
+        reset.style.display = '';
+      });
+    });
+    reset.addEventListener('click', function(){ clr(); fb.className = 'fb'; fb.innerHTML = ''; reset.style.display = 'none'; });
+  };
+
+  /* ---------- 网页骨架解剖 ----------
+     渲染一个简化网页，点按钮逐块高亮讲解 SEO 部件（复用 .serp / .serp-block 样式）。
+     opts: { url?, intro?, parts:[{key, btn, tag, html, info}] } */
+  W.pageAnatomy = function(host, opts){
+    opts = opts || {};
+    var url = opts.url || "yoursite.com/page";
+    var parts = opts.parts || [];
+    var intro = opts.intro || "点上面的按钮，逐块认识一个网页里对 SEO 重要的部件。";
+    var btns = parts.map(function(p){ return '<button data-p="'+p.key+'" type="button">'+esc(p.btn)+'</button>'; }).join('');
+    var blocks = parts.map(function(p){
+      return '<div class="serp-block" data-part="'+p.key+'"><span class="serp-tag">'+esc(p.tag||p.btn)+'</span>'+p.html+'</div>';
+    }).join('');
+    host.innerHTML =
+      '<div class="card pad">'+
+        '<div class="parts" data-el="btns">'+btns+'</div>'+
+        '<div class="serp" style="margin-top:14px">'+
+          '<div class="serp-bar"><div class="serp-q"><span class="pg-url-txt">'+esc(url)+'</span></div></div>'+
+          '<div class="serp-body" style="display:flex;flex-direction:column;gap:2px">'+blocks+'</div>'+
+        '</div>'+
+        '<div class="verdict" data-el="v">'+intro+'</div>'+
+      '</div>';
+    var bs = host.querySelectorAll('[data-el="btns"] button'), blk = host.querySelectorAll('.serp-block'), v = host.querySelector('[data-el="v"]'), cur = null;
+    var info = {}; parts.forEach(function(p){ info[p.key] = p.info; });
+    function show(p){
+      cur = p;
+      Array.prototype.forEach.call(bs, function(b){ b.classList.toggle('on', b.dataset.p === p); });
+      Array.prototype.forEach.call(blk, function(x){
+        x.classList.toggle('on', p != null && x.dataset.part === p);
+        x.classList.toggle('dim', p != null && x.dataset.part !== p);
+      });
+      v.innerHTML = p ? (info[p] || '') : intro;
+    }
+    Array.prototype.forEach.call(bs, function(b){
+      b.addEventListener('click', function(){ show(cur === b.dataset.p ? null : b.dataset.p); });
+    });
+  };
 })();

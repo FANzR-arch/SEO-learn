@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第八课：关键词映射 · SEO × GEO 入门课</title>
+<meta name="description" content="把一堆关键词变成网站规划图：关键词聚类、什么时候合并、什么时候拆分页面，以及做出一张关键词地图。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-08.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-08.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第八课：关键词映射 · SEO × GEO 入门课">
+<meta property="og:description" content="关键词聚类、合并还是拆分页面、做一张关键词地图——把关键词研究变成网站规划。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第八课：关键词映射 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第八课 · 阶段二 关键词与搜索意图</p>
+    <h1>把词，分配给页面</h1>
+    <p class="lede">关键词研究的最后一步，是把一堆词变成一张<strong>网站规划图</strong>：哪些词共用一页、哪些必须分开、每页只答一个问题。这就是关键词映射，也是阶段二的收尾。</p>
+  </header>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 关键词聚类</div>
+    <h2>目的相同的词，共用一个页面</h2>
+    <p class="muted"><strong>关键词聚类</strong>的意思是：表达不同、但<strong>搜索目的相同</strong>的词，应该由同一个页面承接。</p>
+    <p class="muted">比如 <span class="hl">resume chatbot</span> 和 <span class="hl">chatbot resume</span>，只是字序不同，用户想找的其实是同一种东西。如果分别建两个页面：</p>
+    <ul class="clean muted">
+      <li><code>/resume-chatbot</code> 和 <code>/chatbot-resume</code> 内容会高度重复；</li>
+      <li>两个页面还会<strong>互相抢排名</strong>——这就是「关键词内耗」（也叫同类相食）。</li>
+    </ul>
+    <div class="callout">
+      <div class="t">快速判断两个词能不能共用一页</div>
+      分别搜这两个词，各看前十名结果：<strong>≥5 个 URL 相同</strong> → 通常可以由同一页承接；只有 1–2 个相同 → 很可能是两种不同需求。顺序不同没关系，重点看 URL 是否重复。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 相关性看「任务」</div>
+    <h2>别看词里有哪些字，看用户在完成什么</h2>
+    <p class="muted">最容易犯的错，是看到共同的单词就以为相关。下面三个词都含 <code>chatbot</code> 和 <code>resume</code>，但用户任务完全不同。假设你在做一个「把简历变成可提问 AI」的产品，试着把每个词归到对的页面，或排除掉：</p>
+    <div id="w-map"></div>
+    <p class="muted" style="margin-top:14px">看出来了吗？<span class="hl">单词几乎一样，需求可以完全相反</span>。判断相关性的唯一标准，是「搜索者正在完成什么任务」。</p>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 合并还是拆分</div>
+    <h2>三个问题，决定一页还是两页</h2>
+    <p class="muted">手里的词该并成一页、还是拆成几页？不看词长得像不像，看这三个问题的答案是否相同：</p>
+    <div class="trio">
+      <div><div class="t"><span class="n">1</span>用户任务</div><span class="sub">他来干嘛</span><p>看案例？还是创建产品？任务不同就该分开。</p></div>
+      <div><div class="t"><span class="n">2</span>理想页面</div><span class="sub">该给什么</span><p>指南集合？还是产品页 + Demo？页面类型不同就该分开。</p></div>
+      <div><div class="t"><span class="n">3</span>主 CTA</div><span class="sub">让他做什么</span><p>了解学习？还是上传创建？行动目标不同就该分开。</p></div>
+    </div>
+    <p class="muted"><strong>三个都相同 → 合并；有一个不同 → 拆分。</strong> 拆开后，两个页面还应该<strong>互相链接</strong>，让用户和搜索引擎都明白它们的主题关系。</p>
+    <div id="w-q1" style="margin-top:4px"></div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 关键词地图</div>
+    <h2>研究的产出物：一页答一个问题</h2>
+    <p class="muted">把上面的判断落到纸面，就是一张<strong>关键词地图</strong>——每个页面一行，钉死它的主词、意图、页面类型和 CTA：</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>URL</th><th>主关键词</th><th>页面类型</th><th>主要目的</th><th>主 CTA</th></tr></thead>
+        <tbody>
+          <tr><td>/interactive-resume</td><td>interactive resume</td><td>指南 + 案例</td><td>拿更宽泛的互动简历流量</td><td>轻（先看 / 体验）</td></tr>
+          <tr><td>/resume-chatbot</td><td>resume chatbot</td><td>产品 + Demo</td><td>拿高匹配的产品流量</td><td>直接（上传创建）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">注意最后一列：<strong>页面目标 ≠ CTA</strong>。目标是「用户理解什么」，CTA 是「用户接下来做什么」。而且 CTA 的强弱要跟着意图走——</p>
+    <div class="callout">
+      <div class="t">意图越偏学习，CTA 越轻；越接近产品，CTA 越直接</div>
+      搜 interactive resume 的人多半在看案例、找灵感，还没准备创建 → 主 CTA 先让他「看一份可对话简历怎么运作」；搜 resume chatbot 的人已经离产品很近 → 可以直接「上传简历，创建你的 Chatbot」。
+    </div>
+    <p class="muted" style="margin-top:14px">你刚刚走完的这条链路，就是关键词研究变成网站规划的全过程：<br><span class="hl">关键词 → 搜索意图 → 页面类型 → 页面目标 → CTA</span>。</p>
+  </section>
+
+  <section id="s5">
+    <div class="kicker"><span class="num">5</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q2"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li><strong>关键词聚类</strong>：目的相同的词共用一页；字序不同不代表要分页；</li>
+      <li>相关性看<strong>用户任务</strong>，不看词里有哪些字；</li>
+      <li>合并 / 拆分看三问：<strong>用户任务 / 理想页面 / 主 CTA</strong>，都相同才合并；</li>
+      <li>产出物是<strong>关键词地图</strong>：一页一个主词、一个意图、一个 CTA；意图越近产品，CTA 越直接。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-07.html">← 上一课：搜索量·难度·机会</a>
+      <span class="btn" style="opacity:.5;cursor:not-allowed" aria-disabled="true">阶段二完 · 阶段三即将推出</span>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。示例中的关键词、URL 与地图均为教学演示，实际规划请结合你自己的产品和真实 SERP。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S2：把词映射到页面（或排除）
+  SEO.widgets.classify(document.getElementById("w-map"), {
+    intro:"产品：把简历变成一个可供招聘者提问的 AI。给每个词点一个归属：",
+    cats:[
+      { key:"ir", label:"互动简历页", hint:"/interactive-resume" },
+      { key:"rc", label:"简历Chatbot页", hint:"/resume-chatbot" },
+      { key:"no", label:"排除", hint:"任务不符" }
+    ],
+    items:[
+      { kw:"interactive resume examples",       cat:"ir", why:"想看互动简历案例，归互动简历指南页。" },
+      { kw:"how to create an interactive resume", cat:"ir", why:"学怎么做互动简历，归互动简历页。" },
+      { kw:"resume chatbot",                    cat:"rc", why:"把简历变成可提问的 Chatbot，归 Chatbot 页（主词）。" },
+      { kw:"chatbot resume",                    cat:"rc", why:"字序不同、同一需求，和 resume chatbot 共用 Chatbot 页。" },
+      { kw:"chatbot prompts for resume writing", cat:"no", why:"用 Chatbot 帮我写简历——任务完全不同，排除。" },
+      { kw:"chatbot project in resume",         cat:"no", why:"把「我做过的 Chatbot 项目」写进简历——任务完全不同，排除。" }
+    ],
+    doneText:"✓ 全对！都含 chatbot + resume，但只有任务相符的才归得进来——相关性看任务，不看字面。"
+  });
+
+  // S3：合并还是拆分
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"「interactive resume」（看案例/找模板）和「resume chatbot」（创建可对话简历）该合并成一页，还是拆成两页？",
+    options:[
+      { t:"合并成一页，因为两个词都含 resume、长得像", why:"判断依据不是词长得像不像。它们的用户任务、理想页面、主 CTA 都不同，硬挤一页会两头不讨好。" },
+      { t:"拆成两页，因为用户任务、理想页面和主 CTA 都不同", ok:true, why:"对。三问都不同 → 拆分。一个做成指南+案例，一个做成产品页+Demo，再互相链接。" },
+      { t:"随便，反正内容差不多", why:"内容其实差很多：一个在教学/展示，一个在转化。混在一起 Google 和用户都看不懂这页到底解决什么。" }
+    ]
+  });
+
+  // S5：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q2"), {
+    q:"① 「resume chatbot」和「chatbot resume」前十名结果大部分相同。正确做法是——",
+    options:[
+      { t:"分别建两个页面，各自优化一个词", why:"两个词是同一需求，分别建页会内容重复、互相抢排名（内耗）。" },
+      { t:"用同一个页面承接这两个词", ok:true, why:"SERP 高度重合 = 同一需求 = 关键词聚类，应由一个页面承接，避免同类相食。" },
+      { t:"只做搜索量大的那个，删掉另一个", why:"不用删——同一页可以同时覆盖它俩，把另一个当次级关键词即可。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"② 填空（填中文词即可）",
+    parts:[
+      "表达不同、目的相同的词由同一页承接，叫关键词", { a:["聚类","聚合","归类","clustering"] }, "。",
+      "　判断相关性要看用户的", { a:["任务","目的","需求","搜索目的","搜索任务"] }, "，不是看词里有哪些字。",
+      "　页面希望用户「理解什么」是页面", { a:["目标","目的"] }, "，希望他「接下来做什么」是", { a:["CTA","行动号召","行动召唤","cta"] }, "。"
+    ],
+    okText:"✓ 全对！聚类 + 看任务 + 分清目标与 CTA，就是把关键词变成网站规划的核心。",
+    revealText:"答案：关键词<strong>聚类</strong>；看用户<strong>任务</strong>；「理解什么」是<strong>目标</strong>，「接下来做什么」是 <strong>CTA</strong>。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:8,
+    sections:[
+      {id:"s1", label:"关键词聚类"}, {id:"s2", label:"相关性看任务"}, {id:"s3", label:"合并还是拆分"},
+      {id:"s4", label:"关键词地图"}, {id:"s5", label:"随堂自测"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>

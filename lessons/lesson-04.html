@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第四课：一个网页的 SEO 骨架 · SEO × GEO 入门课</title>
+<meta name="description" content="用户看到排版好的页面，搜索引擎读的是 HTML 骨架。认识 URL、Title、H1、正文、链接、图片 alt 这些对 SEO 最重要的部件。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-04.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-04.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第四课：一个网页的 SEO 骨架 · SEO × GEO 入门课">
+<meta property="og:description" content="从 HTML 视角认识页面上对搜索重要的部件：URL、Title、H1、正文、链接、图片 alt。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第四课：一个网页的 SEO 骨架 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第四课 · 阶段一 地基</p>
+    <h1>一个网页，搜索引擎在看哪些部件？</h1>
+    <p class="lede">你看到的是排版好的页面；搜索引擎读的是它的 <strong>HTML 骨架</strong>。这一课认识页面上对 SEO 最重要的几个部件——它们是后面所有优化动作的着力点。</p>
+  </header>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 两种视角</div>
+    <h2>你看到的，和引擎读到的，不是一回事</h2>
+    <p class="muted">同一个页面，有两层：</p>
+    <ul class="clean muted">
+      <li><strong>用户看到的</strong>：图片、排版、颜色——好不好看、好不好读；</li>
+      <li><strong>引擎读到的</strong>：HTML 源码里的标签和文字——标题是什么、讲的是什么主题、链去了哪。</li>
+    </ul>
+    <p class="muted">很多 SEO 的着力点，<span class="hl">在页面上肉眼看不到</span>，却写在 HTML 里——比如页面的 <code>&lt;title&gt;</code> 标签、描述、图片的 alt 文字。学 SEO，就是学会同时用这两层眼睛看页面。</p>
+    <div class="callout">
+      <div class="t">SEO 不是把页面做花哨</div>
+      而是让页面上「对搜索引擎有意义的部件」都清晰、准确、到位。下面就把这些部件一个个点亮认一遍。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 页面的 SEO 骨架</div>
+    <h2>点一点，认识每个部件</h2>
+    <p class="muted">下面是一个简化的网页。点上面的按钮，逐块高亮，看每个部件是干嘛的：</p>
+    <div id="w-page"></div>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 各归各课</div>
+    <h2>这些部件，后面会一个个细讲</h2>
+    <p class="muted">这一课只需建立整体印象——知道页面上有哪些部件、大概管什么。每个部件的「怎么做好」，后面的阶段会专门展开：</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>部件</th><th>大概管什么</th><th>哪一课细讲</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Title / Meta 描述</strong></td><td>搜索结果里的门面，影响点击</td><td>第 9 课</td></tr>
+          <tr><td><strong>H1 与小标题</strong></td><td>内容的结构和层级</td><td>第 10 课</td></tr>
+          <tr><td><strong>正文质量</strong></td><td>页面配不配排上去</td><td>第 11 课</td></tr>
+          <tr><td><strong>内链 / 图片 alt</strong></td><td>站内的路，图片能不能被搜到</td><td>第 12 课</td></tr>
+          <tr><td><strong>外链</strong></td><td>别人给你的信任票</td><td>第 17 课</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="w-q1" style="margin-top:4px"></div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q2"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li>页面有两层：<strong>用户看到的排版</strong> 和 <strong>引擎读到的 HTML</strong>；很多 SEO 部件肉眼看不到；</li>
+      <li>核心骨架：<strong>URL、Title、Meta 描述、H1、小标题、正文、链接、图片 alt</strong>；</li>
+      <li>这一课先<strong>认全</strong>，每个部件「怎么做好」由后面的阶段三、五分别细讲。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-03.html">← 上一课：解剖 SERP</a>
+      <a class="btn" href="./lesson-05.html">下一课：搜索意图 →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。页面示例为教学演示，不同网站的 HTML 结构会有差异；各部件的具体优化做法以后续课程和官方文档为准。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S2：网页骨架解剖
+  SEO.widgets.pageAnatomy(document.getElementById("w-page"), {
+    url:"yoursite.com/interactive-resume",
+    intro:"点上面的按钮，逐块认识一个网页里对 SEO 重要的部件。",
+    parts:[
+      { key:"url", btn:"URL", tag:"URL 网址",
+        html:'<span class="pg-url-txt">yoursite.com/<b>interactive-resume</b></span>',
+        info:'<strong>URL（网址）。</strong>简短、可读、含关键词最好。它既是用户点击前的线索，也帮引擎理解页面主题。别用一长串乱码参数。' },
+      { key:"title", btn:"Title", tag:"页面标题 <title>",
+        html:'<span class="sr-title" style="font-size:16px">Interactive Resume：案例、模板与制作指南</span>',
+        info:'<strong>Title（页面标题）。</strong>搜索结果里最显眼的一行、点击率的关键，也是最重要的排名信号之一。页面正文里通常看不到它——它写在 HTML 的 &lt;title&gt; 标签里。第 9 课细讲。' },
+      { key:"meta", btn:"Meta 描述", tag:"meta description",
+        html:'<span class="pg-p">一段约 150 字的摘要，出现在搜索结果标题的下方……</span>',
+        info:'<strong>Meta description（描述）。</strong>不直接参与排名，但决定「用户要不要点你」。不写的话，引擎会自己从正文截一段。它也写在 HTML 里，正文上看不到。第 9 课细讲。' },
+      { key:"h1", btn:"H1", tag:"H1 大标题",
+        html:'<div class="pg-h1">什么是互动简历？</div>',
+        info:'<strong>H1（页面大标题）。</strong>页面上最大的标题，对读者和引擎都在说「本页主题是什么」。一个页面通常只用一个 H1。第 10 课细讲标题层级。' },
+      { key:"h2", btn:"小标题", tag:"H2–H6 小标题",
+        html:'<div class="pg-h2">▸ 互动简历的常见形式</div><div class="pg-h2">▸ 怎么制作</div>',
+        info:'<strong>小标题（H2–H6）。</strong>正文的目录树，帮读者扫读、帮引擎理解结构，也更容易被「精选摘要」抽取。第 10 课细讲。' },
+      { key:"body", btn:"正文", tag:"正文内容",
+        html:'<div class="pg-p">真正回答用户问题的地方——内容是否有用、是否可信，决定这个页面配不配排上去。</div>',
+        info:'<strong>正文内容。</strong>SEO 的核心：页面到底有没有回答搜索者的问题。第 11 课讲内容质量与 E-E-A-T。' },
+      { key:"links", btn:"链接", tag:"链接",
+        html:'<div class="pg-p"><span class="sr-title" style="font-size:13.5px">→ 相关：把简历变成 Resume Chatbot</span></div>',
+        info:'<strong>链接。</strong>站内链接（内链）帮权重流动、帮爬虫发现页面；站外链接（别人链你）是信任票。第 12 课讲内链、第 17 课讲外链。' },
+      { key:"img", btn:"图片 alt", tag:"图片 + alt",
+        html:'<div class="pg-p">🖼 <span style="opacity:.7">alt=&quot;一份互动简历的示例截图&quot;</span></div>',
+        info:'<strong>图片的 alt 文本。</strong>图片本身引擎「看不懂」，靠 alt 文字说明内容——既是无障碍，也让图片能被搜到。第 12 课细讲。' }
+    ]
+  });
+
+  // S3：看不见但重要
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 下面哪个部件，通常在页面正文上「看不到」，却对 SEO 很重要？",
+    options:[
+      { t:"H1 大标题", why:"H1 是页面上最大的标题，肉眼看得很清楚。" },
+      { t:"Meta description（描述）", ok:true, why:"对。它写在 HTML 里、主要出现在搜索结果中，页面正文上一般看不到。同类的还有 &lt;title&gt; 标签和图片 alt。" },
+      { t:"正文内容", why:"正文就是页面上给人读的主体，当然看得到。" }
+    ]
+  });
+
+  // S4：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q2"), {
+    q:"② 关于 Title 和 H1，下面哪个说法是对的？",
+    options:[
+      { t:"Title 和 H1 必须一模一样", why:"不必。两者可以不同：Title 更偏搜索结果里的门面，H1 更偏页面上的大标题，各自都要清楚表达主题。" },
+      { t:"Title 主要出现在搜索结果里，H1 是页面上的大标题，两者都在说「本页主题」", ok:true, why:"对。一个在 SERP 上招呼点击，一个在页面上统领内容，方向一致但位置和写法可以不同。" },
+      { t:"一个页面放越多个 H1 越利于 SEO", why:"通常一个页面只用一个 H1。堆很多个 H1 反而让「主题是什么」变模糊。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"③ 填空（填中文或英文标签名即可）",
+    parts:[
+      "搜索结果里最显眼、点击率关键的一行，是页面的", { a:["Title","标题","title","页面标题"] }, "（HTML 里的 &lt;title&gt;）；",
+      "　页面上最大的那个标题标签是", { a:["H1","h1"] }, "；",
+      "　图片本身引擎看不懂，靠", { a:["alt","alt文本","alt文字","替代文本"] }, " 文字说明它的内容。"
+    ],
+    okText:"✓ 全对！Title、H1、alt 是最常打交道的三个部件，后面几课会逐个教你怎么写好。",
+    revealText:"答案：搜索结果的门面是 <strong>Title</strong>；页面大标题是 <strong>H1</strong>；图片靠 <strong>alt</strong> 文字说明内容。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:4,
+    sections:[
+      {id:"s1", label:"两种视角"}, {id:"s2", label:"页面骨架"}, {id:"s3", label:"各归各课"},
+      {id:"s4", label:"随堂自测"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>
