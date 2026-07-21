@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>术语表 · SEO × GEO 入门课</title>
+<meta name="description" content="SEO 与 GEO 核心术语速查：抓取、索引、关键词、页面优化、技术 SEO、站外与 AI 搜索，可搜索、可按分类筛选。">
+<link rel="stylesheet" href="./assets/css/site.css">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="术语表 · SEO × GEO 入门课">
+<meta property="og:description" content="SEO 与 GEO 核心术语速查，可搜索、可按分类筛选。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="术语表 · SEO × GEO 入门课">
+<script src="./assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="topbar">
+  <div class="row">
+    <a class="brand" href="./index.html">SEO×GEO · <b>入门课</b></a>
+    <nav class="steps" style="flex:1">
+      <a href="./index.html#lessons">课程目录</a>
+      <a href="./index.html#how">怎么学</a>
+      <a href="./glossary.html" class="on">术语表</a>
+      <a href="./references.html">参考资料</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero" style="padding:56px 0 24px">
+    <p class="eyebrow">速查手册</p>
+    <h1>术语表</h1>
+    <p class="lede">这里收录课程里反复出现的词。定义尽量用大白话，并说明它能告诉你什么、常见的误解是什么。随课程更新持续补充。</p>
+    <div class="glo-search">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="gloq" placeholder="搜索术语，如「索引」「长尾」…" aria-label="搜索术语">
+    </div>
+  </header>
+
+  <div class="glo-layout">
+    <div class="glo-cats" id="glocats"></div>
+    <div>
+      <div class="glo-grid" id="glogrid"></div>
+      <div class="glo-empty" id="gloempty" style="display:none">没有匹配的术语，换个词试试。</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="follow">
+      <a href="./references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">术语说明是教学简化，具体定义与机制以搜索引擎官方文档为准。</p>
+  </footer>
+</div>
+
+<script src="./assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var CATS = [
+    { key:"all",   name:"全部",       icon:'<path d="M4 6h16M4 12h16M4 18h16"/>' },
+    { key:"base",  name:"基础",       icon:'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>' },
+    { key:"crawl", name:"抓取与索引", icon:'<path d="M12 3v18M5 7l7-4 7 4M5 17l7 4 7-4"/>' },
+    { key:"kw",    name:"关键词",     icon:'<path d="M20 12l-8 8-9-9V4h7z"/><circle cx="7.5" cy="7.5" r="1.5"/>' },
+    { key:"onpage",name:"页面优化",   icon:'<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h4"/>' },
+    { key:"tech",  name:"技术 SEO",   icon:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>' },
+    { key:"off",   name:"站外",       icon:'<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7L12.5 19"/>' },
+    { key:"geo",   name:"GEO · AI",   icon:'<path d="M12 3l2 5.5L19.5 10 14 12l-2 5.5L10 12 4.5 10 10 8.5z"/>' },
+    { key:"data",  name:"度量",       icon:'<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>' }
+  ];
+
+  var TERMS = [
+    // —— 基础 ——
+    { cat:"base", name:"SEO", en:"Search Engine Optimization", desc:"搜索引擎优化：让网页在自然结果中获得更好排名和更多点击的一系列工作。核心是让页面「值得排上去」，并让引擎能识别这一点。" },
+    { cat:"base", name:"SERP", en:"Search Engine Results Page", desc:"搜索结果页。现代 SERP 是广告、AI 概览、精选摘要、自然结果、相关问题等版块的混合体（第 3 课）。" },
+    { cat:"base", name:"自然结果", en:"Organic Results", desc:"不收费、由算法按相关性与质量排序的搜索结果——SEO 的主战场。与广告位彼此独立，花钱买不到。" },
+    { cat:"base", name:"SEM / 竞价广告", en:"Search Engine Marketing", desc:"通过付费广告获取搜索流量。按点击付费、位置靠竞价，即开即停；停止投放后流量归零。" },
+    { cat:"base", name:"点击率 CTR", en:"Click-Through Rate", desc:"看到你的结果的人里，有多少点了进来。排名位置对 CTR 影响巨大：第 1 名的平均 CTR 可能是第 10 名的十倍以上（示意量级）。" },
+    { cat:"base", name:"零点击搜索", en:"Zero-Click Search", desc:"用户在结果页直接得到答案（天气卡片、AI 概览等），不再点击任何链接。AI 时代零点击比例上升，是学 GEO 的重要理由。" },
+    // —— 抓取与索引 ——
+    { cat:"crawl", name:"爬虫 / 蜘蛛", en:"Crawler / Spider", desc:"搜索引擎派出的自动程序（如 Googlebot），沿着链接发现并下载网页。链接是它唯一的路（第 2 课）。" },
+    { cat:"crawl", name:"抓取", en:"Crawl", desc:"爬虫发现并下载页面的过程——流水线第一步。没被抓取的页面，后面一切都无从谈起。" },
+    { cat:"crawl", name:"索引", en:"Index", desc:"搜索引擎解析页面并存入数据库的过程（也指这个数据库本身）。收录是选择性的：太薄、重复或标了 noindex 的页面可能进不去。" },
+    { cat:"crawl", name:"孤岛页", en:"Orphan Page", desc:"没有任何链接指向的页面。爬虫顺链接爬行，走不到孤岛页——它几乎不会被发现和收录。" },
+    { cat:"crawl", name:"robots.txt", en:"", desc:"放在网站根目录的纯文本文件，告诉爬虫哪些路径不要抓取。写错一行可能让整站从搜索里消失（第 13 课）。" },
+    { cat:"crawl", name:"noindex", en:"", desc:"页面级指令：「可以抓，但请不要收录我」。用于后台页、感谢页等不想出现在搜索里的页面。" },
+    { cat:"crawl", name:"sitemap", en:"站点地图", desc:"XML 格式的页面清单，主动递给搜索引擎，帮爬虫发现页面——尤其是层级很深或链接很少的页面（第 14 课）。" },
+    { cat:"crawl", name:"canonical", en:"规范网址", desc:"当多个 URL 内容相同或高度相似时，用 canonical 标签指认「正版」，避免收录与权重分散（第 14 课）。" },
+    // —— 关键词 ——
+    { cat:"kw", name:"关键词", en:"Keyword", desc:"用户在搜索框里输入的词或短语。SEO 的起点是弄清楚：你的目标用户到底在搜什么。" },
+    { cat:"kw", name:"搜索意图", en:"Search Intent", desc:"一次搜索背后的真实目的。常分四类：找信息、找特定网站、比较研究、准备交易。给错意图的内容再好也排不上（第 5 课）。" },
+    { cat:"kw", name:"长尾关键词", en:"Long-tail Keyword", desc:"更长、更具体、单个搜索量小的词（如「手冲咖啡 水温 多少度」）。竞争小、意图明确，是新站的主要机会。" },
+    { cat:"kw", name:"搜索量", en:"Search Volume", desc:"一个词每月大约被搜多少次。工具给出的是估算值，量级参考意义大于精确数字。" },
+    { cat:"kw", name:"关键词难度", en:"Keyword Difficulty", desc:"在这个词上挤进前排有多难，通常由现有上榜页面的强度估算。难度与搜索量之间的权衡是选词的核心（第 7 课）。" },
+    { cat:"kw", name:"关键词映射", en:"Keyword Mapping", desc:"把关键词分配到具体页面：一页服务一个主题，避免多页争同一个词（内耗），也避免一页什么都想要。" },
+    // —— 页面优化 ——
+    { cat:"onpage", name:"Title 标签", en:"&lt;title&gt;", desc:"页面的标题，显示在搜索结果的蓝色链接处，是排名与点击最重要的一行字。过长会被截断（约 580px，第 9 课）。" },
+    { cat:"onpage", name:"Meta Description", en:"", desc:"页面描述，常显示在搜索结果标题下方。不直接参与排名，但决定「要不要点你」——它是你的广告文案。" },
+    { cat:"onpage", name:"标题层级 H1–H6", en:"Headings", desc:"页面内容的目录树：H1 是全页主题（通常一页一个），H2/H3 划分小节。写给读者，也写给爬虫和 AI（第 10 课）。" },
+    { cat:"onpage", name:"alt 文本", en:"Alt Text", desc:"图片的文字描述。图片加载失败或使用屏幕阅读器时展示，也是搜索引擎理解图片内容的主要依据。" },
+    { cat:"onpage", name:"内部链接", en:"Internal Link", desc:"站内页面之间的链接。既是爬虫的路，也传递权重、告诉引擎哪些页面重要（第 12 课）。" },
+    { cat:"onpage", name:"锚文本", en:"Anchor Text", desc:"链接上可点击的那几个字。它告诉用户和引擎：链接那头是什么内容。「点这里」是浪费，「手冲水温指南」才有信息量。" },
+    { cat:"onpage", name:"E-E-A-T", en:"Experience, Expertise, Authoritativeness, Trust", desc:"经验、专业、权威、可信——Google 质量评估指南中衡量内容可信度的框架。不是直接的排名分数，但代表算法努力的方向（第 11 课）。" },
+    // —— 技术 ——
+    { cat:"tech", name:"Core Web Vitals", en:"核心网页指标", desc:"Google 定义的三个真实体验指标：加载（LCP）、交互（INP）、视觉稳定（CLS）。是排名信号之一，更是用户体验的底线（第 15 课）。" },
+    { cat:"tech", name:"结构化数据 / Schema", en:"Structured Data", desc:"用 schema.org 词汇给页面加机器可读的标签（如「这是食谱，耗时 30 分钟」），换来富媒体展示，也帮 AI 准确理解内容（第 16 课）。" },
+    { cat:"tech", name:"HTTPS", en:"", desc:"加密的网页传输协议。是基本的信任门槛与轻量排名信号，现代网站的默认配置。" },
+    { cat:"tech", name:"移动优先索引", en:"Mobile-first Indexing", desc:"Google 主要以移动版页面为准进行收录与排名。移动端体验差，桌面版再好也吃亏。" },
+    // —— 站外 ——
+    { cat:"off", name:"外链", en:"Backlink", desc:"其他网站指向你的链接，相当于一张投票。来源的质量与相关性远比数量重要（第 17 课）。" },
+    { cat:"off", name:"PageRank", en:"", desc:"Google 早期核心算法的名字：链接是投票，来自重要页面的投票更值钱。具体公式早已演化，但「链接传递信任」的直觉仍然成立。" },
+    { cat:"off", name:"白帽 / 黑帽", en:"White / Black Hat", desc:"遵循官方指南的优化叫白帽；操纵排名的手段（买链接、堆关键词、伪装内容）叫黑帽，被识别后可能受到排名惩罚（第 18 课）。" },
+    { cat:"off", name:"实体", en:"Entity", desc:"搜索引擎知识图谱里「知道的东西」：人、品牌、地点、概念。从匹配关键词到识别实体，是搜索理解方式的大升级（第 19 课）。" },
+    // —— GEO ——
+    { cat:"geo", name:"GEO", en:"Generative Engine Optimization", desc:"生成引擎优化：让 ChatGPT、Perplexity、AI 概览等 AI 产品在生成答案时引用你的内容。优化目标从「排名」变成「被引用」（阶段六）。" },
+    { cat:"geo", name:"生成引擎", en:"Generative Engine", desc:"用生成式 AI 直接合成答案的搜索类产品：AI 概览、ChatGPT 搜索、Perplexity 等。它们检索、筛选网页后引用其中一部分。" },
+    { cat:"geo", name:"AI 概览", en:"AI Overviews", desc:"Google 搜索结果顶部由 AI 生成的摘要答案，附引用来源。占据最显眼的位置，深刻影响下方结果的点击。" },
+    { cat:"geo", name:"引用", en:"Citation", desc:"AI 在答案中标注的来源链接。GEO 语境下的「排名第一」，就是成为被引用的那几个来源之一。" },
+    { cat:"geo", name:"llms.txt", en:"", desc:"一个新兴提案：在网站根目录放一份给大模型看的站点说明文件，帮 AI 快速理解你的站点结构与核心内容（第 23 课）。" },
+    // —— 度量 ——
+    { cat:"data", name:"Google Search Console", en:"GSC", desc:"Google 官方免费工具：看你的站在哪些词下展示、排第几、点击多少，还能提交 sitemap、排查收录问题。做 SEO 的标配（第 24 课）。" },
+    { cat:"data", name:"展示次数", en:"Impressions", desc:"你的结果在 SERP 上被「看到」的次数（出现即算，不要求点击）。展示多、点击少，常说明标题与描述需要优化。" }
+  ];
+
+  var grid = document.getElementById("glogrid"), empty = document.getElementById("gloempty");
+  var curCat = "all", curQ = "";
+
+  document.getElementById("glocats").innerHTML = CATS.map(function(c,i){
+    return '<button class="glo-cat'+(i===0?' on':'')+'" data-c="'+c.key+'" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+c.icon+'</svg>'+c.name+'</button>';
+  }).join("");
+
+  function catName(k){ for(var i=0;i<CATS.length;i++) if(CATS[i].key===k) return CATS[i].name; return ""; }
+
+  function render(){
+    var list = TERMS.filter(function(t){
+      var okCat = curCat==="all" || t.cat===curCat;
+      var okQ = !curQ || (t.name + (t.en||"") + t.desc).toLowerCase().indexOf(curQ) > -1;
+      return okCat && okQ;
+    });
+    grid.innerHTML = list.map(function(t){
+      return '<div class="term-card">'+
+        '<span class="tc-cat">'+catName(t.cat)+'</span>'+
+        '<div class="tc-name">'+t.name+(t.en?' <span class="tc-en">'+t.en+'</span>':'')+'</div>'+
+        '<p class="tc-desc">'+t.desc+'</p>'+
+      '</div>';
+    }).join("");
+    empty.style.display = list.length ? "none" : "block";
+  }
+
+  document.getElementById("glocats").addEventListener("click", function(e){
+    var b = e.target.closest(".glo-cat"); if(!b) return;
+    curCat = b.dataset.c;
+    Array.prototype.forEach.call(document.querySelectorAll(".glo-cat"), function(x){ x.classList.toggle("on", x===b); });
+    render();
+  });
+  document.getElementById("gloq").addEventListener("input", function(e){ curQ = (e.target.value||"").trim().toLowerCase(); render(); });
+
+  render();
+})();
+</script>
+</body>
+</html>

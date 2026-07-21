@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二课：抓取、索引与排名 · SEO × GEO 入门课</title>
+<meta name="description" content="搜索引擎不是当场翻遍全网，而是查提前建好的索引。理解「抓取 → 索引 → 排名」这条流水线，是一切 SEO 的地基。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第二课：抓取、索引与排名 · SEO × GEO 入门课">
+<meta property="og:description" content="理解「抓取 → 索引 → 排名」这条流水线，是一切 SEO 的地基。附可动手玩的爬虫模拟。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二课：抓取、索引与排名 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第二课 · 完全新手向</p>
+    <h1>搜索引擎搜的不是互联网，<br>是它的「藏书库」</h1>
+    <p class="lede">按下回车的那零点几秒里，Google 并没有当场翻遍全网——它查的是自己提前抓取、整理好的索引。理解「抓取 → 索引 → 排名」这条流水线，后面所有 SEO 知识都有了挂靠点。</p>
+  </header>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 三步流水线</div>
+    <h2>从网页到搜索结果，要过三关</h2>
+    <div class="trio">
+      <div><div class="t"><span class="n">1</span>抓取 Crawl</div><span class="sub">发现 + 下载</span><p>爬虫（如 Googlebot）沿着链接在网上「爬行」，发现新页面并下载内容。</p></div>
+      <div><div class="t"><span class="n">2</span>索引 Index</div><span class="sub">解析 + 入库</span><p>解析页面内容，判断值不值得收录，存进一个巨大的数据库——索引。</p></div>
+      <div><div class="t"><span class="n">3</span>排名 Rank</div><span class="sub">检索 + 排序</span><p>用户搜索时，从索引里挑出相关页面，按大量信号排序后展示。</p></div>
+    </div>
+    <p class="muted">三关是<strong>串联</strong>的：没被抓取就谈不上收录，没被收录就永远不会出现在结果里。以后你的页面「搜不到」，也按这个顺序排查。</p>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 爬虫与链接</div>
+    <h2>链接，是爬虫唯一的路</h2>
+    <p class="muted">爬虫从已知页面出发，把页面里的链接加入「待抓取队列」，再一个个访问。下面是一个 7 页的小网站——亲手当一回爬虫：</p>
+    <div id="w-crawl"></div>
+    <p class="muted" style="margin-top:14px">注意右上角那个<strong>孤岛页</strong>：没有任何链接指向它，爬虫永远走不到。给页面「修路」（内部链接，第 12 课）和「递地图」（sitemap，第 14 课），都是为了解决这个问题。</p>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 索引</div>
+    <h2>抓到了 ≠ 收录了</h2>
+    <p class="muted">抓取回来的页面还要过一道质量关。这几类页面即使被抓取，也可能进不了索引：</p>
+    <ul class="clean muted">
+      <li><strong>内容太薄</strong>：没几句话、没有独立价值的页面；</li>
+      <li><strong>大面积重复</strong>：和站内或站外其他页面高度雷同；</li>
+      <li><strong>被主动排除</strong>：页面标了 <span class="hl">noindex</span>（「请不要收录我」，第 13 课细讲）。</li>
+    </ul>
+    <p class="muted">想知道自己的页面有没有被收录？两个办法：在 Google 直接搜 <span class="hl">site:你的域名</span>，或用官方工具 <strong>Google Search Console</strong>（第 24 课专讲）。</p>
+    <div class="callout">
+      <div class="t">新站没被收录，最常见的原因</div>
+      通常不是「被惩罚了」，而是：没有任何外部链接指向你 + 没提交 sitemap——爬虫压根不知道你存在。先修路、再递地图，然后给它一点时间。
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 排名</div>
+    <h2>排序的依据：相关性、质量、体验、权威</h2>
+    <p class="muted">同一个搜索，索引里可能有几百万个候选页面。排序时会综合<strong>大量信号</strong>（业内常说有几百个），大方向包括：</p>
+    <ul class="clean muted">
+      <li><strong>相关性</strong>：内容和这次搜索对得上吗？（关键词、意图——阶段二）</li>
+      <li><strong>质量</strong>：内容可靠、完整、有独立价值吗？（内容、E-E-A-T——阶段三）</li>
+      <li><strong>体验</strong>：打开快不快、移动端好不好用？（技术——阶段四）</li>
+      <li><strong>权威</strong>：有多少可信的地方提到你？（链接、品牌——阶段五）</li>
+    </ul>
+    <div class="callout">
+      <div class="t">没有人知道完整的权重清单</div>
+      Google 不公开算法细节，从业者只能靠官方文档和实验推断——所以对「保证第一名」的承诺要保持警惕。好消息是：大方向是公开的，就是这门课接下来五个阶段要讲的全部内容。
+    </div>
+  </section>
+
+  <section id="s5">
+    <div class="kicker"><span class="num">5</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q1"></div>
+    <div id="w-q2" style="margin-top:16px"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li>搜索引擎查的是<strong>提前建好的索引</strong>，不是实时的互联网；</li>
+      <li><strong>链接是爬虫的路</strong>：孤岛页几乎不会被发现；</li>
+      <li>收录是<strong>选择性</strong>的：太薄、重复、noindex 的页面可能进不了索引；</li>
+      <li>排名由大量信号综合决定，<strong>没人知道全部细节</strong>——警惕「保证排名」的承诺。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-01.html">← 上一课</a>
+      <a class="btn" href="./lesson-03.html">下一课：解剖搜索结果页 →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。抓取模拟为教学简化：真实爬虫还涉及抓取频率、优先级、渲染等机制；收录与排名细节以 Google 官方文档为准。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S2：爬虫抓取模拟（默认自带孤岛页的小站点）
+  SEO.widgets.crawlerSim(document.getElementById("w-crawl"), {});
+
+  // S5：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 你发布了一篇新文章，一周后在 Google 搜标题也找不到。最先该检查什么？",
+    options:[
+      { t:"页面有没有被抓取和收录", ok:true, why:"顺着流水线排查：先确认爬虫能发现它（有链接或 sitemap 指向）、已经进了索引，然后才轮到讨论排名。" },
+      { t:"标题是不是写得不够吸引人", why:"标题影响点击和排名，但页面连收录都没有时，标题写得再好也不会出现在结果里。" },
+      { t:"是不是没有投广告", why:"广告和自然收录是两套独立的系统，不投广告完全不影响被收录。" }
+    ]
+  });
+
+  SEO.widgets.quizChoice(document.getElementById("w-q2"), {
+    q:"② 爬虫发现新页面，主要靠——",
+    options:[
+      { t:"顺着已知页面上的链接", ok:true, why:"链接是主路；此外站长还可以用 sitemap 主动提交页面清单（第 14 课）。" },
+      { t:"监控用户在聊天软件里发的内容", why:"不是。发现机制的核心是链接与站长提交，不是监控私人对话。" },
+      { t:"网站上线后自动向全网广播", why:"没有这种广播机制。没有链接指向、也不提交 sitemap 的页面，爬虫无从知晓。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"③ 填空（填中文词即可）",
+    parts:[
+      "搜索引擎流水线的三步：", { a:["抓取","爬取","crawl"], w:100 }, "→", { a:["索引","收录","index"], w:100 }, "→", { a:["排名","排序","rank"], w:100 }, "。",
+      "　没有任何链接指向的页面叫", { a:["孤岛页","孤岛","孤儿页"] }, "。"
+    ],
+    okText:"✓ 全对！抓取 → 索引 → 排名，这条流水线是后面 22 课的地基。",
+    revealText:"答案已填入：三步是<strong>抓取、索引、排名</strong>；没有链接指向的页面叫<strong>孤岛页</strong>。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:2,
+    sections:[
+      {id:"s1", label:"三步流水线"}, {id:"s2", label:"爬虫与链接"}, {id:"s3", label:"索引"},
+      {id:"s4", label:"排名"}, {id:"s5", label:"随堂自测"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>
