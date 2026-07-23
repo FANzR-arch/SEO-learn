@@ -69,14 +69,25 @@
   </section>
 
   <section id="s4">
-    <div class="kicker"><span class="num">4</span> 三个名词</div>
-    <h2>SEO · SEM · GEO，一次分清</h2>
+    <div class="kicker"><span class="num">4</span> 名词分清</div>
+    <h2>SEO · SEM · GEO · AEO · LLMO，一次分清</h2>
+    <p class="muted">先分清最基本的三个：优化什么位置、要不要花钱。</p>
     <div class="trio">
       <div><div class="t">SEO</div><span class="sub">Search Engine Optimization</span><p>争<strong>自然结果</strong>的排名。不付费、见效慢，但效果可以积累，停手后仍能持续带来流量。</p></div>
       <div><div class="t">SEM / 竞价广告</div><span class="sub">Search Engine Marketing</span><p>花钱买<strong>广告位</strong>。即开即停、见效快，但停止投放的那一刻，流量归零。</p></div>
       <div><div class="t">GEO</div><span class="sub">Generative Engine Optimization</span><p>让 ChatGPT、AI 概览这类<strong>生成引擎</strong>在回答里引用你。本课程阶段六专讲。</p></div>
     </div>
-    <p class="muted">这门课的主角是 SEO 和 GEO——一个面向传统搜索，一个面向 AI 搜索。好消息：它们共享大量地基，核心都是<span class="hl">给人真正有用、机器读得懂的内容</span>。</p>
+    <p class="muted">AI 火了之后又冒出一批新词——AEO、LLMO，加上 GEO，经常被混着用。它们其实是同一场变化的三个侧面，按「答案生成的程度」从浅到深排：</p>
+    <div class="trio">
+      <div><div class="t">AEO</div><span class="sub">Answer Engine Optimization</span><p><strong>答案引擎优化</strong>。让「直接给答案」的系统选中你：精选摘要、语音助手、相关问题框。出现最早——语音搜索时代就有这个词。核心动作：把内容写成「一问一答」。</p></div>
+      <div><div class="t">GEO</div><span class="sub">Generative Engine Optimization</span><p><strong>生成引擎优化</strong>。AI 先检索网页、再生成一段答案并标注来源——GEO 争的是成为<strong>被引用的来源</strong>。2023 年一篇论文让这个词流行起来，是目前 AI 搜索优化最通用的叫法。</p></div>
+      <div><div class="t">LLMO</div><span class="sub">Large Language Model Optimization</span><p><strong>大模型优化</strong>。更进一步：让模型<strong>本身「记得」你</strong>——即使不联网检索，训练语料里的品牌信息也让它在推荐时提到你。核心是长期的品牌与实体建设。</p></div>
+    </div>
+    <div class="callout">
+      <div class="t">一句话记住四个词</div>
+      搜索引擎给你一列<strong>链接</strong>，SEO 争排名；答案引擎给你一个<strong>答案</strong>，AEO 争被选中；生成引擎<strong>写一段话</strong>，GEO 争被引用；大模型<strong>凭记忆说话</strong>，LLMO 争被记住。四个词优化的层次不同，但地基是同一套：内容真正有用、结构清晰、来源可信。
+    </div>
+    <p class="muted">这门课的主角是 SEO 和 GEO——一个面向传统搜索，一个面向 AI 搜索（AEO、LLMO 的做法与 GEO 大量重合，阶段六会一并覆盖）。好消息：它们共享大量地基，核心都是<span class="hl">给人真正有用、机器读得懂的内容</span>。</p>
   </section>
 
   <section id="s5">
@@ -84,6 +95,7 @@
     <h2>点一点、填一填，检查你会了没</h2>
     <div id="w-q1"></div>
     <div id="w-q2" style="margin-top:16px"></div>
+    <div id="w-q3" style="margin-top:16px"></div>
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
@@ -93,7 +105,7 @@
       <li>一页搜索结果 = <strong>广告位 + 自然结果</strong>；SEO 争的是自然结果，广告花费买不到它；</li>
       <li>SEO 三件事：<strong>让引擎读得懂、让内容值得排、让别人愿意提</strong>；</li>
       <li>位置价值差异巨大：第 1 名的点击率可能是第 10 名的<strong>十倍以上</strong>；</li>
-      <li><strong>GEO</strong> 是 AI 时代的新战场——目标从「排名」变成「被引用」。</li>
+      <li><strong>GEO</strong> 是 AI 时代的新战场——目标从「排名」变成「被引用」；<strong>AEO</strong>（争被选为答案）、<strong>LLMO</strong>（争被模型记住）是同一场变化的近亲词。</li>
     </ul></div>
     <div class="next">
       <a class="btn ghost" href="../index.html">← 返回课程首页</a>
@@ -151,8 +163,17 @@
     ]
   });
 
+  SEO.widgets.quizChoice(document.getElementById("w-q3"), {
+    q:"③ 朋友的品牌想让 ChatGPT 在「不联网检索」的情况下也能主动推荐它——这更接近哪个词的目标？",
+    options:[
+      { t:"AEO：优化精选摘要和相关问题框", why:"AEO 争的是「答案位」被选中，前提还是系统去你的页面取内容。「不检索也被提到」靠的不是它。" },
+      { t:"GEO：让生成引擎检索时引用你的页面", why:"GEO 的场景是 AI 先检索再引用——题目里说了「不联网检索」，所以不是它。" },
+      { t:"LLMO：让品牌进入模型的「记忆」，凭训练语料就被提到", ok:true, why:"对。模型不检索时靠训练语料说话，LLMO 做的就是长期品牌与实体建设，让模型「记得」你。" }
+    ]
+  });
+
   SEO.widgets.fillBlank(document.getElementById("w-fill"), {
-    prompt:"③ 填空（填中文词即可）",
+    prompt:"④ 填空（填中文词即可）",
     parts:[
       "SEO 的中文全称是", { a:["搜索引擎优化"], w:150 }, "。",
       "　标着「赞助」的结果属于", { a:["广告","付费结果","付费广告","SEM"] }, "，",
@@ -167,7 +188,7 @@
     n:1,
     sections:[
       {id:"s1", label:"结果从哪来"}, {id:"s2", label:"什么是SEO"}, {id:"s3", label:"位置的价值"},
-      {id:"s4", label:"三个名词"}, {id:"s5", label:"随堂自测"}
+      {id:"s4", label:"名词分清"}, {id:"s5", label:"随堂自测"}
     ]
   });
 })();
