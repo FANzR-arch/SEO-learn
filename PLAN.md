@@ -2,10 +2,10 @@
 
 一套纯静态、可交互的 SEO + GEO 入门课程。术语和事实优先对照 Google Search Central 官方文档、GEO 论文（arXiv 2311.09735）等公开资料（见 `references.html`），课程会明确标注教学简化。
 
-## 站点现状（截至 2026-07-21）
+## 站点现状（截至 2026-07-23）
 
-- **进度：** 阶段一前 3 课已完成（01 什么是 SEO / 02 抓取索引排名 / 03 SERP 解剖），04–24 课待建（见下表）。
-- **站点级已完成：** 设计系统（蓝色点缀 + 扁平方角）、深浅色主题、课程外壳（顶栏/进度/左侧栏）、术语表（50 词条，含 AEO / LLMO）、参考资料页、404、favicon、OG meta。
+- **进度：** 阶段一至五已完成（01–19 上线），阶段六 GEO（20–24）待建（见下表）。
+- **站点级已完成：** 设计系统（蓝色点缀 + 扁平方角）、深浅色主题、课程外壳（顶栏/进度/左侧栏）、术语表（61 词条，含 AEO/LLMO、CWV 三指标、JSON-LD、链接垃圾/人工处罚、知识图谱等）、参考资料页、404、favicon、OG meta。
 - **待办（非课程内容）：** 部署（Vercel/GitHub Pages）→ 补 canonical/og:url、og-cover.jpg（1200×630）、（可选）git 仓库初始化、GSC 验证 + sitemap.xml。
 
 ## 架构
@@ -60,13 +60,13 @@ assets/
 | 10 | 标题层级与内容结构 | headingTree | ⏳ |
 | 11 | 内容质量与 E-E-A-T | 案例对比 + quiz | ⏳ |
 | 12 | 内部链接、图片与 alt | linkFlow | ⏳ |
-| 13 | robots.txt 与 meta robots | robotsLab | ⏳ |
-| 14 | sitemap 与 canonical | crawlerSim（带 sitemap 变体） | ⏳ |
-| 15 | 网站速度与 Core Web Vitals | cwvMeter | ⏳ |
-| 16 | 结构化数据：Schema 入门 | schemaBuilder | ⏳ |
-| 17 | 外链与权威：链接即投票 | linkFlow（跨站变体） | ⏳ |
-| 18 | 白帽与黑帽 | 案例判定 quiz 流程 | ⏳ |
-| 19 | 品牌与实体 | 实体图谱示意 | ⏳ |
+| 13 | robots.txt 与 meta robots | classify（Disallow vs noindex）+ codeblock + quiz | ✅ 完成 |
+| 14 | sitemap 与 canonical | classify（该不该进 sitemap）+ codeblock + quiz | ✅ 完成 |
+| 15 | 网站速度与 Core Web Vitals | cwvMeter（新建）+ classify（优化手段归指标） | ✅ 完成 |
+| 16 | 结构化数据：Schema 入门 | classify（可否标记）+ JSON-LD codeblock + quiz | ✅ 完成 |
+| 17 | 外链与权威：链接即投票 | classify（好票/废票）+ trio + rel 属性表 | ✅ 完成 |
+| 18 | 白帽与黑帽 | classify（白帽/黑帽）+ 政策表 + 后果 trio | ✅ 完成 |
+| 19 | 品牌与实体 | classify（站得住/靠不住）+ 实体/知识面板讲解 | ✅ 完成 |
 | 20 | 什么是 GEO | 对比演示（传统 SERP vs AI 答案）；深化 GEO/AEO/LLMO 辨析（L01 §4 已入门） | ⏳ |
 | 21 | AI 怎么挑选引用来源 | aiCiteSim | ⏳ |
 | 22 | 为 AI 写作：可引用的内容 | aiCiteSim（改写练习） | ⏳ |
@@ -78,8 +78,8 @@ assets/
 - **Phase A（已完成）**：设计系统 + shell + 6 个基础组件 + 课程 01–03 + 术语表/参考资料/404。
 - **Phase B**：阶段一收尾（04）+ 阶段二（05–08），建 htmlXray、intentSorter、kwExplorer。
 - **Phase C**：阶段三（09–12），建 headingTree、linkFlow。
-- **Phase D**：阶段四（13–16），建 robotsLab、cwvMeter、schemaBuilder。
-- **Phase E**：阶段五（17–19）。
+- **Phase D（已完成）**：阶段四（13–16）。实际以复用 classify/quiz/fillBlank + codeblock 为主，新建 cwvMeter；robotsLab/schemaBuilder 未单独建（classify + JSON-LD 代码块已够用）。事实经官方文档核对：robots 管抓取≠收录、canonical 是信号非命令、priority/changefreq 不被使用、CWV 阈值与 INP 取代 FID、结构化数据非直接排名因素且须与可见内容一致。
+- **Phase E（已完成）**：阶段五（17–19）。复用 classify/quiz/fillBlank + 表格。事实经官方核对：黑帽=违反垃圾内容政策（行业词非官方术语）、判据「主要为操纵排名」、SpamBrain vs 人工处罚、rel 属性是「提示」、PageRank 公开分数 2016 停用、知识图谱 things-not-strings、知识面板不写死「右侧」、「无链接品牌提及是排名因素」标注为行业未证实说法。
 - **Phase F**：阶段六 GEO（20–24），建 aiCiteSim、geoChecklist——GEO 领域变化快，写作时先核对最新公开资料。
 
 ## 原则

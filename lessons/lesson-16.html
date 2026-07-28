@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第十六课：结构化数据 Schema 入门 · SEO × GEO 入门课</title>
+<meta name="description" content="结构化数据用 schema.org 词汇给页面贴上机器可读的标签，换来富媒体展示的机会。Google 推荐 JSON-LD；它不是直接排名因素，且必须与页面可见内容一致，否则可能受人工处罚。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-16.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-16.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第十六课：结构化数据 Schema 入门 · SEO × GEO 入门课">
+<meta property="og:description" content="给页面贴机器可读标签，换富媒体展示——JSON-LD 推荐，且必须与可见内容一致。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十六课：结构化数据 Schema 入门 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第十六课 · 阶段四 技术 SEO</p>
+    <h1>给页面贴上机器读得懂的标签</h1>
+    <p class="lede">人一眼能看出「这是一份菜谱、耗时 30 分钟、4.8 星」。机器要靠猜。<strong>结构化数据</strong>就是把这些信息用标准格式明明白白标出来——换来搜索结果里更抢眼的<strong>富媒体展示</strong>。阶段四到这里收尾。</p>
+  </header>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 是什么</div>
+    <h2>把「这是什么」写成标准格式</h2>
+    <p class="muted"><strong>结构化数据（Structured Data）</strong>是一种描述页面内容的标准格式。它用一套公共词汇表——<strong>schema.org</strong>——把页面上的信息分类标注：这是一个 <code>Recipe</code>（菜谱）、它的 <code>cookTime</code>（烹饪时间）是 30 分钟、<code>rating</code>（评分）是 4.8。</p>
+    <p class="muted">好处是让引擎<strong>确定地</strong>知道页面在讲什么，而不是从正文里猜。理解得更准，就有机会换来更好的展示。</p>
+    <div class="callout">
+      <div class="t">词汇用 schema.org，行为看 Google</div>
+      标注用的词汇来自 schema.org；但「Google 会不会因此给你富媒体展示、需要哪些字段」，要以 <strong>Google Search Central 文档</strong>为准。schema.org 词汇很多，真正能触发富媒体的只是 Google 明确支持的那些类型。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 长什么样</div>
+    <h2>推荐用 JSON-LD</h2>
+    <p class="muted">结构化数据有三种写法：<strong>JSON-LD</strong>、Microdata、RDFa。<span class="hl">Google 推荐 JSON-LD</span>——它是一段独立的脚本，和页面正文分开，最好加、也最好维护。长这样：</p>
+    <div class="codeblock">
+      <div class="cb-cap">JSON-LD · 一份菜谱的结构化数据</div>
+<pre>&lt;script type=<span class="s">"application/ld+json"</span>&gt;
+{
+  <span class="k">"@context"</span>: <span class="s">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="s">"Recipe"</span>,
+  <span class="k">"name"</span>: <span class="s">"手冲咖啡入门"</span>,
+  <span class="k">"totalTime"</span>: <span class="s">"PT5M"</span>,
+  <span class="k">"recipeIngredient"</span>: [<span class="s">"咖啡豆 15g"</span>, <span class="s">"热水 225ml"</span>]
+}
+&lt;/script&gt;</pre>
+    </div>
+    <p class="muted">这段代码用户看不到，是<strong>专门给机器读的</strong>。它必须和页面上<strong>真实可见</strong>的内容对得上——这一点第 4 节会重点讲。</p>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 能换来什么</div>
+    <h2>富媒体展示，不是排名加分</h2>
+    <p class="muted">标了结构化数据，页面就<strong>有资格</strong>在搜索结果里获得更丰富的外观——即<strong>富媒体结果（rich results）</strong>：菜谱的图片和星级、商品的价格和库存、面包屑导航等。它们更抢眼，往往能带来更高的点击率。常见可触发类型有 <code>Recipe</code>、<code>Product</code>、<code>Review</code>、<code>Event</code>、<code>Breadcrumb</code> 等（以 Google 支持列表为准）。</p>
+    <ul class="clean muted">
+      <li><strong>它不是直接排名因素</strong>：结构化数据本身不会把你的位置往前推，它的价值在「更好的理解」和「更抢眼的展示」；</li>
+      <li><strong>标对了也不保证出现</strong>：Google 明确说，即使标记完全正确，也不保证一定展示富媒体——是否展示由 Google 决定；</li>
+      <li>所以把它当成<strong>「争取更好外观」的机会</strong>，而不是「排名秘籍」。</li>
+    </ul>
+    <div class="callout">
+      <div class="t">间接价值：更抢眼 = 更可能被点</div>
+      虽然不直接加分，但一个带图片、星级、价格的结果，在一列蓝链接里明显更吸睛——更高的点击率本身就是回报。这也是为什么值得花力气做它。
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 一条红线</div>
+    <h2>只能标「页面上真有、且看得见」的东西</h2>
+    <p class="muted">这是结构化数据的合规底线：<span class="hl">标注的内容必须和页面可见内容一致</span>。Google 说得很硬——不要标注用户看不到的信息（即使它是真的），也别为了塞结构化数据造一个空白页。违反了，可能招来<strong>人工处罚</strong>，让页面<strong>失去富媒体资格</strong>，甚至被当作垃圾。</p>
+    <p class="muted">下面每种标记，判断<strong>可以</strong>还是<strong>不可以</strong>。点错会给提示：</p>
+    <div id="w-sort"></div>
+  </section>
+
+  <section id="s5">
+    <div class="kicker"><span class="num">5</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q1"></div>
+    <div id="w-q2" style="margin-top:16px"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li><strong>结构化数据</strong> = 用 schema.org 词汇给页面贴机器可读标签，换<strong>富媒体展示</strong>机会；</li>
+      <li>三种格式里 <strong>Google 推荐 JSON-LD</strong>（独立脚本，好加好维护）；</li>
+      <li>它<strong>不是直接排名因素</strong>，标对了也<strong>不保证</strong>一定出现富媒体；价值在理解与外观；</li>
+      <li>红线：只能标<strong>页面上真有、且可见</strong>的内容，否则可能招人工处罚。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-15.html">← 上一课：Core Web Vitals</a>
+      <a class="btn" href="./lesson-17.html">下一课：外链与权威 →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。结构化数据的行为、支持类型与政策以 Google Search Central 官方文档为准，可能随官方更新而变化；示例 JSON-LD 为教学演示，实际使用请参照官方各类型的必填字段与富媒体测试工具。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S4：能不能标记（合规红线）
+  SEO.widgets.classify(document.getElementById("w-sort"), {
+    intro:"结构化数据只能标「页面上真有、且可见」的内容。逐个判断：",
+    cats:[
+      { key:"ok", label:"可以标记", hint:"页面上真实可见" },
+      { key:"no", label:"不可以",   hint:"虚假 / 隐藏 / 违规" }
+    ],
+    items:[
+      { kw:"给一篇真实菜谱标 Recipe，用时和食材都和页面上写的一致", cat:"ok", why:"内容真实、可见、一致——这正是结构化数据的正确用法。" },
+      { kw:"商品页标 4.8 星评分，但页面上根本没有任何评价", cat:"no", why:"标注了页面上不存在的内容，属于虚假标记，可能招人工处罚。" },
+      { kw:"给商品标 Product，价格和页面显示的完全一致", cat:"ok", why:"和可见内容对得上，合规。" },
+      { kw:"把自己编的好评当成用户 Review 标上去", cat:"no", why:"编造评价是明确违规，可能被判为垃圾并失去富媒体资格。" },
+      { kw:"为了塞结构化数据，专门建一个用户看不到内容的空白页", cat:"no", why:"Google 明确禁止「为放结构化数据而造空白页」。" }
+    ],
+    doneText:"✓ 全对！记住红线：只标页面上真有、且用户看得见的东西。"
+  });
+
+  // S5：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 关于结构化数据和排名，下面哪个说法最准确？",
+    options:[
+      { t:"加了结构化数据，排名就会直接提升", why:"不对。它不是直接排名因素，作用是帮助理解和争取富媒体外观。" },
+      { t:"它不是直接排名因素，但能让页面有资格获得更抢眼的富媒体展示", ok:true, why:"对。价值在「更好的理解」和「更抢眼的展示」，进而可能提升点击率。" },
+      { t:"只要标记正确，就一定会出现富媒体结果", why:"也不对。Google 明确说，标对了也不保证一定展示，是否展示由它决定。" }
+    ]
+  });
+
+  SEO.widgets.quizChoice(document.getElementById("w-q2"), {
+    q:"② Google 推荐用哪种格式写结构化数据？",
+    options:[
+      { t:"JSON-LD——一段独立的脚本，和正文分开，好加好维护", ok:true, why:"对。三种格式（JSON-LD / Microdata / RDFa）里，Google 推荐 JSON-LD。" },
+      { t:"必须把标签混进每一个 HTML 元素里（Microdata）", why:"Microdata 是可选格式之一，但不是 Google 首选，也更难维护。" },
+      { t:"随便写一段文字放在页脚就行", why:"结构化数据是有固定语法的机器可读格式，不是随手写的文字。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"③ 填空（填中文或英文词即可）",
+    parts:[
+      "给页面贴机器可读标签、常用的公共词汇表叫", { a:["schema.org","schema","Schema"] }, "。",
+      "　Google 推荐的写法是", { a:["JSON-LD","json-ld","jsonld"] }, "。",
+      "　它换来的是更抢眼的", { a:["富媒体结果","富媒体","rich results","富媒体展示"] }, "，但不是直接的", { a:["排名因素","排名","排名加分"] }, "。",
+      "　而且标注必须和页面上", { a:["可见内容","可见","真实内容","真实可见内容"] }, "一致。"
+    ],
+    okText:"✓ 全对！schema.org 词汇 + JSON-LD 写法，换富媒体展示，且必须与可见内容一致。",
+    revealText:"答案：词汇表是 <strong>schema.org</strong>，推荐 <strong>JSON-LD</strong>；换来<strong>富媒体结果</strong>而非直接<strong>排名因素</strong>；标注要与页面<strong>可见内容</strong>一致。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:16,
+    sections:[
+      {id:"s1", label:"是什么"}, {id:"s2", label:"JSON-LD"}, {id:"s3", label:"换来什么"},
+      {id:"s4", label:"一条红线"}, {id:"s5", label:"随堂自测"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>

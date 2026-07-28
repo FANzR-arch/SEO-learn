@@ -11,7 +11,7 @@
   --ink:#0E1420; --ink-soft:#454C59; --ink-faint:#6B7280;
   --line:#D5DAE1; --line-soft:#E4E8ED;
   --accent:#1D5FBF; --accent-soft:#D8E4F7; --accent-ink:#164A99;
-  --hue-red:#D63A34; --hue-green:#12876A;
+  --hue-red:#D63A34; --hue-green:#12876A; --hue-amber:#B26B00;
   --shadow:0 1px 2px rgba(20,24,33,.05),0 8px 24px -12px rgba(20,24,33,.18);
   --radius:0;
   --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular","Cascadia Code",Consolas,"Liberation Mono",monospace;
@@ -23,7 +23,7 @@
     --ink:#E8ECF1; --ink-soft:#98A4B3; --ink-faint:#6B7686;
     --line:#28313F; --line-soft:#222A36;
     --accent:#5E9BF0; --accent-soft:#17263F; --accent-ink:#93BBF6;
-    --hue-red:#F0574E; --hue-green:#25B98B;
+    --hue-red:#F0574E; --hue-green:#25B98B; --hue-amber:#E0A64B;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.6);
   }
 }
@@ -32,7 +32,7 @@
   --ink:#0E1420; --ink-soft:#454C59; --ink-faint:#6B7280;
   --line:#D5DAE1; --line-soft:#E4E8ED;
   --accent:#1D5FBF; --accent-soft:#D8E4F7; --accent-ink:#164A99;
-  --hue-red:#D63A34; --hue-green:#12876A;
+  --hue-red:#D63A34; --hue-green:#12876A; --hue-amber:#B26B00;
   --shadow:0 1px 2px rgba(20,24,33,.05),0 8px 24px -12px rgba(20,24,33,.18);
 }
 :root[data-theme="dark"]{
@@ -40,7 +40,7 @@
   --ink:#E8ECF1; --ink-soft:#98A4B3; --ink-faint:#6B7686;
   --line:#28313F; --line-soft:#222A36;
   --accent:#5E9BF0; --accent-soft:#17263F; --accent-ink:#93BBF6;
-  --hue-red:#F0574E; --hue-green:#25B98B;
+  --hue-red:#F0574E; --hue-green:#25B98B; --hue-amber:#E0A64B;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.6);
 }
 
@@ -570,3 +570,33 @@ strong,.hl,b{font-weight:600}
 .pg-h1{font-size:19px;font-weight:800;letter-spacing:-.01em;margin:0;color:var(--ink)}
 .pg-h2{font-size:14px;font-weight:700;color:var(--ink-soft);margin:2px 0}
 .pg-p{font-size:13px;color:var(--ink-soft);margin:0;line-height:1.55}
+
+/* 代码块 codeblock（结构化数据等） */
+code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:3px;padding:1px 5px;color:var(--ink)}
+.codeblock{margin:14px 0;background:var(--surface-2);border:1px solid var(--line);overflow-x:auto}
+.codeblock pre{margin:0;padding:14px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--ink-soft);white-space:pre;tab-size:2}
+.codeblock pre .k{color:var(--accent-ink);font-weight:600}
+.codeblock pre .s{color:var(--hue-green)}
+.codeblock .cb-cap{padding:7px 14px;border-bottom:1px solid var(--line);font-size:11px;font-weight:800;letter-spacing:.03em;color:var(--ink-faint);text-transform:uppercase;background:var(--surface)}
+.codeblock code{background:none;border:0;padding:0;font-size:inherit}
+
+/* Core Web Vitals 仪表 cwvMeter */
+.cwv{margin-top:4px}
+.cwv-metric{padding:15px 0;border-top:1px solid var(--line-soft)}
+.cwv-metric:first-child{border-top:0;padding-top:2px}
+.cwv-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.cwv-abbr{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--ink)}
+.cwv-name{font-size:12.5px;color:var(--ink-faint)}
+.cwv-val{margin-left:auto;font-family:var(--mono);font-size:15px;font-weight:700;color:var(--ink)}
+.cwv-pill{font-size:11px;font-weight:800;letter-spacing:.02em;padding:2px 9px;border-radius:2px;white-space:nowrap}
+.cwv-pill.good{background:color-mix(in srgb,var(--hue-green) 16%,var(--surface));color:var(--hue-green)}
+.cwv-pill.ni{background:color-mix(in srgb,var(--hue-amber) 18%,var(--surface));color:var(--hue-amber)}
+.cwv-pill.poor{background:color-mix(in srgb,var(--hue-red) 14%,var(--surface));color:var(--hue-red)}
+.cwv-track{position:relative;height:12px;border:1px solid var(--line)}
+.cwv-range{-webkit-appearance:none;appearance:none;position:absolute;inset:-9px 0;width:100%;height:30px;background:transparent;margin:0;cursor:pointer}
+.cwv-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:26px;background:var(--ink);border:2px solid var(--paper);border-radius:2px;cursor:grab;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.cwv-range::-moz-range-thumb{width:14px;height:24px;background:var(--ink);border:2px solid var(--paper);border-radius:2px;cursor:grab}
+.cwv-range:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.cwv-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:5px}
+.cwv-thresh{font-size:12px;color:var(--ink-soft);margin:9px 0 0;line-height:1.55}
+.cwv-thresh b{color:var(--ink)}

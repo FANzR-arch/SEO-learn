@@ -489,4 +489,62 @@
       b.addEventListener('click', function(){ show(cur === b.dataset.p ? null : b.dataset.p); });
     });
   };
+
+  /* ---------- Core Web Vitals 仪表 ----------
+     三个指标各一条「红黄绿」轨道 + 可拖动手柄，实时显示评级。
+     阈值为 Google 官方口径（p75）：LCP ≤2.5s / INP ≤200ms / CLS ≤0.1 为「良好」，
+     LCP >4s / INP >500ms / CLS >0.25 为「差」。纯教学示意。
+     无需配置；opts 保留扩展位。 */
+  W.cwvMeter = function(host, opts){
+    opts = opts || {};
+    // good = 「良好」上限；poor = 「差」下限；max = 轨道最大值；dec = 小数位；unit = 单位
+    var METRICS = [
+      { key:"lcp", abbr:"LCP", name:"最大内容绘制 · 加载",   unit:"s",  max:6,   good:2.5, poor:4,    dec:1, start:3.2 },
+      { key:"inp", abbr:"INP", name:"交互到下次绘制 · 响应", unit:"ms", max:800, good:200, poor:500,  dec:0, start:360 },
+      { key:"cls", abbr:"CLS", name:"累积布局偏移 · 稳定",   unit:"",   max:0.5, good:0.1, poor:0.25, dec:2, start:0.17 }
+    ];
+    function fmt(m, v){ return (m.dec ? v.toFixed(m.dec) : Math.round(v)) + (m.unit ? " " + m.unit : ""); }
+    function rate(m, v){ return v <= m.good ? "good" : (v <= m.poor ? "ni" : "poor"); }
+    var RTXT = { good:"良好", ni:"需要改进", poor:"差" };
+
+    var rowsHtml = METRICS.map(function(m){
+      var gp = (m.good/m.max*100), pp = (m.poor/m.max*100);
+      // 轨道底色：绿 → 琥珀 → 红，用 color-mix 调淡让深色手柄清晰；用 CSS 变量以便随主题重绘
+      var grad = "linear-gradient(90deg,"+
+        "color-mix(in srgb,var(--hue-green) 42%,var(--surface)) 0 "+gp+"%,"+
+        "color-mix(in srgb,var(--hue-amber) 42%,var(--surface)) "+gp+"% "+pp+"%,"+
+        "color-mix(in srgb,var(--hue-red) 42%,var(--surface)) "+pp+"% 100%)";
+      var step = m.dec ? (m.dec===2 ? 0.01 : 0.1) : 10;
+      return '<div class="cwv-metric" data-k="'+m.key+'">'+
+        '<div class="cwv-head">'+
+          '<span class="cwv-abbr">'+m.abbr+'</span>'+
+          '<span class="cwv-name">'+esc(m.name)+'</span>'+
+          '<span class="cwv-val" data-el="val"></span>'+
+          '<span class="cwv-pill" data-el="pill"></span>'+
+        '</div>'+
+        '<div class="cwv-track" style="background:'+grad+'">'+
+          '<input class="cwv-range" type="range" min="0" max="'+m.max+'" step="'+step+'" value="'+m.start+'" '+
+            'aria-label="'+esc(m.abbr+" "+m.name)+'（拖动查看评级）">'+
+        '</div>'+
+        '<div class="cwv-scale"><span>0</span><span>'+fmt(m, m.max)+'</span></div>'+
+        '<p class="cwv-thresh">良好：<b>≤ '+fmt(m, m.good)+'</b>　·　需改进：'+fmt(m, m.good)+'–'+fmt(m, m.poor)+'　·　差：<b>&gt; '+fmt(m, m.poor)+'</b></p>'+
+      '</div>';
+    }).join("");
+
+    host.innerHTML = '<div class="card pad"><div class="cwv">'+rowsHtml+'</div></div>';
+
+    METRICS.forEach(function(m){
+      var row = host.querySelector('.cwv-metric[data-k="'+m.key+'"]');
+      var range = row.querySelector(".cwv-range"), val = row.querySelector('[data-el="val"]'), pill = row.querySelector('[data-el="pill"]');
+      function update(){
+        var v = parseFloat(range.value), r = rate(m, v);
+        val.textContent = fmt(m, v);
+        pill.className = "cwv-pill " + r;
+        pill.textContent = RTXT[r];
+        range.setAttribute("aria-valuetext", fmt(m, v) + "，" + RTXT[r]);
+      }
+      range.addEventListener("input", update);
+      update();
+    });
+  };
 })();

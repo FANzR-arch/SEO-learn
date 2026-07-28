@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第十三课：robots.txt 与 meta robots · SEO × GEO 入门课</title>
+<meta name="description" content="robots.txt 管的是「抓取」不是「收录」——被屏蔽的页有外链照样可能露面。想真正不被收录，要用 noindex，而且不能同时屏蔽抓取。一课分清两个最常被搞混的工具。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-13.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-13.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第十三课：robots.txt 与 meta robots · SEO × GEO 入门课">
+<meta property="og:description" content="robots.txt 管抓取、noindex 管收录——搞混这两个，是新手最常犯的致命错。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十三课：robots.txt 与 meta robots · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第十三课 · 阶段四 技术 SEO</p>
+    <h1>告诉爬虫：哪能去，哪别收</h1>
+    <p class="lede">阶段四开始处理「技术管道」。第一件事，是学会对爬虫下两种完全不同的指令：<strong>「别抓取」</strong>和<strong>「别收录」</strong>。它们用的是不同的工具，搞混了——轻则白忙，重则整站从搜索里消失。</p>
+  </header>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> robots.txt 是什么</div>
+    <h2>放在门口的一张「爬虫须知」</h2>
+    <p class="muted"><strong>robots.txt</strong> 是一个放在网站根目录（<code>yoursite.com/robots.txt</code>）的纯文本文件。爬虫来访时先读它，看看哪些路径不欢迎抓取。它遵循一份公开协议（2022 年正式标准化为 <strong>RFC 9309</strong>），主流搜索引擎都认。</p>
+    <div class="codeblock">
+      <div class="cb-cap">robots.txt · 一个最小示例</div>
+<pre><span class="k">User-agent:</span> *          # 对所有爬虫生效
+<span class="k">Disallow:</span> /admin/     # 别抓 /admin/ 这个目录
+<span class="k">Disallow:</span> /cart       # 别抓购物车相关路径
+<span class="k">Allow:</span> /admin/help   # 但 /admin/help 例外，可以抓
+
+<span class="k">Sitemap:</span> https://yoursite.com/sitemap.xml   # 顺便告诉它 sitemap 在哪</pre>
+    </div>
+    <ul class="clean muted">
+      <li><strong>User-agent</strong>：这段规则针对哪个爬虫，<code>*</code> 表示所有；</li>
+      <li><strong>Disallow</strong>：不希望被抓取的路径；<strong>Allow</strong>：在被禁的范围里开个口子；</li>
+      <li><strong>Sitemap</strong>：顺手指明站点地图位置（第 14 课）。</li>
+    </ul>
+    <div class="callout">
+      <div class="t">最危险的一行：<code>Disallow: /</code></div>
+      一条斜杠代表「整站都别抓」。开发环境常这样写来挡爬虫，但<strong>忘了在上线时删掉</strong>，就等于亲手把整个网站从搜索里拔掉——这是真实发生过无数次的事故。改动 robots.txt 后务必用 Search Console 的测试工具核对一遍。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 抓取 ≠ 收录</div>
+    <h2>robots.txt 拦不住「出现在搜索结果里」</h2>
+    <p class="muted">这是新手最容易踩的坑，也是本课最重要的一句话：<span class="hl">robots.txt 管的是「抓不抓」，不是「收不收」。</span></p>
+    <p class="muted">Google 说得很直白：robots.txt「<em>不是</em>把网页挡在搜索之外的手段」。一个被 <code>Disallow</code> 的页面，只要<strong>别的网站链接到它</strong>，它的网址照样可能出现在搜索结果里——只是因为爬虫没读过内容，显示的时候<strong>没有描述摘要</strong>而已。</p>
+    <p class="muted">换句话说，你想让一个页面「消失」，却只屏蔽了抓取，结果反而留下一个光秃秃、你无法控制文案的搜索结果。想真正不被收录，要换一个工具——<strong>noindex</strong>。</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>你的真实目的</th><th>该用的工具</th><th>为什么</th></tr></thead>
+        <tbody>
+          <tr><td>别浪费爬虫资源去抓某块目录</td><td><strong>robots.txt</strong> 的 Disallow</td><td>它就是用来控制「抓取」的。但注意：不保证这些页不出现在搜索里。</td></tr>
+          <tr><td>让某页<strong>不出现</strong>在搜索结果里</td><td><strong>noindex</strong>（下一节）</td><td>这是唯一可靠的「别收录我」指令。</td></tr>
+          <tr><td>页面含私密信息，不能被外人看到</td><td><strong>登录 / 密码保护</strong></td><td>robots.txt 和 noindex 都只是「请求」，挡不住直接访问；真正的隐私要靠权限控制。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <div class="t">致命陷阱：想不被收录，却把页面也 Disallow 了</div>
+      <code>noindex</code> 要生效，前提是<strong>爬虫能读到它</strong>。如果你既写了 noindex、又在 robots.txt 里 Disallow 了这个页，爬虫根本进不来、看不到那条 noindex 指令——页面<strong>反而可能继续被收录</strong>。记住：<span class="hl">要 noindex 的页，就不要再 Disallow 它。</span>
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> noindex 怎么下</div>
+    <h2>两种写法：meta 标签与响应头</h2>
+    <p class="muted">要让一个页面「可以抓，但别收录」，用 <strong>noindex</strong> 指令。两种常见写法：</p>
+    <div class="codeblock">
+      <div class="cb-cap">写法一 · 放进 HTML 的 &lt;head&gt;（最常用）</div>
+<pre>&lt;meta name=<span class="s">"robots"</span> content=<span class="s">"noindex"</span>&gt;</pre>
+    </div>
+    <div class="codeblock">
+      <div class="cb-cap">写法二 · HTTP 响应头（适合 PDF、图片等非 HTML 文件）</div>
+<pre><span class="k">X-Robots-Tag:</span> noindex</pre>
+    </div>
+    <ul class="clean muted">
+      <li><strong>meta robots</strong> 写在页面头部，最直观，适合普通网页；</li>
+      <li><strong>X-Robots-Tag</strong> 由服务器在响应头里发送，能给非网页文件（PDF、图片）也加上 noindex；</li>
+      <li>常和 <code>noindex</code> 一起出现的还有 <code>nofollow</code>（别顺着这页的链接继续爬），可写成 <code>noindex, nofollow</code>。</li>
+    </ul>
+    <div class="callout">
+      <div class="t">robots.txt 里写 noindex 没用</div>
+      早年有人把 <code>noindex</code> 直接写进 robots.txt——Google 从 <strong>2019 年 9 月起已不再支持</strong>这种写法。noindex 只认 meta 标签和 X-Robots-Tag 这两种。
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 对号入座</div>
+    <h2>这些情况，该用哪个工具？</h2>
+    <p class="muted">给每个场景点一个：目的是<strong>「别抓取」</strong>用 robots.txt，目的是<strong>「别出现在搜索里」</strong>用 noindex。点错会给提示。</p>
+    <div id="w-sort"></div>
+  </section>
+
+  <section id="s5">
+    <div class="kicker"><span class="num">5</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q1"></div>
+    <div id="w-q2" style="margin-top:16px"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li><strong>robots.txt 管「抓取」，noindex 管「收录」</strong>——这是两件事，别搞混；</li>
+      <li>被 Disallow 的页有外链<strong>照样可能露面</strong>（无摘要）；想不被收录，只有 noindex 可靠；</li>
+      <li>要 noindex 的页<strong>不能同时 Disallow</strong>，否则爬虫看不到指令；真正的隐私要靠登录保护；</li>
+      <li><code>Disallow: /</code> 屏蔽全站，改 robots.txt 后务必核对。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-12.html">← 上一课：内链与 alt</a>
+      <a class="btn" href="./lesson-14.html">下一课：sitemap 与 canonical →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。robots.txt / noindex 的行为以 Google Search Central 官方文档为准；不同搜索引擎对协议的支持细节可能不同。示例文件为教学演示。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S4：robots.txt vs noindex 对号入座
+  SEO.widgets.classify(document.getElementById("w-sort"), {
+    intro:"目的是「别抓取」→ robots.txt Disallow；目的是「别出现在搜索里」→ noindex：",
+    cats:[
+      { key:"disallow", label:"robots.txt Disallow", hint:"别抓取这块" },
+      { key:"noindex",  label:"noindex",             hint:"能抓，但别收录" }
+    ],
+    items:[
+      { kw:"后台管理目录 /admin/，不想让爬虫浪费资源去抓", cat:"disallow", why:"目的是「别抓取整块目录」，用 Disallow。（提醒：真要保密还得靠登录，robots.txt 只是请求。）" },
+      { kw:"「下单成功，谢谢」页，能访问，但不该出现在搜索里", cat:"noindex", why:"要挡的是「收录」，用 noindex；而且别再 Disallow 它，否则爬虫看不到 noindex。" },
+      { kw:"站内搜索结果页 /search?q=…，数量无限、内容雷同", cat:"disallow", why:"首要目的是别让爬虫钻进无限翻页、浪费抓取资源，用 Disallow 拦在门外。" },
+      { kw:"一个下线的旧活动页，要留给老用户看，但不想再被搜到", cat:"noindex", why:"页面要保留、只是不想被收录——正是 noindex 的用武之地。" }
+    ],
+    doneText:"✓ 全对！记住这条分界：拦「抓取」用 robots.txt，拦「收录」用 noindex。"
+  });
+
+  // S5：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 你在 robots.txt 里 Disallow 了某个页面，希望它别出现在搜索结果里。最可能的结果是——",
+    options:[
+      { t:"页面一定不会再出现在搜索结果里", why:"不对。robots.txt 只拦抓取，不拦收录。有外链的话，这个网址照样可能露面。" },
+      { t:"如果有别的网站链接到它，它仍可能以「没有描述」的形式出现", ok:true, why:"对。这正是 robots.txt 的边界：它管抓取不管收录。想不被收录要用 noindex。" },
+      { t:"页面会被永久删除", why:"robots.txt 不会删除任何东西，它只是请求爬虫别抓取。" }
+    ]
+  });
+
+  SEO.widgets.quizChoice(document.getElementById("w-q2"), {
+    q:"② 你给一个页面加了 noindex，想让它别被收录。下面哪一步会「帮倒忙」？",
+    options:[
+      { t:"确保这个页面没有被 robots.txt 屏蔽，爬虫能正常访问", why:"这恰恰是对的做法——爬虫要能进来，才能读到 noindex。" },
+      { t:"顺手在 robots.txt 里也把这个页 Disallow 掉，「双保险」", ok:true, why:"对，这就是帮倒忙。被 Disallow 后爬虫进不来、读不到 noindex，页面反而可能继续被收录。" },
+      { t:"把 noindex 写在页面的 <head> 里", why:"这是标准写法，没问题。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"③ 填空（填中文或英文词即可）",
+    parts:[
+      "放在网站根目录、控制「抓取」的文件叫", { a:["robots.txt","robots"] }, "。",
+      "　它管的是抓取，不能保证页面不被", { a:["收录","索引","index"] }, "。",
+      "　想让页面真正不出现在搜索里，要用", { a:["noindex","noindex指令","meta robots noindex"] }, "，",
+      "而且此时不能再把它", { a:["Disallow","屏蔽","禁止抓取","disallow"] }, "掉。"
+    ],
+    okText:"✓ 全对！robots.txt 管抓取、noindex 管收录，两者不能对同一个页面同时下手。",
+    revealText:"答案：控制抓取的是 <strong>robots.txt</strong>，它不保证不被<strong>收录</strong>；要不被收录用 <strong>noindex</strong>，且不能再 <strong>Disallow</strong> 该页。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:13,
+    sections:[
+      {id:"s1", label:"robots.txt"}, {id:"s2", label:"抓取≠收录"}, {id:"s3", label:"noindex"},
+      {id:"s4", label:"对号入座"}, {id:"s5", label:"随堂自测"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>

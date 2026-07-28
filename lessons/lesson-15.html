@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第十五课：网站速度与 Core Web Vitals · SEO × GEO 入门课</title>
+<meta name="description" content="Core Web Vitals 是 Google 定义的三个真实体验指标：LCP 加载、INP 交互、CLS 稳定。拖动仪表看红黄绿评级，理解它们各自的良好阈值，以及「是排名信号之一但不保证排名」的准确分寸。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-15.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-15.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第十五课：网站速度与 Core Web Vitals · SEO × GEO 入门课">
+<meta property="og:description" content="LCP 加载、INP 交互、CLS 稳定——三个真实体验指标，拖动仪表看红黄绿评级。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十五课：网站速度与 Core Web Vitals · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第十五课 · 阶段四 技术 SEO</p>
+    <h1>慢一秒、抖一下，用户就走了</h1>
+    <p class="lede">页面快不快、稳不稳，是实实在在的体验。Google 把它拆成三个可量化的指标——<strong>Core Web Vitals（核心网页指标）</strong>。这一课认识这三个数，也把「它到底影不影响排名」这件事说清楚，不夸大也不忽视。</p>
+  </header>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 三个指标</div>
+    <h2>加载、交互、稳定，各测一件事</h2>
+    <p class="muted">Core Web Vitals 目前是三个指标，各盯着体验的一个侧面：</p>
+    <div class="trio">
+      <div><div class="t">LCP</div><span class="sub">加载 · Largest Contentful Paint</span><p>最大那块内容（通常是主图或大标题）多久画出来。回答：<strong>「主要内容多快能看到？」</strong></p></div>
+      <div><div class="t">INP</div><span class="sub">交互 · Interaction to Next Paint</span><p>你点一下、敲一下，页面多久有反应。回答：<strong>「操作跟不跟手？」</strong></p></div>
+      <div><div class="t">CLS</div><span class="sub">稳定 · Cumulative Layout Shift</span><p>加载过程中版面乱不乱跳（正要点的按钮突然被挤走）。回答：<strong>「画面稳不稳？」</strong></p></div>
+    </div>
+    <div class="callout">
+      <div class="t">INP 已经取代了旧的 FID</div>
+      如果你在别处看到 <strong>FID</strong>（首次输入延迟），那是旧指标——Google 已于 <strong>2024 年 3 月</strong>用 INP 正式取代它。INP 衡量得更全面（看整个访问期间的交互，不只第一次）。学新的就够了。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 红黄绿</div>
+    <h2>拖一拖，看每个数落在哪一档</h2>
+    <p class="muted">每个指标都分三档：<strong>良好 / 需要改进 / 差</strong>。下面三条轨道是<strong>教学示意</strong>——拖动手柄，看数值落进绿区、黄区还是红区，感受一下各自的阈值在哪：</p>
+    <div id="w-cwv"></div>
+    <p class="muted" style="margin-top:14px">记住三个「良好」线就够用了：<span class="hl">LCP ≤ 2.5 秒、INP ≤ 200 毫秒、CLS ≤ 0.1</span>。注意 CLS 是个没有单位的分数（衡量位移比例），不是时间。</p>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 和排名的关系</div>
+    <h2>是「会被看的信号之一」，但不保证排名</h2>
+    <p class="muted">这里最容易被人写错，我们用 Google 的原话来把分寸拿准：</p>
+    <ul class="clean muted">
+      <li>Core Web Vitals <strong>会被 Google 的排名系统使用</strong>——所以它确实是个信号，值得做；</li>
+      <li>但<strong>没有「单一信号」</strong>：排名系统综合看很多与整体页面体验相符的信号，CWV 只是其中可量化的一部分；</li>
+      <li>所以<strong>拿到满绿也不保证排到前面</strong>——内容相关性、质量仍是根本。体验好，是让好内容不被拖累，而不是让平庸内容逆袭。</li>
+    </ul>
+    <div class="callout">
+      <div class="t">排名看的是「真实用户数据」，不是你本地测的分</div>
+      衡量 CWV 有两种数据：<strong>实验室数据</strong>（lab，你用工具在固定环境跑一次，适合调试）和<strong>真实用户数据</strong>（field，来自真实访客，数据源是 Chrome 用户体验报告 CrUX）。<span class="hl">用于排名参考的是 field 真实数据</span>，而且是取第 75 百分位（<code>p75</code>）——要大多数访问都达标才算「良好」。所以本地 Lighthouse 跑了满分，不等于线上就达标。
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 各改各的</div>
+    <h2>每个优化手段，主要帮哪个指标？</h2>
+    <p class="muted">三个指标的毛病不一样，药方也不同。下面每个做法，主要改善哪个指标？点错会给提示：</p>
+    <div id="w-sort"></div>
+  </section>
+
+  <section id="s5">
+    <div class="kicker"><span class="num">5</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q1"></div>
+    <div id="w-q2" style="margin-top:16px"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li><strong>Core Web Vitals = 三个体验指标</strong>：LCP 加载、INP 交互、CLS 稳定；</li>
+      <li>良好线：<strong>LCP ≤ 2.5s、INP ≤ 200ms、CLS ≤ 0.1</strong>；INP 已取代旧的 FID；</li>
+      <li>它<strong>是排名系统会看的信号之一，但不是单一信号、不保证排名</strong>；</li>
+      <li>排名参考的是<strong>真实用户数据（CrUX，p75）</strong>，不是你本地跑的实验室分数。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-14.html">← 上一课：sitemap 与 canonical</a>
+      <a class="btn" href="./lesson-16.html">下一课：结构化数据 Schema →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。指标阈值与排名表述以 Google web.dev 与 Search Central 官方文档为准；页面中的仪表为教学示意，非真实测量工具。阈值与指标定义可能随官方更新而变化。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S2：三指标红黄绿仪表（教学示意）
+  SEO.widgets.cwvMeter(document.getElementById("w-cwv"), {});
+
+  // S4：优化手段各帮哪个指标
+  SEO.widgets.classify(document.getElementById("w-sort"), {
+    intro:"每个做法主要改善哪个指标？",
+    cats:[
+      { key:"lcp", label:"LCP · 加载", hint:"主要内容更快出现" },
+      { key:"inp", label:"INP · 交互", hint:"操作更跟手" },
+      { key:"cls", label:"CLS · 稳定", hint:"版面别乱跳" }
+    ],
+    items:[
+      { kw:"给图片写明 width / height（或用 aspect-ratio）提前占位", cat:"cls", why:"提前留好位置，图片加载时就不会把下面的内容挤走——正是治 CLS 的经典做法。" },
+      { kw:"给首屏主图加 fetchpriority=\"high\"、去掉 loading=\"lazy\"", cat:"lcp", why:"让最大那块内容尽早加载出来，直接改善 LCP。" },
+      { kw:"拆分很长的 JavaScript 任务，别长时间占着主线程", cat:"inp", why:"主线程被长任务堵住，点击就没反应。拆短它，交互才跟手——这是 INP 的关键。" },
+      { kw:"压缩首屏大图，或用 preload 尽早加载关键图片", cat:"lcp", why:"首屏大图往往就是 LCP 那块内容，压小、提前加载能让它更快出现。" },
+      { kw:"页面动画只用 transform / opacity，不去改 margin、top", cat:"cls", why:"transform/opacity 不会触发重排，版面就不会跳动，避免制造 CLS。" },
+      { kw:"用工具找出并删掉页面用不到的 JavaScript", cat:"inp", why:"少加载、少执行脚本，主线程更空闲，交互响应更快——帮的是 INP。" }
+    ],
+    doneText:"✓ 全对！LCP 靠「让主内容更快出现」，INP 靠「别堵住主线程」，CLS 靠「提前占好位、别乱动」。"
+  });
+
+  // S5：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 关于 Core Web Vitals 和排名，下面哪个说法最准确？",
+    options:[
+      { t:"分数越高，排名就越靠前，是线性加分", why:"不对。它是「良好/需改进/差」的阈值达标制，也不是单一信号，达标不等于排名加分。" },
+      { t:"它是排名系统会参考的信号之一，但不保证排名，内容质量仍是根本", ok:true, why:"对。这正是官方分寸：会被用到，但不是单一信号、不保证排名。" },
+      { t:"它跟排名完全无关，只是给开发者看的", why:"也不对。Google 明确说它会被排名系统使用，只是不该被夸大成决定性因素。" }
+    ]
+  });
+
+  SEO.widgets.quizChoice(document.getElementById("w-q2"), {
+    q:"② 你本地用 Lighthouse 跑出满分，但 Search Console 里 CWV 却「需要改进」。最可能的原因是——",
+    options:[
+      { t:"Search Console 坏了", why:"更可能是数据来源不同，而不是工具出错。" },
+      { t:"排名参考的是真实用户数据（CrUX），和你本地的实验室环境不一样", ok:true, why:"对。你本地是固定环境的实验室数据；线上评估用的是真实访客的 field 数据，两者常有差距。" },
+      { t:"因为你没填 priority 字段", why:"priority 是 sitemap 的字段，跟 CWV 无关，而且 Google 也不用它。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"③ 填空（填英文缩写或数字即可）",
+    parts:[
+      "衡量「主要内容多快出现」的指标是", { a:["LCP","lcp"] }, "，良好线是 ≤ ", { a:["2.5","2.5秒","2.5s"] }, " 秒。",
+      "　衡量「操作跟不跟手」的是", { a:["INP","inp"] }, "，它取代了旧指标", { a:["FID","fid"] }, "。",
+      "　衡量「版面稳不稳」的是", { a:["CLS","cls"] }, "，它是一个没有单位的", { a:["分数","比例","数值"] }, "。"
+    ],
+    okText:"✓ 全对！LCP 加载 ≤2.5s、INP 交互（取代 FID）、CLS 稳定（无单位分数）。",
+    revealText:"答案：加载看 <strong>LCP</strong>（≤ <strong>2.5</strong> 秒）；交互看 <strong>INP</strong>（取代 <strong>FID</strong>）；稳定看 <strong>CLS</strong>（无单位<strong>分数</strong>）。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:15,
+    sections:[
+      {id:"s1", label:"三个指标"}, {id:"s2", label:"红黄绿"}, {id:"s3", label:"和排名关系"},
+      {id:"s4", label:"各改各的"}, {id:"s5", label:"随堂自测"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第十七课：外链与权威——链接即投票 · SEO × GEO 入门课</title>
+<meta name="description" content="别人链接到你，像投给你一票。链接是搜索引擎判断相关性和发现新页的官方信号，来源的质量与相关性远比数量重要。好链接靠优质内容自然赢得，而不是买来或换来。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-17.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-17.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第十七课：外链与权威——链接即投票 · SEO × GEO 入门课">
+<meta property="og:description" content="别人的链接是最难造假的信任凭证：质量与相关性远比数量重要，好链接靠赢得而非买来。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十七课：外链与权威 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第十七课 · 阶段五 站外信号与权威</p>
+    <h1>别人链接你，像投给你一票</h1>
+    <p class="lede">前面几个阶段都在打磨「你自己的页面」。阶段五转向<strong>站外</strong>：别人怎么看你。其中最经典的信号就是<strong>外链</strong>——一个网站链接到你，相当于替你背了一次书。它是最难造假的信任凭证之一。</p>
+  </header>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 链接即投票</div>
+    <h2>PageRank 的老直觉，至今仍然成立</h2>
+    <p class="muted">回到第 2 课：链接是爬虫的路。但链接还有第二个作用——<strong>传递信任</strong>。Google 官方明确：<span class="hl">「Google 把链接作为判断页面相关性、以及发现新页面的信号。」</span></p>
+    <p class="muted">这个思路的源头叫 <strong>PageRank</strong>——Google 创始算法：把每个链接看成一张<strong>投票</strong>，来自重要页面的票更值钱。具体公式早已演化，但「链接传递信任」的直觉一直是排名的基础之一。</p>
+    <div class="callout">
+      <div class="t">别再找「PageRank 分数」了</div>
+      早年有个公开的工具栏 PageRank 分数，Google 已在 <strong>2016 年停用</strong>，如今<strong>没有任何官方公开的 PageRank 分数</strong>可看。第三方工具给的「权重 / DR / DA」都是各家自己估的，参考量级可以，别当成 Google 的官方分。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 质量 &gt; 数量</div>
+    <h2>一张好票，胜过一百张废票</h2>
+    <p class="muted">既然是投票，那「谁投的」就至关重要。<strong>一个相关领域、可信站点</strong>给你的链接，价值远超一百个垃圾站的链接。评判一条外链，主要看两点：</p>
+    <div class="trio">
+      <div><div class="t">相关性</div><span class="sub">来源和你同一领域吗</span><p>一个咖啡博客链你的手冲教程，比一个五金店链你，说服力强得多。</p></div>
+      <div><div class="t">可信度</div><span class="sub">来源本身权威吗</span><p>来自公认权威站点的推荐，比来自没人认识的小站更有分量。</p></div>
+      <div><div class="t">自然度</div><span class="sub">是真心推荐吗</span><p>编辑因为内容好而主动链你，才是真投票；买来、换来的不是。</p></div>
+    </div>
+    <div class="callout">
+      <div class="t">好链接是「赢得」的，不是「建」出来的</div>
+      Google 提倡的正路是：<strong>做出值得被链接的东西</strong>——解决真问题的教程、工具、原创数据，让别人主动愿意引用你。这叫 <span class="hl">earn links（赢得链接）</span>。反过来，把精力花在批量「搞链接」上，既低效，还容易踩进下一课要讲的红线。
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 给链接贴标签</div>
+    <h2>nofollow / sponsored / ugc</h2>
+    <p class="muted">当你从<strong>自己的站</strong>链出去时，可以用 <code>rel</code> 属性告诉引擎「这条链接算不算我的背书」。三个常用值：</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>rel 值</th><th>用在哪</th></tr></thead>
+        <tbody>
+          <tr><td><code>rel="sponsored"</code></td><td>广告、付费 / 赞助的链接（花钱买的位置）。</td></tr>
+          <tr><td><code>rel="ugc"</code></td><td>用户生成内容里的链接，如评论、论坛帖。</td></tr>
+          <tr><td><code>rel="nofollow"</code></td><td>其它情况：你不想为这个链接背书、也不想让它传递权重时。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">用它们标注付费或不受控的链接，是<strong>合规</strong>做法——付费链接<strong>只要如实标注</strong>就没问题，问题出在「花钱买能传递权重、又不标注」（下一课）。</p>
+    <div class="callout">
+      <div class="t">这些是「提示」，不是硬命令</div>
+      和 robots 那种强指令不同，Google 把这三个 rel 值当作<strong>提示（hint）</strong>：它会结合这些标注和其它信号综合判断，未必百分百照办。另外提醒：别给站上<strong>每一条</strong>外链都无脑加 nofollow——只在你确实不信任来源时用。
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 哪张票值得追</div>
+    <h2>这条外链，是「好票」还是「废票」？</h2>
+    <p class="muted">给每条外链点一个：真心推荐的<strong>好票</strong>，还是买来 / 刷来 / 无关的<strong>废票（甚至有害）</strong>。点错会给提示：</p>
+    <div id="w-sort"></div>
+  </section>
+
+  <section id="s5">
+    <div class="kicker"><span class="num">5</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q1"></div>
+    <div id="w-q2" style="margin-top:16px"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li><strong>外链 = 投票</strong>：Google 官方把链接作为判断相关性、发现新页的信号；源头是 PageRank；</li>
+      <li><strong>质量 &gt; 数量</strong>：相关、可信、自然的一条链接，胜过一堆垃圾链接；</li>
+      <li>好链接靠<strong>优质内容赢得（earn）</strong>，不是买来或换来；</li>
+      <li>从自己站链出，用 <code>sponsored / ugc / nofollow</code> 如实标注——它们是「提示」；公开 PageRank 分数 2016 年已停用。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-16.html">← 上一课：结构化数据</a>
+      <a class="btn" href="./lesson-18.html">下一课：白帽与黑帽 →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。链接作为信号、rel 属性的机制以 Google Search Central 官方文档为准；第三方「权重」指标为各工具自行估算，非官方分数。示例链接为教学演示。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S4：好票 vs 废票
+  SEO.widgets.classify(document.getElementById("w-sort"), {
+    intro:"真心推荐的是「好票」，买来/刷来/无关的是「废票」：",
+    cats:[
+      { key:"good", label:"好票", hint:"相关、可信、自然" },
+      { key:"bad",  label:"废票 / 有害", hint:"买来 / 刷来 / 无关" }
+    ],
+    items:[
+      { kw:"一个知名咖啡媒体因为你的手冲实测数据好，主动引用并链接你", cat:"good", why:"相关、可信、编辑主动——三条全占，是最理想的「好票」。" },
+      { kw:"花钱在一批小站买了 200 条能传递权重、又不标注的链接", cat:"bad", why:"付费买传递权重的链接且不标注，正是下一课要讲的红线，可能招处罚。" },
+      { kw:"在几十个无关论坛的签名里贴满指向你的链接", cat:"bad", why:"无关、批量、自己刷的——既没价值，还像垃圾链接。" },
+      { kw:"一位行业博主在教程里自然提到并链接了你的免费工具", cat:"good", why:"相关领域、真心推荐，正是靠好内容『赢得』的链接。" },
+      { kw:"和一堆网站约定「你链我、我链你」纯为互刷", cat:"bad", why:"过度互换链接、纯为操纵排名，属于链接垃圾。" }
+    ],
+    doneText:"✓ 全对！好票靠相关+可信+自然，买来刷来的废票别碰。"
+  });
+
+  // S5：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 下面哪种外链对你最有价值？",
+    options:[
+      { t:"500 个互不相关的垃圾站，都在页脚放了你的链接", why:"数量大但质量差、不相关，价值极低，还可能被判为链接垃圾。" },
+      { t:"一个你所在领域公认权威的站点，因内容好而主动链你", ok:true, why:"对。相关 + 可信 + 自然，是最有分量的一票。质量远比数量重要。" },
+      { t:"你自己在 100 个论坛评论区贴的链接", why:"自己刷的、来源不可信，算不上别人的「投票」。" }
+    ]
+  });
+
+  SEO.widgets.quizChoice(document.getElementById("w-q2"), {
+    q:"② 你在自己文章里放了一条「付费合作」的链接。合规的做法是——",
+    options:[
+      { t:"用 rel=\"sponsored\"（或 nofollow）如实标注这条付费链接", ok:true, why:"对。付费链接只要如实标注就没问题；问题出在「买传递权重的链接又不标注」。" },
+      { t:"什么都不标，让它正常传递权重", why:"这正是链接垃圾政策要打击的：付费、传递权重、且不标注。" },
+      { t:"把整篇文章设成 noindex", why:"noindex 是「别收录这页」，跟「标注一条付费链接」是两回事，用错工具了。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"③ 填空（填中文或英文词即可）",
+    parts:[
+      "把链接看成投票、来自重要页面的票更值钱——这个思路来自 Google 的创始算法", { a:["PageRank","pagerank"] }, "。",
+      "　评判外链，质量与相关性远比", { a:["数量","数目","多少"] }, "重要。",
+      "　好链接应该靠优质内容", { a:["赢得","earn","自然获得","挣得"] }, "，而不是买来或换来。",
+      "　付费 / 赞助的链接应标注", { a:["sponsored","rel=sponsored","nofollow","rel=nofollow"] }, "。"
+    ],
+    okText:"✓ 全对！链接即投票（PageRank），质量>数量，好链接靠赢得，付费链接要标注。",
+    revealText:"答案：思路来自 <strong>PageRank</strong>；质量与相关性 &gt; <strong>数量</strong>；好链接靠<strong>赢得</strong>；付费链接标 <strong>sponsored</strong>。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:17,
+    sections:[
+      {id:"s1", label:"链接即投票"}, {id:"s2", label:"质量>数量"}, {id:"s3", label:"rel标签"},
+      {id:"s4", label:"好票废票"}, {id:"s5", label:"随堂自测"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>
