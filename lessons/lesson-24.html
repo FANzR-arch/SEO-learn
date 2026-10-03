@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二十四课：度量与闭环 · SEO × GEO 入门课</title>
+<meta name="description" content="用 Search Console 观察搜索表现，用固定问题抽查、访问分析与日志观察 AI 搜索。分清曝光、引用、访问和业务结果，完成一个网站页面的改进与复盘方案。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-24.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-24.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第二十四课：度量与闭环 · SEO × GEO 入门课">
+<meta property="og:description" content="SEO 用 Search Console 复盘，GEO 用监测+手查——建立属于自己的复盘闭环。课程收尾。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二十四课：度量与闭环 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第二十四课 · 阶段六 GEO 生成引擎优化</p>
+    <h1>怎么知道自己做得对不对</h1>
+    <p class="lede">做了这么多，得能<strong>看到反馈</strong>才能持续改进。SEO 有成熟的度量工具；GEO 则要难得多——被引用分散在各家 AI 里，没有一个统一的「排行榜」。这一课认识现有的度量手段，建立属于你自己的<strong>复盘闭环</strong>。这也是本课程的最后一课。</p>
+  </header>
+  <div class="callout"><div class="t">学完本课，你能</div><ul class="clean"><li>读取 GSC 的基本指标，先排查原因再选择改进动作。</li><li>区分搜索曝光、AI 引用、实际访问与业务结果，并说明每种记录的局限。</li><li>交付一个页面的完整改进方案，以及可以按期复查的基线记录。</li></ul></div>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> SEO 这一侧</div>
+    <h2>Search Console：SEO 的仪表盘</h2>
+    <p class="muted"><strong>Google Search Console（GSC）</strong>是 Google 官方免费工具。它能告诉你：</p>
+    <ul class="clean muted">
+      <li>搜索结果的<strong>展示、点击、点击率（CTR）和平均排名</strong>，并可按查询、页面、地区、设备等维度分析。平均排名是汇总指标，不代表每个用户看到的固定名次；部分低量或匿名查询不会完整显示。</li>
+      <li>还能提交 <strong>sitemap</strong>（第 14 课）、排查<strong>收录</strong>问题、查看<strong>人工处置</strong>通知（第 18 课）。</li>
+    </ul>
+    <div class="callout">
+      <div class="t">展示多、点击少？先看原因，再改页面</div>
+      可能是平均位置较低、查询不匹配、搜索结果有直接答案，也可能是标题没有说明价值。先筛到<strong>同一页面、相近查询与地区 / 设备</strong>，结合排名和实际搜索结果判断，再决定是否优化标题或内容。不能把所有低 CTR 都归因于描述；Google 也可能重写标题和摘要。官方口径见<a href="https://support.google.com/webmasters/answer/7576553" target="_blank" rel="noopener noreferrer">Search Console 效果报告</a>。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> GEO 这一侧</div>
+    <h2>被引用，怎么追踪？</h2>
+    <p class="muted">没有一个统一的地方告诉你「今天被哪些 AI 引用了多少次」。几种方法各有范围与遗漏，要组合着看：</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>方法</th><th>能看到什么 · 局限</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GSC 搜索效果报告</strong></td><td>Google 的公开说明将 AI 概览与 AI 模式数据计入<strong>Web 搜索效果</strong>。总展示与点击不能直接拆出 AI 带来的份额；不要自行称为独立 AI 引用报表。</td></tr>
+          <tr><td><strong>固定问题抽查</strong></td><td>记录完整问题、产品 / 模式、时间、地区、是否联网与引用 URL。方法可以重复，<strong>结果可能变化</strong>；只代表这组抽样，不是全平台引用率。</td></tr>
+          <tr><td><strong>访问分析与业务记录</strong></td><td>查看可识别的 AI 来源访问、落地页、有效咨询 / 注册等。应用可能不传来源信息；普通 Google 来源也不能直接区分 AI 概览与传统链接，因此会漏记或混合。</td></tr>
+          <tr><td><strong>服务器日志</strong></td><td>观察经验证的 <code>OAI-SearchBot</code> 等请求与返回状态。它能帮助排查抓取，<strong>不能证明被引用、带来用户访问或进入训练</strong>。</td></tr>
+          <tr><td><strong>第三方监测工具</strong></td><td>先核对问题库、采样次数、产品模式、地区和品牌 / URL 判定口径。监测值只适用于其采样条件；本课程不背书产品，也不要求购买工具。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <div class="t">一个要讲准的细节：GSC 的 AI 数据</div>
+      依据 <a href="https://developers.google.com/search/docs/appearance/ai-features#measuring-performance" target="_blank" rel="noopener noreferrer">Google Search Central 的度量说明</a>，AI 概览与 AI 模式带来的搜索数据纳入 Search Console 的 Web 效果报告。<strong>不能把合并的总数据解释成 AI 专属点击或引用量</strong>。报告会更新，实际使用时查看自己账号可用的界面及官方说明；本课不把缺少官方来源的「新增专报」消息当作已证实功能。
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 建立闭环</div>
+    <h2>记录基线、改变一项、观察结果</h2>
+    <p class="muted">把度量接回行动，就形成<strong>闭环</strong>：<span class="hl">做 → 量 → 学 → 再做</span>。先选一个页面和一个问题，记录改动前的搜索表现、固定问题抽样与业务结果，再选择有依据的改动。记录改动日期，保持观察条件一致，避免同时改很多项之后无法解释结果。</p>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>观察层</th><th>可用指标</th><th>不要推断</th></tr></thead><tbody><tr><td>可发现性</td><td>索引状态、成功抓取、搜索展示</td><td>抓取成功不等于被引用</td></tr><tr><td>答案呈现</td><td>固定样本中引用你的回答次数 / 完成的抽查次数；单独记录提及品牌但无链接</td><td>样本占比不等于全市场引用率</td></tr><tr><td>访问与价值</td><td>可识别来源访问、有效咨询、注册、成交等适用目标</td><td>引用或展示不等于有人点击、转化或收入</td></tr></tbody></table></div>
+    <div class="callout">
+      <div class="t">这门课不承诺排名，只交给你一张地图</div>
+      SEO 与 GEO 的效果取决于行业、基础、投入和时间，<strong>没有任何方法能保证排名或被引用</strong>。自己的数据也会受季节、需求、算法与样本量影响；一次改动前后的涨跌<strong>不是自动的因果证明</strong>。数据少时延长观察并保留不确定结论，数据足够时再考虑对照页面或更严格实验。把这门课当作理解搜索与制定行动的地图。
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 结课自测</div>
+    <h2>最后一次，点一点、填一填</h2>
+    <div id="w-q1"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 结课项目 · 约 45 分钟</div>
+    <h2>交付一个页面的改进与复盘方案</h2>
+    <ol class="clean muted"><li>整理一个目标页面：URL、目标读者、核心问题与期望业务动作。把前几课的关键词 / 意图、标题 / 内容、技术与来源检查收拢到这一页。</li><li>保存基线：能访问 GSC 时导出同一页面最近 28 天的数据，记录筛选条件；暂时没有权限或数据时写明限制与接入计划。沿用第 20 课的三个问题，在同一产品 / 模式下完成一次引用抽查。</li><li>提交一项最值得做的改进草稿，说明证据、预期作用与影响；附第 21–23 课完成的事实表、段落改写与访问规则检查。不需要上线才能交付。</li><li>设定每周复查与首次四周复盘：记录是否实施、日期、搜索表现、抽样引用和可识别访问 / 业务结果。没有足够数据时，下一步是继续观察或补测，不强行宣布有效。</li></ol>
+    <div class="callout"><div class="t">交付与验收</div>交付<strong>一个页面档案、一份基线、一项改进草稿和复查表</strong>。验收：各指标有数据源与口径、未验证项目明确标注、没有把引用当转化或把前后变化当因果；读者能按记录再次执行检查。使用<a href="../practice.html">实操手册</a>与其下载模板组织结课材料。</div>
+  </section>
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点 · 也是全课收尾</div>
+    <ul>
+      <li><strong>SEO 侧</strong>用 Search Console 看展示 / 点击 / 平均排名、排查收录与人工处置；</li>
+      <li>Google AI 搜索数据纳入 <strong>Web 效果报告</strong>；合并总量不能直接解释成 AI 专属结果；</li>
+      <li>GEO 结合<strong>固定抽样、访问分析、日志</strong>观察；分清曝光、引用、访问与业务价值；</li>
+      <li>形成<strong>做 → 量 → 学 → 再做</strong>的闭环；记录条件、保留不确定性，不保证结果。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-23.html">← 上一课：GEO 技术清单</a>
+      <a class="btn" href="../index.html">🎉 全部 24 课完成 · 回到首页</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。Search Console 功能以 Google 官方说明及账号实际可用界面为准；AI 抽样、来源归因和第三方监测都有范围与遗漏，本课程不背书任何产品。不构成对排名、引用、流量或收入的承诺。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S4：结课自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 根据本课引用的 Google 度量说明，怎样理解 GSC 的 AI 搜索数据？",
+    options:[
+      { t:"所有 Web 搜索点击都可以直接算成 AI 概览带来的点击", why:"总数据包含不同搜索体验，不能全部归因给 AI。" },
+      { t:"AI 概览与 AI 模式数据纳入 Web 效果报告，不能用合并总量直接拆出 AI 份额", ok:true, why:"对。先遵守官方的报告口径，再结合固定抽样和可识别访问观察；功能变化时重新核对。" },
+      { t:"只要有爬虫访问日志，就能计算 AI 引用量和用户转化", why:"日志访问不证明答案引用，也不证明真实用户访问或转化。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"② 填空（填中文即可）",
+    parts:[
+      "SEO 侧度量的官方工具是 Google ", { a:["Search Console","搜索控制台","GSC","search console"] }, "。",
+      "　GEO 侧可以用固定问题在各 AI 里", { a:["手动抽查","手查","手动查询","抽查"] }, "，并结合访问分析和服务器日志。",
+      "　把度量接回行动，形成", { a:["闭环","复盘闭环","循环"] }, "。",
+      "　但要记住：没有任何方法能", { a:["保证排名","保证","保证排名或被引用"] }, "；抓取、引用、访问和业务结果需要分别观察。"
+    ],
+    okText:"✓ 全对！分清度量层次，记录条件与限制，把观察接回下一项行动。",
+    revealText:"答案：SEO 侧用 <strong>Search Console</strong>；GEO 侧结合<strong>手动抽查</strong>、访问分析与日志；接成<strong>闭环</strong>；没有方法能<strong>保证排名</strong>。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:24,
+    sections:[
+      {id:"s1", label:"SEO这侧"}, {id:"s2", label:"GEO这侧"}, {id:"s3", label:"建立闭环"},
+      {id:"s4", label:"结课自测"}, {id:"practice", label:"结课项目"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>

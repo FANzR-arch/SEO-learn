@@ -1,5 +1,5 @@
 /* ============================================================
-   价格行为交易入门课 · 共享样式
+   SEO × GEO 入门课 · 共享样式
    设计令牌 + 通用组件（首页与各课页面共用）
    ============================================================ */
 /* 自托管字体：英文/数字用 Inter，等宽用 JetBrains Mono（拉丁子集 + 可变字重，各约 40–48KB）；中文走系统字体栈 */
@@ -600,3 +600,23 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:
 .cwv-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:5px}
 .cwv-thresh{font-size:12px;color:var(--ink-soft);margin:9px 0 0;line-height:1.55}
 .cwv-thresh b{color:var(--ink)}
+
+/* GEO 技术自查清单 geoChecklist */
+.gck{margin-top:4px}
+.gck-list{border:1px solid var(--line)}
+.gck-item{display:block;width:100%;text-align:left;font-family:inherit;color:inherit;background:var(--surface);border:0;border-top:1px solid var(--line);cursor:pointer;padding:0}
+.gck-item:first-child{border-top:0}
+.gck-head{display:flex;align-items:center;gap:11px;padding:13px 15px}
+.gck-box{flex:0 0 auto;width:20px;height:20px;border:1.5px solid var(--line);display:grid;place-items:center;color:transparent;font-size:12px;font-weight:800;transition:.15s}
+.gck-item.on .gck-box{background:var(--hue-green);border-color:var(--hue-green);color:#fff}
+.gck-title{font-size:14px;font-weight:650;color:var(--ink);line-height:1.45}
+.gck-why{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.gck-item.on .gck-why{max-height:260px}
+.gck-why span{display:block;padding:0 15px 13px 46px;font-size:13px;color:var(--ink-soft);line-height:1.6}
+.gck-item:hover .gck-box{border-color:var(--accent)}
+.gck-item:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.gck-bar{height:4px;background:var(--surface-2);margin-top:14px;border:1px solid var(--line)}
+.gck-bar span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.gck-progt{font-size:12px;color:var(--ink-faint);margin-top:7px;font-family:var(--mono)}
+.gck-done{margin-top:12px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--hue-green) 40%,var(--line));background:color-mix(in srgb,var(--hue-green) 8%,var(--surface));font-size:13.5px;color:var(--ink);line-height:1.6;display:none}
+.gck-done.show{display:block}

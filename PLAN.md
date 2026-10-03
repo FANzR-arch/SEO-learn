@@ -1,91 +1,57 @@
-# SEO × GEO 入门课 · 开发规划（PLAN.md）
+# SEO × GEO 入门课 · 实现现状与维护约定
 
-一套纯静态、可交互的 SEO + GEO 入门课程。术语和事实优先对照 Google Search Central 官方文档、GEO 论文（arXiv 2311.09735）等公开资料（见 `references.html`），课程会明确标注教学简化。
+更新：2026-10-03。本文件记录本地源文件状态；课程目录和教学内容分别由首页、各课和练习手册负责。
 
-## 站点现状（截至 2026-07-23）
+## 当前实现
 
-- **进度：** 阶段一至五已完成（01–19 上线），阶段六 GEO（20–24）待建（见下表）。
-- **站点级已完成：** 设计系统（蓝色点缀 + 扁平方角）、深浅色主题、课程外壳（顶栏/进度/左侧栏）、术语表（61 词条，含 AEO/LLMO、CWV 三指标、JSON-LD、链接垃圾/人工处罚、知识图谱等）、参考资料页、404、favicon、OG meta。
-- **待办（非课程内容）：** 部署（Vercel/GitHub Pages）→ 补 canonical/og:url、og-cover.jpg（1200×630）、（可选）git 仓库初始化、GSC 验证 + sitemap.xml。
+- 六阶段、24 课（01–24）均有页面与目录入口。
+- 每课包含目标、自测、实践及验收条件，用同一项目逐步积累成果。
+- practice.html 提供实践路线、无站点权限的学习路径、填写示例、问题定位与毕业验收；downloads/study-template.md 保存个人记录。
+- 保留纯静态架构、零 JavaScript 第三方依赖、深浅主题、课内导航、滚动进度、术语表、参考资料、404、favicon 与现有元信息。
+- canonical、OG URL 与 sitemap 已配置现有 Vercel 域名；本地状态不代表当前内容已发布。
 
-## 架构
+## 现有组件（以 widgets.js 为准）
 
-```
-index.html             课程首页（CURRICULUM 数据驱动目录）
-lessons/lesson-NN.html 每课 = 内容 HTML + 一段配置脚本
-assets/
-  css/site.css         设计令牌 + 组件样式
-  js/
-    theme.js           深浅色（head 同步加载防闪烁；切换时触发 SEO.redrawAll）
-    shell.js           课程外壳：顶栏 / 进度 / 章节高亮 / 左侧栏
-    widgets.js         交互组件库（见下）
-```
+| 组件 | 主要用途 | 边界 |
+| --- | --- | --- |
+| serpPreview | 首页、09 标题摘要预览 | 像素宽度为近似，真实展示可能改写 |
+| serpAnatomy | 01、03 搜索版块 | 不复现实时 SERP |
+| crawlerSim | 02 抓取模拟 | 仅沿链接发现；真实系统还有其他途径 |
+| ctrCurve | 01 情境计算 | 搜索量 × 示例 CTR，不是实际流量预测 |
+| quizChoice | 单选及逐项解释 | 学习自测 |
+| fillBlank | 填空、判定与答案 | 学习自测 |
+| classify | 意图、技术、内容与政策分类 | 简化案例，留意正文边界 |
+| keywordCards | 07 判断选词机会 | 工具数据为教学词表 |
+| pageAnatomy | 04 网页部件讲解 | 教学示意 |
+| cwvMeter | 15 三指标阈值模拟 | 不读取真实站点 |
+| geoChecklist | 23 人工自查 | 勾选不代表自动检测通过 |
 
-**每课作者只写：正文 HTML + 若干 `SEO.widgets.xxx(容器, 配置)` + `SEO.initLesson({...})`。** 顶栏/进度/左侧栏全部由 shell 自动生成。
+没有独立实现 robotsLab、schemaBuilder、aiCiteSim 等早期设想。分类题、代码示例及验证工具链接已满足对应教学目的；避免模拟不存在的「AI 引用概率」。
 
-## 交互组件库（widgets.js）
+## 课程与交付物映射
 
-| 组件 | 用途 | 状态 |
-|---|---|---|
-| serpPreview | 编辑 Title/Description，实时预览 + 像素级截断检测 | ✅ |
-| serpAnatomy | 模拟 SERP，点按钮逐块高亮讲解（版块可配置） | ✅ |
-| crawlerSim | 爬虫抓取模拟：链接图逐步抓取，孤岛页教学 | ✅ |
-| ctrCurve | 排名位置 → 点击率柱状图 + 流量估算 | ✅ |
-| quizChoice | 单选题 + 逐项解析 + 重做 | ✅ |
-| fillBlank | 填空 + 判定 + 显示答案 | ✅ |
-| htmlXray | 渲染视图 ⇄ HTML 标签视图切换高亮 | ⏳ L04 |
-| intentSorter | 把关键词分到四个意图桶 | ⏳ L05 |
-| kwExplorer | 种子词 → 长尾词扩展树 / 量与难度散点选词 | ⏳ L06–07 |
-| headingTree | 标题层级树可视化 + 排错 | ⏳ L10 |
-| linkFlow | 站内链接权重流动图 | ⏳ L12/L17 |
-| robotsLab | 写 robots.txt 规则，测试 URL 是否被屏蔽 | ⏳ L13 |
-| cwvMeter | 三个 Core Web Vitals 指标的直观模拟 | ⏳ L15 |
-| schemaBuilder | 表单生成 JSON-LD + 富媒体预览 | ⏳ L16 |
-| aiCiteSim | 生成引擎引用模拟：改内容特征看被引用概率变化 | ⏳ L21–22 |
-| geoChecklist | GEO 技术自查清单（逐项勾选 + 讲解） | ⏳ L23–24 |
+| 阶段 | 范围 | 主要主题 | 收尾交付 |
+| --- | --- | --- | --- |
+| A · 搜索 | 01–04 | SEO/广告、发现抓取索引、SERP、网页骨架 | 观察与页面检查 |
+| B · 关键词 | 05–08 | 意图、找词、量与难度、映射 | 有来源的关键词地图 |
+| C · 页面 | 09–12 | 标题摘要、层级、E-E-A-T、内链图片 | 页面改进稿 |
+| D · 技术 | 13–16 | 抓取/索引控制、规范化/HTTP、CWV/移动、Schema | 带证据的技术检查 |
+| E · 站外 | 17–19 | 链接、垃圾内容政策、品牌实体 | 合规推广与品牌清单 |
+| F · GEO | 20–24 | AI 搜索、引用、内容证据、访问策略、度量 | 问题样本与复盘实验 |
 
-## 24 课 → 主组件 映射
+## 本轮修订重点
 
-| # | 课程 | 主组件 | 状态 |
-|---|---|---|---|
-| 01 | 什么是 SEO：自然结果与付费广告 | serpAnatomy（简化）/ ctrCurve / quiz / fillBlank | ✅ 完成 |
-| 02 | 搜索引擎三步：抓取 → 索引 → 排名 | crawlerSim / trio / quiz / fillBlank | ✅ 完成 |
-| 03 | 解剖搜索结果页（SERP） | serpAnatomy（完整）/ quiz / fillBlank | ✅ 完成 |
-| 04 | 一个网页的 SEO 骨架 | htmlXray | ⏳ |
-| 05 | 搜索意图：四种搜索目的 | intentSorter | ⏳ |
-| 06 | 关键词研究：从种子词到长尾词 | kwExplorer | ⏳ |
-| 07 | 搜索量、难度与机会 | kwExplorer（散点选词） | ⏳ |
-| 08 | 关键词映射：一页答一个问题 | 拖配练习（映射表） | ⏳ |
-| 09 | Title 与 Meta Description | serpPreview（进阶配置 + 写作练习） | ⏳ |
-| 10 | 标题层级与内容结构 | headingTree | ⏳ |
-| 11 | 内容质量与 E-E-A-T | 案例对比 + quiz | ⏳ |
-| 12 | 内部链接、图片与 alt | linkFlow | ⏳ |
-| 13 | robots.txt 与 meta robots | classify（Disallow vs noindex）+ codeblock + quiz | ✅ 完成 |
-| 14 | sitemap 与 canonical | classify（该不该进 sitemap）+ codeblock + quiz | ✅ 完成 |
-| 15 | 网站速度与 Core Web Vitals | cwvMeter（新建）+ classify（优化手段归指标） | ✅ 完成 |
-| 16 | 结构化数据：Schema 入门 | classify（可否标记）+ JSON-LD codeblock + quiz | ✅ 完成 |
-| 17 | 外链与权威：链接即投票 | classify（好票/废票）+ trio + rel 属性表 | ✅ 完成 |
-| 18 | 白帽与黑帽 | classify（白帽/黑帽）+ 政策表 + 后果 trio | ✅ 完成 |
-| 19 | 品牌与实体 | classify（站得住/靠不住）+ 实体/知识面板讲解 | ✅ 完成 |
-| 20 | 什么是 GEO | 对比演示（传统 SERP vs AI 答案）；深化 GEO/AEO/LLMO 辨析（L01 §4 已入门） | ⏳ |
-| 21 | AI 怎么挑选引用来源 | aiCiteSim | ⏳ |
-| 22 | 为 AI 写作：可引用的内容 | aiCiteSim（改写练习） | ⏳ |
-| 23 | GEO 技术清单 | geoChecklist | ⏳ |
-| 24 | 度量与闭环 | geoChecklist / GSC 界面导览 | ⏳ |
+- 链接不是唯一发现入口，孤岛可能被发现；SEM 有多种用法；LLMO 无统一定义或模型记忆保证。
+- 量、KD、TP 和父主题是工具估算或分析线索，不是 Google 指标；多个页面匹配同一查询不自动构成内耗。
+- Title/Description 是展示来源，不是固定展示结果；像素近似不是硬限制；H1、E-E-A-T、alt、外链和品牌不提供单项排名保证。
+- 区分 robots/noindex/访问保护、canonical/重定向、现场/实验室数据、Schema 语法/展示资格、算法处理/人工处置。
+- GEO 分开标注官方说明、论文代理指标和行业观察；机器人按产品与用途区分；提及、引用、访问、转化分别记录。
+- 移除无出处的「2026-06 GSC 生成式 AI 专报仅曝光」说法。不由总体搜索数据拆出 AI 份额，报告口径以产品官方说明为准。
+- 术语表转义 HTML 标签说明，避免吞掉后续词条；共用模拟器反馈与正文同步。
 
-## 分阶段
+## 后续维护
 
-- **Phase A（已完成）**：设计系统 + shell + 6 个基础组件 + 课程 01–03 + 术语表/参考资料/404。
-- **Phase B**：阶段一收尾（04）+ 阶段二（05–08），建 htmlXray、intentSorter、kwExplorer。
-- **Phase C**：阶段三（09–12），建 headingTree、linkFlow。
-- **Phase D（已完成）**：阶段四（13–16）。实际以复用 classify/quiz/fillBlank + codeblock 为主，新建 cwvMeter；robotsLab/schemaBuilder 未单独建（classify + JSON-LD 代码块已够用）。事实经官方文档核对：robots 管抓取≠收录、canonical 是信号非命令、priority/changefreq 不被使用、CWV 阈值与 INP 取代 FID、结构化数据非直接排名因素且须与可见内容一致。
-- **Phase E（已完成）**：阶段五（17–19）。复用 classify/quiz/fillBlank + 表格。事实经官方核对：黑帽=违反垃圾内容政策（行业词非官方术语）、判据「主要为操纵排名」、SpamBrain vs 人工处罚、rel 属性是「提示」、PageRank 公开分数 2016 停用、知识图谱 things-not-strings、知识面板不写死「右侧」、「无链接品牌提及是排名因素」标注为行业未证实说法。
-- **Phase F**：阶段六 GEO（20–24），建 aiCiteSim、geoChecklist——GEO 领域变化快，写作时先核对最新公开资料。
-
-## 原则
-
-- 官方口径、行业经验、教学示意三类内容分开标注（见 references.html 第 4 节）。
-- 不引框架；组件全部手写 SVG/DOM，保持零依赖、双击即用。
-- 每加一课：写 `lessons/lesson-NN.html` → 到 index.html 的 `CURRICULUM` 把该课 `live:true` + 填 `href` → 上一课的「下一课」按钮指过来。
-- 免责声明每页保留；示例 SERP 与数字均为教学演示。
-- GEO 部分（20–24）每次动笔前先搜一轮最新资料——这个领域半年就能变一轮。
+1. 有内容或规则变化时修改相关课，同步题目、术语、参考资料与首页摘要。
+2. 检查本地链接、章节配置和脚本语法，再预览涉及的交互及窄屏布局。
+3. 发布需要独立授权。发布后验证真实 HTTP 状态、canonical、robots、sitemap 与公开页面，再按权限检查 GSC。
+4. 分享封面图及多语言/电商/国际 SEO 深入专题不在本轮入门范围。未实现组件和未验证部署不能标为完成。

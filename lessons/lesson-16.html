@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="SEO × GEO · 入门课">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="第十六课：结构化数据 Schema 入门 · SEO × GEO 入门课">
-<meta property="og:description" content="给页面贴机器可读标签，换富媒体展示——JSON-LD 推荐，且必须与可见内容一致。">
+<meta property="og:description" content="用 JSON-LD 提供内容线索，核对字段与真实页面，争取富媒体结果资格并理解展示边界。">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第十六课：结构化数据 Schema 入门 · SEO × GEO 入门课">
 <script src="../assets/js/theme.js"></script>
@@ -26,14 +26,15 @@
   <header class="hero">
     <p class="eyebrow">第十六课 · 阶段四 技术 SEO</p>
     <h1>给页面贴上机器读得懂的标签</h1>
-    <p class="lede">人一眼能看出「这是一份菜谱、耗时 30 分钟、4.8 星」。机器要靠猜。<strong>结构化数据</strong>就是把这些信息用标准格式明明白白标出来——换来搜索结果里更抢眼的<strong>富媒体展示</strong>。阶段四到这里收尾。</p>
+    <p class="lede">人一眼能看出「这是一份菜谱、耗时 30 分钟、4.8 星」。<strong>结构化数据</strong>把这些真实信息用标准格式明确标出，帮助机器理解，也可能让页面获得<strong>富媒体结果</strong>资格。阶段四到这里收尾。</p>
+    <div class="callout"><div class="t">学完你能做什么</div>区分 schema.org 词汇与 Google 支持的搜索功能；读懂一段 JSON-LD；用富媒体结果测试检查类型、字段和可见内容的一致性。</div>
   </header>
 
   <section id="s1">
     <div class="kicker"><span class="num">1</span> 是什么</div>
     <h2>把「这是什么」写成标准格式</h2>
-    <p class="muted"><strong>结构化数据（Structured Data）</strong>是一种描述页面内容的标准格式。它用一套公共词汇表——<strong>schema.org</strong>——把页面上的信息分类标注：这是一个 <code>Recipe</code>（菜谱）、它的 <code>cookTime</code>（烹饪时间）是 30 分钟、<code>rating</code>（评分）是 4.8。</p>
-    <p class="muted">好处是让引擎<strong>确定地</strong>知道页面在讲什么，而不是从正文里猜。理解得更准，就有机会换来更好的展示。</p>
+    <p class="muted"><strong>结构化数据（Structured Data）</strong>是一种描述页面内容的标准格式。它用一套公共词汇表——<strong>schema.org</strong>——把信息分类标注：这是一个 <code>Recipe</code>（菜谱）、<code>cookTime</code>（烹饪时间）是 30 分钟；若有真实的汇总评分，则用 <code>aggregateRating</code> 对象中的 <code>ratingValue</code> 等属性描述。</p>
+    <p class="muted">好处是给引擎提供明确的内容线索，减少理解歧义。它是对真实内容的描述，不会让机器无条件相信你填入的事实。</p>
     <div class="callout">
       <div class="t">词汇用 schema.org，行为看 Google</div>
       标注用的词汇来自 schema.org；但「Google 会不会因此给你富媒体展示、需要哪些字段」，要以 <strong>Google Search Central 文档</strong>为准。schema.org 词汇很多，真正能触发富媒体的只是 Google 明确支持的那些类型。
@@ -45,24 +46,30 @@
     <h2>推荐用 JSON-LD</h2>
     <p class="muted">结构化数据有三种写法：<strong>JSON-LD</strong>、Microdata、RDFa。<span class="hl">Google 推荐 JSON-LD</span>——它是一段独立的脚本，和页面正文分开，最好加、也最好维护。长这样：</p>
     <div class="codeblock">
-      <div class="cb-cap">JSON-LD · 一份菜谱的结构化数据</div>
+      <div class="cb-cap">JSON-LD · 简化的 Recipe 示例，发布前替换示例信息</div>
 <pre>&lt;script type=<span class="s">"application/ld+json"</span>&gt;
 {
   <span class="k">"@context"</span>: <span class="s">"https://schema.org"</span>,
   <span class="k">"@type"</span>: <span class="s">"Recipe"</span>,
   <span class="k">"name"</span>: <span class="s">"手冲咖啡入门"</span>,
+  <span class="k">"image"</span>: <span class="s">"https://example.com/images/pour-over.jpg"</span>,
   <span class="k">"totalTime"</span>: <span class="s">"PT5M"</span>,
-  <span class="k">"recipeIngredient"</span>: [<span class="s">"咖啡豆 15g"</span>, <span class="s">"热水 225ml"</span>]
+  <span class="k">"recipeIngredient"</span>: [<span class="s">"咖啡豆 15g"</span>, <span class="s">"热水 225ml"</span>],
+  <span class="k">"recipeInstructions"</span>: [
+    {<span class="k">"@type"</span>: <span class="s">"HowToStep"</span>, <span class="k">"text"</span>: <span class="s">"将研磨好的咖啡放入已润湿的滤纸。"</span>},
+    {<span class="k">"@type"</span>: <span class="s">"HowToStep"</span>, <span class="k">"text"</span>: <span class="s">"按页面说明分段注入 225ml 热水，等待过滤完成。"</span>}
+  ]
 }
 &lt;/script&gt;</pre>
     </div>
     <p class="muted">这段代码用户看不到，是<strong>专门给机器读的</strong>。它必须和页面上<strong>真实可见</strong>的内容对得上——这一点第 4 节会重点讲。</p>
+    <p class="muted"><code>PT5M</code> 表示 5 分钟。上面的 <code>example.com</code> 图片是<strong>占位网址，不能直接上线</strong>：要替换为与菜谱相符、可抓取的真实图片，并按官方 Recipe 文档补充适用字段。代码中的步骤、时间与食材也必须在页面上有对应内容。不要为教程硬套不适合的类型。</p>
   </section>
 
   <section id="s3">
     <div class="kicker"><span class="num">3</span> 能换来什么</div>
     <h2>富媒体展示，不是排名加分</h2>
-    <p class="muted">标了结构化数据，页面就<strong>有资格</strong>在搜索结果里获得更丰富的外观——即<strong>富媒体结果（rich results）</strong>：菜谱的图片和星级、商品的价格和库存、面包屑导航等。它们更抢眼，往往能带来更高的点击率。常见可触发类型有 <code>Recipe</code>、<code>Product</code>、<code>Review</code>、<code>Event</code>、<code>Breadcrumb</code> 等（以 Google 支持列表为准）。</p>
+    <p class="muted">选择 Google 支持的类型，满足技术、内容及政策要求后，页面才<strong>可能具备富媒体结果资格</strong>，如菜谱图片、商品价格和库存、面包屑导航。常见类型有 <code>Recipe</code>、<code>Product</code>、<code>Event</code>、<code>BreadcrumbList</code> 等；评论摘要仅适用于支持且合规的对象类型。它们可能帮助用户选择，点击率仍需实际观察。</p>
     <ul class="clean muted">
       <li><strong>它不是直接排名因素</strong>：结构化数据本身不会把你的位置往前推，它的价值在「更好的理解」和「更抢眼的展示」；</li>
       <li><strong>标对了也不保证出现</strong>：Google 明确说，即使标记完全正确，也不保证一定展示富媒体——是否展示由 Google 决定；</li>
@@ -70,14 +77,14 @@
     </ul>
     <div class="callout">
       <div class="t">间接价值：更抢眼 = 更可能被点</div>
-      虽然不直接加分，但一个带图片、星级、价格的结果，在一列蓝链接里明显更吸睛——更高的点击率本身就是回报。这也是为什么值得花力气做它。
+      图片、价格等信息可能帮用户判断结果是否适合自己。是否获得展示、是否提高点击率，要分开验证；不是「加代码就一定更多点击」。普通网站也不要为了星级给自己的组织或商家伪造、自我评价。
     </div>
   </section>
 
   <section id="s4">
     <div class="kicker"><span class="num">4</span> 一条红线</div>
     <h2>只能标「页面上真有、且看得见」的东西</h2>
-    <p class="muted">这是结构化数据的合规底线：<span class="hl">标注的内容必须和页面可见内容一致</span>。Google 说得很硬——不要标注用户看不到的信息（即使它是真的），也别为了塞结构化数据造一个空白页。违反了，可能招来<strong>人工处罚</strong>，让页面<strong>失去富媒体资格</strong>，甚至被当作垃圾。</p>
+    <p class="muted">这是结构化数据的合规底线：<span class="hl">标注应准确反映页面内容，供用户获得的信息应与标记一致</span>。不要编造评价、标注页面没有的内容，或专门造空白页放标记；机器字段（如 <code>@id</code>）不必逐字展示。还要遵守具体类型的要求。违规可能导致失去富媒体资格；结构化数据人工处置与一般排名处置应按通知类型区分。</p>
     <p class="muted">下面每种标记，判断<strong>可以</strong>还是<strong>不可以</strong>。点错会给提示：</p>
     <div id="w-sort"></div>
   </section>
@@ -88,6 +95,17 @@
     <div id="w-q1"></div>
     <div id="w-q2" style="margin-top:16px"></div>
     <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 真实页面练习 · 25 分钟</div>
+    <h2>先选对类型，再验证标记</h2>
+    <ol class="clean muted">
+      <li>选自己的商品、菜谱或带面包屑的页面，按 <a href="https://developers.google.com/search/docs/appearance/structured-data/search-gallery" target="_blank" rel="noopener noreferrer">Google 支持的结构化数据列表</a>选择匹配类型，列出必填与适用的推荐字段。没有合适类型时，不必硬加。</li>
+      <li>把页面上的真实信息逐项对应到 JSON-LD；不会改代码也可先做字段表。图片用实际公开网址，评分只在确有合规评价时填写，不把示例占位内容当真实数据。</li>
+      <li>在 <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer">富媒体搜索结果测试</a>中测试代码或网址，记录检测到的类型、错误和警告；修改后重测，并核对手机页面上的可见内容。</li>
+    </ol>
+    <div class="callout"><div class="t">验收</div>交付类型选择理由、字段对应表与测试记录。必填错误已修复，推荐字段警告有取舍说明，数据真实且可核验。测试通过只确认检测情况与潜在资格，不代表 Google 已收录或已经显示富媒体结果。</div>
   </section>
 
   <footer>
@@ -112,8 +130,8 @@
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -171,7 +189,7 @@
     n:16,
     sections:[
       {id:"s1", label:"是什么"}, {id:"s2", label:"JSON-LD"}, {id:"s3", label:"换来什么"},
-      {id:"s4", label:"一条红线"}, {id:"s5", label:"随堂自测"}
+      {id:"s4", label:"一条红线"}, {id:"s5", label:"随堂自测"}, {id:"practice", label:"标记练习"}
     ]
   });
 })();

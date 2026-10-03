@@ -1,72 +1,70 @@
 # SEO × GEO · 入门课
 
-一套面向**完全新手**的、可交互的 SEO（搜索引擎优化）+ GEO（生成引擎优化）入门课程。纯静态网站，无需后端、无需构建工具，双击即可看，任意静态托管即可上线。
+面向完全新手的交互式 SEO（搜索引擎优化）与 GEO（生成引擎优化）课程。六阶段、24 课，每课有目标、讲解、自测与带验收条件的实践。纯静态网站，无后端、无构建工具、无第三方 JavaScript 依赖。
 
-> 这也是作者自己的学习记录：从零开始入门 SEO/GEO，边学、边做课、边分享。
+内容修订：**2026-10-03**。这是本地源文件状态，发布状态需单独核验。
 
-## 目录结构
+## 学习入口
 
-```
-SEO-learn/
-├── index.html              课程首页（CURRICULUM 数据驱动目录 + 可玩的 SERP 预览器）
-├── glossary.html           术语表（可搜索、按分类筛选）
-├── references.html         参考资料、课程简化原则与适用边界
-├── 404.html                自定义 404 页
-├── favicon.svg             站点图标（放大镜 + 排名柱）
-├── lessons/
-│   └── lesson-01.html … lesson-03.html   已上线的 3 课
-├── assets/
-│   ├── css/site.css        全站共享样式（设计令牌 + 组件，扁平清爽）
-│   ├── fonts/              自托管 Inter / JetBrains Mono（拉丁子集）
-│   └── js/
-│       ├── theme.js        深浅色主题（head 中同步加载，防闪烁）
-│       ├── shell.js        课程外壳：顶栏 / 进度 / 章节高亮 / 左侧栏 / 上下课
-│       └── widgets.js      交互组件库（serpPreview / serpAnatomy / crawlerSim / ctrCurve / quiz / fillBlank）
-├── PLAN.md                 开发规划（24 课 → 组件 映射）
-└── README.md
-```
+- index.html：课程目录，按 01–24 顺序学习。
+- practice.html：贯穿课程的项目路线、阶段成果、填写示例、常见问题与毕业验收。
+- downloads/study-template.md：可下载并编辑的学习记录模板。
+- glossary.html：可搜索和分类筛选的术语表。
+- references.html：官方文档、行业资料、论文和教学示意的适用边界。
 
-- **改样式** → 只动 `assets/css/site.css`，全站生效。
-- **改交互组件** → 只动 `assets/js/widgets.js`（`window.SEO.widgets`）。
-- **加新课** → 在 `lessons/` 下复制现有课改内容，再到 `index.html` 的 `CURRICULUM` 数组里把对应课程的 `live:true` 打开、填上 `href`。
+建议用同一个网站或选题完成整套课程。没有站点权限也能完成观察记录和改进草稿；GSC、服务器配置等不可验证项标记待验证。页面答题、模拟器和勾选刷新后重置，成果请保存到下载模板。
 
-## 站点特性
+## 目录结构与职责
 
-- **零依赖**：无框架、无构建、无第三方 JS，所有组件手写 SVG/DOM。
-- **深浅色**：随系统自动切换 + 顶栏手动开关（记住选择）；SVG 组件换主题自动重绘。
-- **无障碍**：skip-link、键盘焦点环、图表 `role="img"` + `aria-label`、`prefers-reduced-motion`。
-- **分享卡片**：每页 Open Graph / Twitter meta。
-- **视觉**：扁平方角、黑色主按钮、蓝色点缀，紧凑清爽。
+    SEO-learn/
+    ├── index.html                   首页；CURRICULUM 定义六阶段目录
+    ├── lessons/lesson-01.html … 24   每课正文、实践及组件配置
+    ├── practice.html                学习准备、24 课交付物与毕业验收
+    ├── downloads/study-template.md   空白学习记录模板
+    ├── glossary.html                TERMS 术语数据与筛选界面
+    ├── references.html              主要来源与证据边界
+    ├── assets/
+    │   ├── css/site.css             共享设计令牌与组件样式
+    │   ├── fonts/                   自托管拉丁字体；中文用系统字体
+    │   └── js/
+    │       ├── theme.js             主题切换与偏好保存
+    │       ├── shell.js             导航、阅读进度、侧栏与手册入口
+    │       └── widgets.js           预览、抓取、测验与检查清单组件
+    ├── 404.html / favicon.svg
+    ├── robots.txt / sitemap.xml     抓取规则与当前域名 URL 清单
+    └── PLAN.md                      实现现状与维护约定
 
-## 课程体系（六阶段 / 24 课）
+具体教学与实践以各课为准；手册串联交付物，模板供学生填写。阅读进度表示章节位置，不代表已完成答题或真实优化。
 
-1. **地基 · 搜索是怎么工作的**：什么是 SEO → 抓取/索引/排名 → SERP 解剖 → 网页骨架
-2. **关键词与搜索意图**：意图四分类 → 关键词研究 → 量与难度 → 关键词映射
-3. **页面优化 On-Page**：Title/Description → 标题层级 → E-E-A-T → 内链与图片
-4. **技术 SEO**：robots → sitemap/canonical → Core Web Vitals → 结构化数据
-5. **站外信号与权威**：外链与 PageRank → 白帽黑帽 → 品牌与实体
-6. **GEO · 生成引擎优化**：什么是 GEO → AI 如何选引用 → 为 AI 写作 → 技术清单 → 度量闭环
+## 六阶段
 
-目前**前 3 课已上线**（阶段一前 3 课），其余在 `index.html` 的 `CURRICULUM` 中登记、逐课上线（详见 `PLAN.md`）。
+| 阶段 | 课程 | 实践结果 |
+| --- | --- | --- |
+| 搜索基础 | 01–04 | SERP 观察与网页骨架检查 |
+| 关键词与意图 | 05–08 | 候选词、选择依据与页面映射 |
+| 页面优化 | 09–12 | 标题、内容、证据、内链与图片改进稿 |
+| 技术 SEO | 13–16 | 抓取、索引、规范化、体验与标注检查 |
+| 站外与品牌 | 17–19 | 合规推广方案与品牌信息清单 |
+| GEO 与度量 | 20–24 | 引用观察、访问策略与复盘实验 |
 
 ## 本地预览
 
-直接双击 `index.html` 即可。若个别浏览器对本地 JS 有限制，可用任意静态服务器：
+双击 index.html 可阅读。需要完整 HTTP 行为和下载验证时，在项目根目录启动任意静态服务器，例如：
 
-```bash
-# 任选其一，在项目根目录执行
-python -m http.server 8080      # 然后浏览器打开 http://localhost:8080
-npx serve .
-```
+    python -m http.server 8087 --bind 127.0.0.1
 
-## 部署
+打开 http://127.0.0.1:8087/。命令只使用 Python 标准库；Ctrl+C 可停止。GSC 所有权验证、现场 CWV 与真实搜索表现需要公开站点，localhost 预览不验证这些能力。
 
-所有资源都用**相对路径**，可放进任意静态托管（Vercel / GitHub Pages / Netlify 等），构建命令留空、发布目录填根目录即可。上线后记得：
+## 内容维护
 
-1. 在各页面 `<head>` 补上 `canonical` 与 `og:url`（当前留空，等定域名）；
-2. 制作 `og-cover.jpg`（1200×630）补全分享卡片；
-3. 提交 sitemap 到 Google Search Console——正好当第 24 课的实操作业。
+- 修改内容时同步题目解释、要点、元信息和首页摘要；涉及术语时检查术语表。
+- 复用 SEO.widgets 和既有 CSS；SEO.initLesson 的章节 ID 必须与正文一致。新增实践使用 id="practice"。
+- 数值模型标教学示意，工具指标注明来源，论文结论注明实验条件。不写排名、收录、富媒体或 AI 引用保证。
+- 技术与 AI 产品规则优先对照官方文档，特别注意机器人用途、展示控制和报告口径。无法现场核验时记录限制。
+- 修改后检查本地链接、锚点与脚本语法，在浏览器验证相关导航及交互。新增或实质改动页面时同步 sitemap。
 
-## 免责声明
+## 部署与范围
 
-本课程用于 SEO / GEO 知识的入门学习。搜索引擎与 AI 产品的算法不公开且持续变化，课程内容基于公开资料与教学简化，数字多为示意；实际效果因行业、语言与站点而异，不构成对任何站点排名效果的承诺。主要来源与简化原则见 `references.html`。
+静态资源用相对路径，可放入静态托管。现有 canonical、og:url、robots 中的 sitemap 与 sitemap.xml 使用 https://seo-learn-eight.vercel.app/；换域名或子路径时须同步。当前分享卡片为 summary，没有配置封面图。自定义 404 页的 HTTP 状态由托管平台决定，需部署后验证。
+
+课程完善不自动包含推送或部署。课程用于学习，不承诺排名或引用效果；来源与边界见参考资料页。

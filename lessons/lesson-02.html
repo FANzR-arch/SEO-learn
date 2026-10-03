@@ -27,6 +27,7 @@
     <p class="eyebrow">第二课 · 完全新手向</p>
     <h1>搜索引擎搜的不是互联网，<br>是它的「藏书库」</h1>
     <p class="lede">按下回车的那零点几秒里，Google 并没有当场翻遍全网——它查的是自己提前抓取、整理好的索引。理解「抓取 → 索引 → 排名」这条流水线，后面所有 SEO 知识都有了挂靠点。</p>
+    <div class="callout"><div class="t">学完这一课，你能做什么</div>区分发现、抓取、索引与展示；找到一个网页的发现入口；知道怎样确认收录状态，以及「搜不到」应先检查什么。</div>
   </header>
 
   <section id="s1">
@@ -37,15 +38,15 @@
       <div><div class="t"><span class="n">2</span>索引 Index</div><span class="sub">解析 + 入库</span><p>解析页面内容，判断值不值得收录，存进一个巨大的数据库——索引。</p></div>
       <div><div class="t"><span class="n">3</span>排名 Rank</div><span class="sub">检索 + 排序</span><p>用户搜索时，从索引里挑出相关页面，按大量信号排序后展示。</p></div>
     </div>
-    <p class="muted">三关是<strong>串联</strong>的：没被抓取就谈不上收录，没被收录就永远不会出现在结果里。以后你的页面「搜不到」，也按这个顺序排查。</p>
+    <p class="muted">这是一条便于理解的主流程，<strong>每一步都不保证下一步</strong>：被发现不等于会抓取，被抓取不等于会收录，收录不等于会为你的目标词展示。以后页面「搜不到」，先检查抓取和索引，再讨论排名。少数未抓取的 URL 也可能因外部信息被索引，但正常理解页面仍依赖抓取。</p>
   </section>
 
   <section id="s2">
     <div class="kicker"><span class="num">2</span> 爬虫与链接</div>
-    <h2>链接，是爬虫唯一的路</h2>
+    <h2>链接是主要的路，sitemap 是发现线索</h2>
     <p class="muted">爬虫从已知页面出发，把页面里的链接加入「待抓取队列」，再一个个访问。下面是一个 7 页的小网站——亲手当一回爬虫：</p>
     <div id="w-crawl"></div>
-    <p class="muted" style="margin-top:14px">注意右上角那个<strong>孤岛页</strong>：没有任何链接指向它，爬虫永远走不到。给页面「修路」（内部链接，第 12 课）和「递地图」（sitemap，第 14 课），都是为了解决这个问题。</p>
+    <p class="muted" style="margin-top:14px">注意右上角那个<strong>孤岛页</strong>：这个模拟只沿站内链接走，所以走不到它。真实搜索引擎还可能从外部链接、sitemap（站点地图，URL 清单）或先前已知的 URL 发现页面。即使能被其他入口发现，没有站内入口仍会让用户和爬虫难以理解它的位置。</p>
   </section>
 
   <section id="s3">
@@ -55,12 +56,12 @@
     <ul class="clean muted">
       <li><strong>内容太薄</strong>：没几句话、没有独立价值的页面；</li>
       <li><strong>大面积重复</strong>：和站内或站外其他页面高度雷同；</li>
-      <li><strong>被主动排除</strong>：页面标了 <span class="hl">noindex</span>（「请不要收录我」，第 13 课细讲）。</li>
+      <li><strong>被主动排除</strong>：页面标了 <span class="hl">noindex</span>（「请不要收录我」，第 13 课细讲）；搜索引擎需要能抓取到这条指令才能处理它。</li>
     </ul>
-    <p class="muted">想知道自己的页面有没有被收录？两个办法：在 Google 直接搜 <span class="hl">site:你的域名</span>，或用官方工具 <strong>Google Search Console</strong>（第 24 课专讲）。</p>
+    <p class="muted">粗看一个网站有哪些结果，可以搜 <span class="hl">site:你的域名</span>，但它<strong>不是完整索引清单</strong>：没搜到不能直接判定未收录。有网站管理权限时，用 <strong>Google Search Console</strong> 的「网址检查」查看具体 URL 的索引状态；它的实时测试检查当前可访问性，不等于已经收录（第 24 课专讲）。</p>
     <div class="callout">
-      <div class="t">新站没被收录，最常见的原因</div>
-      通常不是「被惩罚了」，而是：没有任何外部链接指向你 + 没提交 sitemap——爬虫压根不知道你存在。先修路、再递地图，然后给它一点时间。
+      <div class="t">新站没被收录，先排查具体原因</div>
+      看页面有没有发现入口、是否正常返回内容、是否被登录或抓取规则挡住，再看 noindex、重复页面和内容价值。提交 sitemap 或请求索引只是提供线索，不是保证收录；没有外部链接也不代表一定无法发现。
     </div>
   </section>
 
@@ -88,11 +89,22 @@
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
+  <section id="practice">
+    <div class="kicker">动手实践 · 15 分钟</div>
+    <h2>为项目中的一个页面画出发现路径</h2>
+    <ol class="clean muted">
+      <li>挑一个重要 URL，在浏览器打开，记录是否正常显示正文，是否需要登录。从首页开始找一条可点击的路径通向它。</li>
+      <li>在 Google 搜完整 URL 和 <code>site:你的域名</code>，把结果记为「搜索观察」，不要把无结果写成确定未收录。</li>
+      <li>有网站权限时，在 Search Console 的「网址检查」记录索引状态与原因；没有权限时，写下需要网站所有者提供的这项证据。</li>
+    </ol>
+    <div class="callout"><div class="t">验收：能区分证据与推测</div>提交「首页 → 栏目 → 目标页」路径、访问结果、搜索观察和索引检查结果（或待确认项）。指出问题可能处于哪一步，并写出下一项检查；不要仅凭等待天数下结论。</div>
+  </section>
+
   <footer>
     <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
     <ul>
       <li>搜索引擎查的是<strong>提前建好的索引</strong>，不是实时的互联网；</li>
-      <li><strong>链接是爬虫的路</strong>：孤岛页几乎不会被发现；</li>
+      <li><strong>内链、外链与 sitemap</strong> 都可能提供发现线索；孤岛页缺少站内入口；</li>
       <li>收录是<strong>选择性</strong>的：太薄、重复、noindex 的页面可能进不了索引；</li>
       <li>排名由大量信号综合决定，<strong>没人知道全部细节</strong>——警惕「保证排名」的承诺。</li>
     </ul></div>
@@ -110,8 +122,8 @@
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -134,7 +146,7 @@
     options:[
       { t:"顺着已知页面上的链接", ok:true, why:"链接是主路；此外站长还可以用 sitemap 主动提交页面清单（第 14 课）。" },
       { t:"监控用户在聊天软件里发的内容", why:"不是。发现机制的核心是链接与站长提交，不是监控私人对话。" },
-      { t:"网站上线后自动向全网广播", why:"没有这种广播机制。没有链接指向、也不提交 sitemap 的页面，爬虫无从知晓。" }
+      { t:"网站上线后自动向全网广播", why:"没有这种自动广播机制。应给页面提供清晰的内部链接，也可通过 sitemap 提供发现线索。" }
     ]
   });
 
@@ -144,7 +156,7 @@
       "搜索引擎流水线的三步：", { a:["抓取","爬取","crawl"], w:100 }, "→", { a:["索引","收录","index"], w:100 }, "→", { a:["排名","排序","rank"], w:100 }, "。",
       "　没有任何链接指向的页面叫", { a:["孤岛页","孤岛","孤儿页"] }, "。"
     ],
-    okText:"✓ 全对！抓取 → 索引 → 排名，这条流水线是后面 22 课的地基。",
+    okText:"✓ 全对！抓取 → 索引 → 排名是基础流程，但每一步都不保证下一步。",
     revealText:"答案已填入：三步是<strong>抓取、索引、排名</strong>；没有链接指向的页面叫<strong>孤岛页</strong>。"
   });
 
@@ -153,7 +165,7 @@
     n:2,
     sections:[
       {id:"s1", label:"三步流水线"}, {id:"s2", label:"爬虫与链接"}, {id:"s3", label:"索引"},
-      {id:"s4", label:"排名"}, {id:"s5", label:"随堂自测"}
+      {id:"s4", label:"排名"}, {id:"s5", label:"随堂自测"}, {id:"practice", label:"动手实践"}
     ]
   });
 })();

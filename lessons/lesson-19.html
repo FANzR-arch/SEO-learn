@@ -27,6 +27,7 @@
     <p class="eyebrow">第十九课 · 阶段五 站外信号与权威</p>
     <h1>从「一串字」到「一个东西」</h1>
     <p class="lede">早期搜索引擎是在<strong>匹配字符串</strong>：你搜什么字，它找含这些字的页。如今它更进一步，试图理解一个个<strong>实体</strong>——有唯一身份的人、地点、公司、概念。让你的品牌成为一个<strong>清晰的实体</strong>，是站外建设的高级目标，也为 AI 搜索打底。</p>
+    <div class="callout"><div class="t">学完你能做什么</div>区分实体、知识图谱与知识面板；整理真实的品牌身份资料；正确使用 Organization 与 sameAs，并识别「验证即获面板」等夸大承诺。</div>
   </header>
 
   <section id="s1">
@@ -46,7 +47,8 @@
     <p class="muted">当你搜索一个知识图谱里的实体（一个明确的人、地点、组织、事物），结果页显著位置常会出现一个<strong>知识面板（Knowledge Panel）</strong>——把这个实体的公开事实汇总成一个信息框（桌面端常在右侧、移动端多在顶部）。</p>
     <ul class="clean muted">
       <li><strong>信息从哪来</strong>：Google 从网络多个来源自动汇集，也接入部分授权数据；</li>
-      <li><strong>能认领</strong>：如果你是该实体<strong>本人或官方代表</strong>，可以通过验证身份来「认领」这个面板、建议修改——这是把品牌信息掌握在自己手里的官方途径。</li>
+      <li><strong>部分面板能认领</strong>：面板提供认领入口时，实体本人或官方代表可通过验证后建议修改。认领不等于完全控制内容，也不能要求 Google 按需创建面板；</li>
+      <li><strong>与商家资料区分</strong>：本地店铺的 Google 商家资料有自己的管理流程，不要把它与所有实体的知识面板混为一谈。</li>
     </ul>
     <div class="callout">
       <div class="t">实体 = 有唯一身份的「东西」</div>
@@ -63,16 +65,16 @@
         <thead><tr><th>做法</th><th>定性</th></tr></thead>
         <tbody>
           <tr><td>加 <strong>Organization 结构化数据</strong>（名称、logo、官网、联系方式）</td><td>官方：帮 Google 理解、消歧你的组织</td></tr>
-          <tr><td>用 <strong>sameAs</strong> 指向你的维基百科 / Wikidata / 官方社媒</td><td>官方：把品牌对应到一个已知身份</td></tr>
-          <tr><td>在 <strong>Search Console 验证网站所有权</strong></td><td>官方：确立网站为「官方存在」的第一步</td></tr>
+          <tr><td>用 <strong>sameAs</strong> 指向确实代表同一组织的官方资料页</td><td>帮助身份对应；必须是同一实体，不是提到你的任意文章</td></tr>
+          <tr><td>在 <strong>Search Console 验证网站所有权</strong></td><td>获得网站数据与管理权限；不等于知识图谱实体认证，也不保证面板出现</td></tr>
           <tr><td>全网品牌名、地址、联系方式保持<strong>一致</strong></td><td>行业经验：普遍认为有帮助，但非官方命名的排名因素</td></tr>
-          <tr><td>指望「到处刷不带链接的品牌提及」直接提排名</td><td>靠不住：Google 官方立场偏怀疑，<strong>未确认</strong>它是排名因素</td></tr>
+          <tr><td>指望「到处刷不带链接的品牌提及」直接提排名</td><td>没有可靠官方依据支持这种确定公式；真实口碑与曝光应看业务效果</td></tr>
         </tbody>
       </table>
     </div>
     <div class="callout">
       <div class="t">别为了 SEO 硬造维基百科词条</div>
-      被维基百科 / Wikidata 收录确实有助于建立实体身份（因为可以 <code>sameAs</code> 指过去）。但维基百科有独立的「显著性」门槛，<strong>为排名硬造词条</strong>会被删、也违背它的规则。实体身份是「做出成绩后被记录」，不是「先刷存在感」。
+      有真实、符合平台规则且确实对应同一实体的条目时，可以作为身份资料来源；<strong>没有词条也可以做好品牌信息</strong>。维基百科有显著性、来源与利益冲突等规则，Wikidata 也有独立的收录和数据规则。不要伪造资料或为 SEO 硬造词条。<code>sameAs</code> 是身份关系，不是借对方权威加分。
     </div>
     <div id="w-sort" style="margin-top:16px"></div>
   </section>
@@ -82,13 +84,13 @@
     <h2>清晰的实体，AI 更不容易「搞混你是谁」</h2>
     <p class="muted">回到第 1 课提过的 <strong>LLMO</strong>（让大模型记得你）。这里要诚实：<strong>没有任何官方配方</strong>能保证某个 AI 一定记住或引用你。但有一条合理、站得住的逻辑：</p>
     <ul class="clean muted">
-      <li>AI 搜索和大模型本质上是围绕<strong>实体和事实</strong>组织知识的；</li>
-      <li>如果你是一个<strong>被清晰识别、全网事实一致、被权威来源相互印证</strong>的实体，模型就更不容易把你和别人搞混，也更可能正确地关联、提到你；</li>
-      <li>所以「把自己建成一个清晰、一致、可交叉验证的实体」，是<span class="hl">同时服务传统搜索和 AI 搜索的稳健长线</span>——这是框架，不是保证。</li>
+      <li>AI 搜索可能检索网页并综合来源；模型训练中的知识与当次检索到的信息是<strong>不同机制</strong>，都可能出错；</li>
+      <li>品牌名、官网、业务、作者与联系方式清楚一致，为读者和检索系统提供<strong>更容易核验的身份信息</strong>，有助于减少同名歧义；</li>
+      <li>因此先做好<strong>真实、清楚、可交叉核验的资料</strong>是合理的长期工作，但不能据此保证模型学会、记住、推荐或引用你。</li>
     </ul>
     <div class="callout">
       <div class="t">警惕「确定配方」</div>
-      任何声称「这样标注就能让 ChatGPT 一定推荐你」的说法，都该打个问号。这个领域没有公开的官方机制，能做的是把实体基本功做扎实——剩下的交给时间和真实的口碑。
+      任何声称「填几个 Schema 字段就能让 ChatGPT 一定推荐你」的说法，都缺少这种保证。各平台对抓取、检索和引用有不同公开说明与未知部分（阶段六继续讲）。要记录具体平台、问题、日期与来源，分别观察品牌识别是否正确、是否被引用，不能把一次回答当成训练成功。
     </div>
   </section>
 
@@ -100,17 +102,28 @@
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 真实品牌练习 · 25 分钟</div>
+    <h2>做一份能核验的品牌身份表</h2>
+    <ol class="clean muted">
+      <li>记录品牌正式名称、常用名、官网、业务、logo、联系方式，以及真实官方社交资料链接。没有品牌时用自己的网站或作品练习，不编造地址与资历。</li>
+      <li>对照首页、关于页与社交资料，把过时或矛盾信息列为待修正。Organization 的 <code>url</code> 写官网；<code>sameAs</code> 只写确实表示同一组织的身份资料页，不写竞争对手或随意的媒体报道。</li>
+      <li>按官方 Organization 文档拟字段表；有代码时用结构化数据测试核验。再搜索品牌名与「品牌名 + 业务」，记录同名混淆及来源是否准确；已有可认领面板才按官方流程处理。</li>
+    </ol>
+    <div class="callout"><div class="t">验收</div>交付身份表、字段来源和不一致清单。资料能独立核验，sameAs 每个目标都对应同一实体；网站所有权、结构化数据检测、知识面板和 AI 引用分别记录，不互相冒充验证结果。无网站权限时，交付观察与改稿，不修改他人资料。</div>
+  </section>
+
   <footer>
     <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
     <ul>
       <li><strong>实体 = 有唯一身份的「东西」</strong>；搜索从「匹配字符串」进化到「理解实体」（things, not strings）；</li>
-      <li><strong>知识图谱</strong>驱动<strong>知识面板</strong>；本人 / 官方代表可认领面板、管理信息；</li>
-      <li>建实体的扎实做法：<strong>Organization 结构化数据 + sameAs + Search Console 验证</strong>；「无链接品牌提及是排名因素」<strong>未获官方确认</strong>；</li>
-      <li>清晰一致的实体，也让 AI 更不容易搞混你——是服务 SEO 与 GEO 的共同长线（框架而非保证）。</li>
+      <li><strong>知识面板</strong>自动汇集公开信息；符合条件的本人 / 官方代表可认领并建议修改，不保证创建或完全控制；</li>
+      <li><strong>Organization 与准确的 sameAs</strong>帮助理解身份；Search Console 验证解决管理权限，不是实体认证；</li>
+      <li>品牌资料真实、一致、可核验；不保证知识面板出现、排名提高或 AI 记住与引用。</li>
     </ul></div>
     <div class="next">
       <a class="btn ghost" href="./lesson-18.html">← 上一课：白帽与黑帽</a>
-      <span class="btn" style="opacity:.5;cursor:not-allowed" aria-disabled="true">阶段五完 · 阶段六即将推出</span>
+      <a class="btn" href="./lesson-20.html">下一课：什么是 GEO →</a>
     </div>
     <div class="follow">
       <a href="../references.html">参考资料与适用边界</a>
@@ -122,8 +135,8 @@
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -136,11 +149,11 @@
       { key:"weak",  label:"靠不住", hint:"民间偏方 / 夸大" }
     ],
     items:[
-      { kw:"给网站加 Organization 结构化数据，用 sameAs 指向官网和维基数据", cat:"solid", why:"官方认可的做法：帮 Google 理解并消歧你的品牌实体。" },
-      { kw:"在 Search Console 里验证网站所有权", cat:"solid", why:"官方途径：确立网站为「官方存在」的第一步。" },
+      { kw:"Organization 的 url 填官网，sameAs 指向同一组织的真实官方资料页", cat:"solid", why:"明确官网与身份关系，帮助理解和消歧；数据须真实，不保证知识面板出现。" },
+      { kw:"验证 Search Console 所有权，用它查看抓取与索引情况", cat:"solid", why:"这是可靠的网站管理做法，不能把所有权验证当成知识图谱实体认证。" },
       { kw:"全网把品牌名、地址、联系方式保持一致", cat:"solid", why:"虽非官方命名的排名因素，但一致性被广泛认为有助于识别与信任，是扎实基本功。" },
       { kw:"为了 SEO 硬造一个维基百科词条", cat:"weak", why:"维基百科有独立的显著性门槛，为排名硬造会被删、也违规——实体是被记录，不是被刷出来。" },
-      { kw:"到处刷不带链接的品牌提及，指望直接提升排名", cat:"weak", why:"这是常见民间说法，Google 官方立场偏怀疑、并未确认它是排名因素。" }
+      { kw:"到处刷不带链接的品牌提及，指望直接提升排名", cat:"weak", why:"没有可靠官方依据支持这种确定提排名公式，批量刷提及也不能代替真实口碑和有用内容。" }
     ],
     doneText:"✓ 全对！扎实做法靠官方支持的实体信号，别把民间偏方当捷径。"
   });
@@ -158,8 +171,8 @@
   SEO.widgets.quizChoice(document.getElementById("w-q2"), {
     q:"② 关于「到处刷不带链接的品牌提及能直接提升排名」这个说法，正确的态度是——",
     options:[
-      { t:"这是 Google 官方确认的排名因素，应该大量去做", why:"不对。Google 官方并未确认它是排名因素，立场反而偏怀疑。" },
-      { t:"这是流传很广的行业说法，但未获官方确认，别当成确定的捷径", ok:true, why:"对。守住这条线：区分「官方口径」和「民间推断」，后者不轻信、不 all-in。" },
+      { t:"这是 Google 官方确认的固定加分项，应该大量去刷", why:"没有可靠官方依据支持这种固定加分公式。" },
+      { t:"没有依据保证直接提排名，真实传播应看口碑、曝光与业务效果", ok:true, why:"对。区分传播价值与没有证据的排名保证，不把提及数当实体认证分数。" },
       { t:"提及越多，知识面板一定会自动出现", why:"知识面板由知识图谱驱动，不是靠刷提及就能凭空造出来。" }
     ]
   });
@@ -181,7 +194,7 @@
     n:19,
     sections:[
       {id:"s1", label:"things not strings"}, {id:"s2", label:"实体与面板"}, {id:"s3", label:"怎样被认成实体"},
-      {id:"s4", label:"也为AI打底"}, {id:"s5", label:"随堂自测"}
+      {id:"s4", label:"也为AI打底"}, {id:"s5", label:"随堂自测"}, {id:"practice", label:"身份表练习"}
     ]
   });
 })();

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>第十八课：白帽与黑帽 · SEO × GEO 入门课</title>
-<meta name="description" content="「黑帽」是行业说法，对应 Google 官方所说的「违反垃圾内容政策的做法」——判断标准是：主要为了操纵排名，而不是为用户。认识常见手段与真实后果，守住白帽这条线。">
+<meta name="description" content="认识 Google 垃圾内容政策中的典型违规行为，区分正常优化、欺骗与操纵；理解算法处理和人工处置的不同排查与恢复路径。">
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1D5FBF">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="SEO × GEO · 入门课">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="第十八课：白帽与黑帽 · SEO × GEO 入门课">
-<meta property="og:description" content="黑帽=违反垃圾内容政策，判据是「主要为操纵排名」。认识常见手段与真实后果。">
+<meta property="og:description" content="依据垃圾内容政策判断具体行为、目的与结果，分清算法处理和人工处置的排查路径。">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第十八课：白帽与黑帽 · SEO × GEO 入门课">
 <script src="../assets/js/theme.js"></script>
@@ -27,15 +27,16 @@
     <p class="eyebrow">第十八课 · 阶段五 站外信号与权威</p>
     <h1>捷径与红线：白帽和黑帽</h1>
     <p class="lede">总有人想抄近道「骗过算法」。这些操纵手段有个行业外号——<strong>黑帽</strong>。这一课认识它们，不是教你去做，而是帮你<strong>认出并避开</strong>：因为它们对应的是 Google 明令禁止的<strong>垃圾内容政策</strong>，翻车的代价很真实。</p>
+    <div class="callout"><div class="t">学完你能做什么</div>识别典型违规行为与正常做法的区别；不因使用 AI 或出现隐藏元素就误判；流量异常时先查证，并按算法处理、人工处置分别应对。</div>
   </header>
 
   <section id="s1">
     <div class="kicker"><span class="num">1</span> 一条分界线</div>
     <h2>为用户，还是为操纵排名？</h2>
-    <p class="muted">先说清楚用词：<strong>「白帽 / 黑帽」是行业说法，不是 Google 的官方术语</strong>。Google 官方讲的是<strong>垃圾内容政策（spam policies）</strong>。但它们指的是同一件事，分界线只有一句话：</p>
+    <p class="muted">先说清楚用词：<strong>「白帽 / 黑帽」是行业说法，不是 Google 的官方分类</strong>。判断具体行为，应看<strong>垃圾内容政策（spam policies）</strong>及其定义、例子与例外，不能只听操作者说「我是为用户好」。</p>
     <div class="callout">
-      <div class="t">判据：是不是「主要为了操纵排名」</div>
-      Google 判定违规反复用同一个说法——<span class="hl">「primarily for the purpose of manipulating search rankings（主要为了操纵搜索排名）」</span>。为用户创造价值、顺带对搜索友好，是<strong>白帽</strong>；主要为了骗算法、对用户没价值，就是<strong>黑帽</strong>。同一个动作，动机不同，性质就不同。
+      <div class="t">看目的，也看实际行为是否触犯政策</div>
+      多项垃圾政策强调<strong>主要为了操纵搜索排名</strong>或欺骗用户。这个问题能帮助自检，但不是唯一判据：还要检查手段与结果。真实内容、可抓取链接等正常优化可以改善搜索表现；制造虚假信息或滥用排名信号则不能用「为用户」来免责。
     </div>
     <p class="muted">Google 的正面框架叫 <strong>Search Essentials</strong>，核心主张是做<strong>「以人为先（people-first）」的内容</strong>——为人写、而不是为操纵排名而造。这就是「白帽」的本质。</p>
   </section>
@@ -48,18 +49,18 @@
       <table class="tbl">
         <thead><tr><th>手段</th><th>做的事</th></tr></thead>
         <tbody>
-          <tr><td><strong>关键词堆砌 / 隐藏文字</strong></td><td>把关键词大量非自然地塞进页面，或用白底白字、移出屏幕等手段藏起来，只给引擎看。</td></tr>
+          <tr><td><strong>关键词堆砌 / 隐藏文字滥用</strong></td><td>非自然地大量塞词，或为操纵排名把文字藏起来。正常折叠面板、选项卡及屏幕阅读器辅助文字不因此自动违规。</td></tr>
           <tr><td><strong>伪装 Cloaking</strong></td><td>给搜索引擎和用户展示<strong>不同的内容</strong>，以操纵排名、欺骗用户。</td></tr>
           <tr><td><strong>门页 Doorway</strong></td><td>批量做一堆针对特定搜索词的中间页，把用户导来导去，而不是给有用的落点。</td></tr>
           <tr><td><strong>链接垃圾 Link Spam</strong></td><td>买卖用于排名的链接、过度互刷、批量建链——主要为操纵排名而造的链接（第 17 课）。</td></tr>
-          <tr><td><strong>规模化内容滥用</strong></td><td>大规模生成对用户价值很低、主要为操纵排名的页面——<strong>明确包含批量 AI 灌水</strong>。</td></tr>
-          <tr><td><strong>站点信誉滥用</strong></td><td>借一个有信誉的网站发第三方内容，纯为蹭它的既有排名（俗称「寄生 SEO」）。</td></tr>
+          <tr><td><strong>规模化内容滥用</strong></td><td>大规模生成主要为操纵排名、缺少用户价值的页面；不论由人、AI 或两者共同制作。</td></tr>
+          <tr><td><strong>站点信誉滥用</strong></td><td>把第三方内容放在已有信誉的网站上，主要为了利用该站已建立的排名信号。并非所有投稿、专栏或第三方内容都违规。</td></tr>
         </tbody>
       </table>
     </div>
     <div class="callout">
       <div class="t">一个常见误会：用了关键词锚文本 = 违规？</div>
-      不是。官方禁的是<strong>「付费 / 交换、能传递权重、又不标注」</strong>的链接，问题在这套动作，<strong>不在锚文本用了什么词</strong>。描述性的锚文本本身是被推荐的好做法（第 12、17 课）。别把两件事混为一谈。
+      描述性锚文本本身是推荐做法（第 12、17 课）。但不能反过来说「锚文本永远不相关」：付费文章、批量访客文章或新闻稿中的优化锚文本链接，以及评论刷链等，都可能是链接垃圾。应结合获取方式、规模、上下文和商业标注判断；正常相互引用不等于过度互刷。
     </div>
   </section>
 
@@ -68,20 +69,20 @@
     <h2>算法会处理，人工也会出手</h2>
     <p class="muted">违反政策后，可能遇到两种处理，都很真实：</p>
     <div class="trio">
-      <div><div class="t">算法处理</div><span class="sub">自动系统</span><p>Google 的自动反垃圾系统（官方名 <strong>SpamBrain</strong>）会识别并处理，通常<strong>不会单独通知</strong>你——你只会看到流量默默下滑。</p></div>
+      <div><div class="t">算法处理</div><span class="sub">自动系统</span><p>包括 <strong>SpamBrain</strong> 在内的自动系统可处理垃圾内容或忽略垃圾链接，通常没有逐项通知。流量下降也可能有其他原因，不能仅凭下跌就判定处罚。</p></div>
       <div><div class="t">人工处罚</div><span class="sub">manual action</span><p>人工审查确认违规后下达。它<strong>会在 Search Console 的「人工处置」里通知</strong>你，说明问题所在。</p></div>
-      <div><div class="t">怎么恢复</div><span class="sub">整改 + 重审</span><p>先<strong>改掉</strong>违规内容，再在 Search Console 提交<strong>重新审核请求</strong>；通过后处罚才可能解除。</p></div>
+      <div><div class="t">怎么恢复</div><span class="sub">分开处理</span><p><strong>人工处置</strong>按通知修正后提交重新审核请求；<strong>算法处理</strong>没有对应重审入口，修正后等待重新抓取与系统评估。恢复时间及排名都不保证。</p></div>
     </div>
     <div class="callout">
-      <div class="t">黑帽的真正问题：期望值是负的</div>
-      黑帽或许能带来一阵短期上涨，但它赌的是「不被发现」。一旦被算法或人工逮到，跌幅和恢复成本往往远超那点收益——而搜索引擎识别这些套路的能力，只会越来越强。
+      <div class="t">先排查证据，别把每次下跌都当处罚</div>
+      先查 Search Console 的人工处置、安全问题、页面索引和搜索效果；再看服务器、robots/noindex、网站改版、季节性与搜索需求变化。即使人工处置解除，删除垃圾链接或内容后也不保证恢复原排名，不应继续依赖违规收益。
     </div>
   </section>
 
   <section id="s4">
     <div class="kicker"><span class="num">4</span> 白还是黑</div>
     <h2>这个做法，白帽还是黑帽？</h2>
-    <p class="muted">用那条分界线判断：为用户创造价值是<strong>白帽</strong>，主要为操纵排名是<strong>黑帽</strong>。点错会给提示：</p>
+    <p class="muted">结合这些场景的目的和实际行为，判断是<strong>正常优化</strong>还是<strong>垃圾政策违规</strong>。不要把所有技术优化、AI 辅助或隐藏元素都算成黑帽：</p>
     <div id="w-sort"></div>
   </section>
 
@@ -93,12 +94,23 @@
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 真实网站练习 · 20 分钟</div>
+    <h2>为一次异常做排查清单</h2>
+    <ol class="clean muted">
+      <li>选自己的网站或课程案例，检查一个正文页和一项链接获取做法。按官方政策写出「实际行为—是否有依据—需要处理什么」，不要实施违规手段。</li>
+      <li>模拟「点击下降」：先列技术故障、需求变化、内容变化与政策问题四类可能原因，写出每类要查看的证据。</li>
+      <li>有 Search Console 权限时只读查看人工处置与安全问题；无权限时写明未验证。分别拟人工处置与算法处理的后续流程，保存为排查清单。</li>
+    </ol>
+    <div class="callout"><div class="t">验收</div>交付一页排查记录，包含政策依据与数据入口；正常折叠内容、屏幕阅读器文字和经过核验的 AI 辅助不会被误判。只有确有人工处置通知时才使用重审流程；不能凭流量下跌宣布站点被处罚。没有网站权限时交付案例检查清单即可。</div>
+  </section>
+
   <footer>
     <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
     <ul>
-      <li><strong>「黑帽」是行业词</strong>，对应 Google 官方的<strong>垃圾内容政策</strong>；分界线是「是否主要为操纵排名」；</li>
+      <li><strong>「黑帽」是行业词</strong>；具体违规看 Google 的<strong>垃圾内容政策、实际行为与目的</strong>；</li>
       <li>常见手段：<strong>关键词堆砌 / 隐藏文字、伪装、门页、链接垃圾、规模化内容滥用（含 AI 灌水）、站点信誉滥用</strong>；</li>
-      <li>后果真实：<strong>算法处理（SpamBrain）+ 人工处罚（Search Console 通知，可提交重审）</strong>；</li>
+      <li><strong>算法处理和人工处置分开排查</strong>；人工处置有通知和重审入口，算法处理没有同样入口；</li>
       <li>白帽的本质就是 <strong>Search Essentials 的「以人为先」</strong>——为人写，不为操纵排名而造。</li>
     </ul></div>
     <div class="next">
@@ -115,36 +127,36 @@
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
 
   // S4：白帽 vs 黑帽
   SEO.widgets.classify(document.getElementById("w-sort"), {
-    intro:"为用户创造价值是白帽，主要为操纵排名是黑帽：",
+    intro:"结合具体行为和目的，判断是正常优化还是垃圾政策违规：",
     cats:[
-      { key:"white", label:"白帽", hint:"为用户 / 守规" },
-      { key:"black", label:"黑帽", hint:"操纵排名 / 违规" }
+      { key:"white", label:"正常优化", hint:"有用 / 守规" },
+      { key:"black", label:"违规行为", hint:"操纵 / 欺骗 / 滥用" }
     ],
     items:[
       { kw:"针对读者真实困惑，写一篇讲清楚、能解决问题的深度教程", cat:"white", why:"为用户创造价值、顺带对搜索友好——白帽的典范。" },
       { kw:"把一串关键词用白底白字藏在页面底部，只给引擎看", cat:"black", why:"隐藏文字，属官方明确禁止的垃圾手段。" },
-      { kw:"给搜索引擎看一个页面、给真实用户跳转到另一个页面", cat:"black", why:"这是伪装（cloaking），主要为操纵排名并欺骗用户。" },
+      { kw:"为欺骗搜索，把优质教程给爬虫看，却把用户偷偷跳转到无关广告", cat:"black", why:"这个场景明确为了操纵和欺骗，涉及伪装与欺骗性重定向；正常设备适配或合法登录限制不是同一个场景。" },
       { kw:"按官方指南优化标题结构、在 Search Console 提交 sitemap", cat:"white", why:"遵循 Search Essentials 的正路做法，白帽。" },
       { kw:"批量用 AI 生成几百个低价值页面，只为覆盖更多关键词", cat:"black", why:"规模化内容滥用（明确包含 AI 灌水），操纵排名、对用户无价值。" },
       { kw:"花钱买一批能传递权重、又不标注的外链", cat:"black", why:"链接垃圾：付费、传递权重、不标注，主要为操纵排名。" }
     ],
-    doneText:"✓ 全对！同一条线：为用户是白帽，为操纵排名是黑帽。"
+    doneText:"✓ 全对！目的与行为一起看，以官方政策定义核对，不只凭技术名称判断。"
   });
 
   // S5：自测
   SEO.widgets.quizChoice(document.getElementById("w-q1"), {
-    q:"① 区分「白帽」和「黑帽」，最根本的判断标准是——",
+    q:"① 判断一项 SEO 做法是否违规，最可靠的是——",
     options:[
-      { t:"用没用到 SEO 技术", why:"用不用技术不是关键，白帽也用大量技术。关键是动机。" },
-      { t:"这件事主要是为用户创造价值，还是主要为操纵排名", ok:true, why:"对。这正是 Google 反复用的判据：是否『主要为了操纵搜索排名』。" },
+      { t:"用没用到 SEO 技术", why:"技术名称不能决定是否违规，正常优化也会使用许多技术。" },
+      { t:"按官方政策检查实际行为、目的与结果，是否涉及操纵、欺骗或滥用", ok:true, why:"对。「主要为操纵排名」是多项政策的重要判据，还要核对具体定义与例外，不能只凭口头动机。" },
       { t:"改动多不多、快不快", why:"改动的多少快慢和白黑帽无关，看的是目的与手段是否违规。" }
     ]
   });
@@ -153,7 +165,7 @@
     q:"② 你的站被下了「人工处罚（manual action）」，正确的应对是——",
     options:[
       { t:"在 Search Console 查看违规详情，改掉问题后提交『重新审核请求』", ok:true, why:"对。人工处罚会在 Search Console 通知；整改后提交重审，通过才可能解除。" },
-      { t:"什么都不用管，处罚会自己消失", why:"人工处罚不会自动解除，必须整改并通过重新审核。" },
+      { t:"什么都不用管，等它消失", why:"不应依赖等待或到期。按通知彻底修正并申请审核，才能可靠地处理已知问题。" },
       { t:"再多买些链接把排名冲回来", why:"这是火上浇油——买链接本身就是违规，只会让情况更糟。" }
     ]
   });
@@ -162,12 +174,12 @@
     prompt:"③ 填空（填中文或英文词即可）",
     parts:[
       "「黑帽」对应 Google 官方所说的", { a:["垃圾内容政策","垃圾政策","spam policies","spam政策"] }, "。",
-      "　判断是否违规的核心标准是：这件事是否主要为了", { a:["操纵排名","操纵搜索排名","操纵","manipulating rankings"] }, "。",
+      "　多项政策关注这件事是否主要为了", { a:["操纵排名","操纵搜索排名","操纵","manipulating rankings"] }, "，还须核对实际行为与定义。",
       "　由人工审查下达、会在 Search Console 通知的处罚叫", { a:["人工处罚","manual action","人工处置"] }, "，",
       "整改后可提交", { a:["重新审核请求","重审","reconsideration request","重新审核"] }, "。"
     ],
-    okText:"✓ 全对！黑帽=违反垃圾内容政策，判据是操纵排名，人工处罚在 Search Console 通知、可提交重审。",
-    revealText:"答案：黑帽对应<strong>垃圾内容政策</strong>；判据是主要为<strong>操纵排名</strong>；人工下达的叫<strong>人工处罚</strong>，可提交<strong>重新审核请求</strong>。"
+    okText:"✓ 全对！用垃圾内容政策核对目的与行为；人工处置有通知，整改后可提交重审。",
+    revealText:"答案：看<strong>垃圾内容政策</strong>；多项政策关注主要为<strong>操纵排名</strong>，也需核对行为；人工下达的叫<strong>人工处罚</strong>，可提交<strong>重新审核请求</strong>。"
   });
 
   // 外壳
@@ -175,7 +187,7 @@
     n:18,
     sections:[
       {id:"s1", label:"一条分界线"}, {id:"s2", label:"常见黑帽"}, {id:"s3", label:"翻车代价"},
-      {id:"s4", label:"白还是黑"}, {id:"s5", label:"随堂自测"}
+      {id:"s4", label:"白还是黑"}, {id:"s5", label:"随堂自测"}, {id:"practice", label:"排查练习"}
     ]
   });
 })();

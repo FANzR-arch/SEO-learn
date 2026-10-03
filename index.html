@@ -29,6 +29,7 @@
     <nav class="steps" style="flex:1">
       <a href="#lessons">课程目录</a>
       <a href="#how">怎么学</a>
+      <a href="./practice.html">练习手册</a>
       <a href="./glossary.html">术语表</a>
       <a href="./references.html">参考资料</a>
     </nav>
@@ -51,7 +52,7 @@
   <section id="lessons">
     <div class="kicker"><span class="num">目</span> 课程目录</div>
     <h2>六个阶段，24 课</h2>
-    <p class="muted">按新手的学习顺序编排：先看懂搜索这台机器，再一层层学会喂给它对的东西。阶段一至五（01–19）已上线，阶段六（GEO）持续更新。</p>
+    <p class="muted">按新手的学习顺序编排：先理解搜索机制，再学习关键词、页面、技术与 AI 搜索。24 课均可学习，每课含目标、自测与实践。内容修订：2026-10-03。</p>
     <div id="catalog"></div>
   </section>
 
@@ -60,15 +61,16 @@
     <h2>先动手，再上真实网站</h2>
     <p class="muted">推荐按下面的节奏学习：</p>
     <ul class="clean muted">
-      <li><strong>① 每课 10–20 分钟</strong>：先读概念，再动手玩课里的交互组件，玩明白再往下走；</li>
+      <li><strong>① 每课约 10–20 分钟读概念和自测</strong>：先理解，再动手玩交互；真实项目实践另计；</li>
       <li><strong>② 学完就对照</strong>：拿你自己的网站、博客，或随手打开的任何网页，对照课里讲的检查一遍；</li>
-      <li><strong>③ 阶段收尾过术语</strong>：每学完一个阶段，去<a href="./glossary.html">术语表</a>过一遍——能用自己的话说清楚，再进下一阶段；</li>
+      <li><strong>③ 每阶段整理成果</strong>：用<a href="./practice.html">练习手册</a>串起同一个项目，保存记录，再去<a href="./glossary.html">术语表</a>检查理解；</li>
       <li><strong>④ 有条件就实操</strong>：注册 Google Search Console，把学到的用在真实站点上。真实数据是最好的老师。</li>
     </ul>
     <div class="callout">
       <div class="t">学 SEO 最好的方式，是有一块自己的「试验田」</div>
       哪怕是一个免费博客或几页的小站。课程后半段的技术 SEO 与度量都需要真实站点练手——没有也没关系，前半段的概念和练习完全不依赖它。
     </div>
+    <div class="next"><a class="btn" href="./practice.html">查看实践路线与毕业验收</a><a class="btn ghost" href="./downloads/study-template.md" download="SEO-GEO-学习记录.md">下载学习记录模板</a></div>
   </section>
 
   <footer>
@@ -83,7 +85,7 @@
   </footer>
 </div>
 
-<script src="./assets/js/widgets.js"></script>
+<script src="./assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -109,7 +111,7 @@
       { n:"05", t:"搜索意图：四种搜索目的", d:"同一个框，有人找答案、有人找网站、有人比价、有人想下单。读懂意图才能给对内容。", href:"./lessons/lesson-05.html", live:true },
       { n:"06", t:"关键词研究：从种子词到长尾词", d:"怎样从一个话题出发，挖出一批真实有人搜的词。", href:"./lessons/lesson-06.html", live:true },
       { n:"07", t:"搜索量、难度与机会", d:"大词做不动、小词没人搜？学会在竞争与流量之间找性价比。", href:"./lessons/lesson-07.html", live:true },
-      { n:"08", t:"关键词映射：一页答一个问题", d:"把词分配到页面：避免同站页面互相打架，也避免一页塞满所有词。", href:"./lessons/lesson-08.html", live:true }
+      { n:"08", t:"关键词映射：一页答一个问题", d:"按主题和意图把关键词簇分配给页面，识别定位重叠；一页可以回答同一主题下的多个问题。", href:"./lessons/lesson-08.html", live:true }
     ]},
     { tag:"阶段三", name:"页面优化 On-Page", goal:"把一张页面做成「值得排上去」的样子", lessons:[
       { n:"09", t:"Title 与 Meta Description", d:"搜索结果里的门面：怎么写既让引擎明白，又让人想点。", href:"./lessons/lesson-09.html", live:true },
@@ -119,21 +121,21 @@
     ]},
     { tag:"阶段四", name:"技术 SEO", goal:"扫清抓取、收录和体验上的技术障碍", lessons:[
       { n:"13", t:"robots.txt 与 meta robots", d:"告诉爬虫哪能去哪不能去——也看看写错一行会有什么后果。", href:"./lessons/lesson-13.html", live:true },
-      { n:"14", t:"sitemap 与 canonical", d:"主动递名单、指认正版页面：收录管理的两件基本工具。", href:"./lessons/lesson-14.html", live:true },
-      { n:"15", t:"网站速度与 Core Web Vitals", d:"三个体验指标怎么量、怎么改，慢一秒会损失什么。", href:"./lessons/lesson-15.html", live:true },
+      { n:"14", t:"sitemap 与 canonical", d:"辅助发现页面、声明规范版本，再分清重定向与 HTTP 状态的作用。", href:"./lessons/lesson-14.html", live:true },
+      { n:"15", t:"网站速度与 Core Web Vitals", d:"三个体验指标怎么量、怎么改，区分真实访客数据与模拟测试。", href:"./lessons/lesson-15.html", live:true },
       { n:"16", t:"结构化数据：Schema 入门", d:"给页面加机器可读的标签，换来富媒体展示的机会。", href:"./lessons/lesson-16.html", live:true }
     ]},
     { tag:"阶段五", name:"站外信号与权威", goal:"理解链接与品牌怎样积累信任", lessons:[
-      { n:"17", t:"外链与权威：链接即投票", d:"PageRank 的直觉：为什么别人的链接是最难造假的信任凭证。", href:"./lessons/lesson-17.html", live:true },
+      { n:"17", t:"外链与权威：理解链接信号", d:"从 PageRank 理解链接信号，分清自然推荐、付费标注与链接垃圾。", href:"./lessons/lesson-17.html", live:true },
       { n:"18", t:"白帽与黑帽", d:"买链接、堆关键词、批量洗稿……哪些捷径会翻车，惩罚长什么样。", href:"./lessons/lesson-18.html", live:true },
       { n:"19", t:"品牌与实体", d:"从「关键词匹配」到「知道你是谁」：搜索引擎的实体图谱。", href:"./lessons/lesson-19.html", live:true }
     ]},
-    { tag:"阶段六", name:"GEO · 生成引擎优化", goal:"让 AI 搜索引用你，而不是绕过你", lessons:[
-      { n:"20", t:"什么是 GEO", d:"当 AI 直接给答案，流量入口变了：优化目标从「排名」变成「被引用」。" },
-      { n:"21", t:"AI 怎么挑选引用来源", d:"生成引擎检索、筛选、引用的过程，和传统排名有什么不同。" },
-      { n:"22", t:"为 AI 写作：可引用的内容", d:"结构清晰、事实密度高、可验证——让 AI 愿意引用你的写法。" },
-      { n:"23", t:"GEO 技术清单", d:"llms.txt、抓取权限、结构化数据：让 AI 顺利读到你的技术准备。" },
-      { n:"24", t:"度量与闭环", d:"Search Console 看 SEO，引用监测看 GEO：建立自己的复盘循环。" }
+    { tag:"阶段六", name:"GEO · 生成引擎优化", goal:"理解 AI 搜索的引用机会、技术边界与验证方法", lessons:[
+      { n:"20", t:"什么是 GEO", d:"当 AI 直接给答案，在传统 SEO 之外观察内容提及、引用与业务结果。", href:"./lessons/lesson-20.html", live:true },
+      { n:"21", t:"AI 怎么挑选引用来源", d:"生成引擎检索、筛选、引用的过程，和传统排名有什么不同。", href:"./lessons/lesson-21.html", live:true },
+      { n:"22", t:"为 AI 写作：可引用的内容", d:"直接回答、说明条件、提供可验证依据，提高内容价值并保留事实边界。", href:"./lessons/lesson-22.html", live:true },
+      { n:"23", t:"GEO 技术清单", d:"按产品区分搜索与训练访问，理解展示控制及 llms.txt 的提案地位。", href:"./lessons/lesson-23.html", live:true },
+      { n:"24", t:"度量与闭环", d:"Search Console 看 SEO，引用监测看 GEO：建立自己的复盘循环。", href:"./lessons/lesson-24.html", live:true }
     ]}
   ];
 

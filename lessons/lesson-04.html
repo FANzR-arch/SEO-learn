@@ -26,7 +26,8 @@
   <header class="hero">
     <p class="eyebrow">第四课 · 阶段一 地基</p>
     <h1>一个网页，搜索引擎在看哪些部件？</h1>
-    <p class="lede">你看到的是排版好的页面；搜索引擎读的是它的 <strong>HTML 骨架</strong>。这一课认识页面上对 SEO 最重要的几个部件——它们是后面所有优化动作的着力点。</p>
+    <p class="lede">你看到的是排版好的页面；搜索引擎会处理它的 <strong>HTML（网页的结构与内容标记）</strong>，也可能运行 JavaScript 并渲染页面。这一课先认识标题、正文、链接等基础部件，它们是后面优化动作的着力点。</p>
+    <div class="callout"><div class="t">学完这一课，你能做什么</div>在真实页面中找到 URL、Title、描述、H1、链接与 alt；解释 Title 与 H1 的区别；识别图片替代文本和标题结构的作用。</div>
   </header>
 
   <section id="s1">
@@ -35,7 +36,7 @@
     <p class="muted">同一个页面，有两层：</p>
     <ul class="clean muted">
       <li><strong>用户看到的</strong>：图片、排版、颜色——好不好看、好不好读；</li>
-      <li><strong>引擎读到的</strong>：HTML 源码里的标签和文字——标题是什么、讲的是什么主题、链去了哪。</li>
+      <li><strong>引擎处理的</strong>：HTML 及渲染后的内容、链接和其他信息——标题是什么、讲什么主题、链接去了哪。页面主要内容不应只能在点击或登录后才能看见。</li>
     </ul>
     <p class="muted">很多 SEO 的着力点，<span class="hl">在页面上肉眼看不到</span>，却写在 HTML 里——比如页面的 <code>&lt;title&gt;</code> 标签、描述、图片的 alt 文字。学 SEO，就是学会同时用这两层眼睛看页面。</p>
     <div class="callout">
@@ -62,8 +63,8 @@
           <tr><td><strong>Title / Meta 描述</strong></td><td>搜索结果里的门面，影响点击</td><td>第 9 课</td></tr>
           <tr><td><strong>H1 与小标题</strong></td><td>内容的结构和层级</td><td>第 10 课</td></tr>
           <tr><td><strong>正文质量</strong></td><td>页面配不配排上去</td><td>第 11 课</td></tr>
-          <tr><td><strong>内链 / 图片 alt</strong></td><td>站内的路，图片能不能被搜到</td><td>第 12 课</td></tr>
-          <tr><td><strong>外链</strong></td><td>别人给你的信任票</td><td>第 17 课</td></tr>
+          <tr><td><strong>内链 / 图片 alt</strong></td><td>站内导航、图片的替代说明与理解线索</td><td>第 12 课</td></tr>
+          <tr><td><strong>外部反向链接</strong></td><td>其他网站指向你的链接，可帮助发现与评价页面</td><td>第 17 课</td></tr>
         </tbody>
       </table>
     </div>
@@ -77,10 +78,21 @@
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
+  <section id="practice">
+    <div class="kicker">动手实践 · 15 分钟</div>
+    <h2>为一个真实页面做「部件清单」</h2>
+    <ol class="clean muted">
+      <li>打开项目中一个页面，复制 URL，记录浏览器标签页标题、正文主标题、两条小标题和一个内部链接。</li>
+      <li>在电脑浏览器用「查看网页源代码」（常见快捷键 Ctrl + U），搜索 <code>&lt;title</code>、<code>name="description"</code>、<code>&lt;h1</code> 和 <code>alt=</code>，把实际值填入清单。</li>
+      <li>若源代码中找不到可见正文，记录「可能由 JavaScript 生成，需检查渲染后内容」；若有图片，判断它传达信息还是仅作装饰，给一张信息图片拟一条简短 alt。</li>
+    </ol>
+    <div class="callout"><div class="t">验收：一张清单与两条建议</div>清单包含 URL、Title、描述、H1、内链和 alt 的观察结果。指出两个具体可改进处并解释原因，先写建议，无需改动或发布网站。</div>
+  </section>
+
   <footer>
     <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
     <ul>
-      <li>页面有两层：<strong>用户看到的排版</strong> 和 <strong>引擎读到的 HTML</strong>；很多 SEO 部件肉眼看不到；</li>
+      <li>同时检查<strong>用户可见内容</strong>与<strong>HTML / 渲染后的结构</strong>；源码与可见页面可能不同；</li>
       <li>核心骨架：<strong>URL、Title、Meta 描述、H1、小标题、正文、链接、图片 alt</strong>；</li>
       <li>这一课先<strong>认全</strong>，每个部件「怎么做好」由后面的阶段三、五分别细讲。</li>
     </ul></div>
@@ -98,8 +110,8 @@
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -111,16 +123,16 @@
     parts:[
       { key:"url", btn:"URL", tag:"URL 网址",
         html:'<span class="pg-url-txt">yoursite.com/<b>interactive-resume</b></span>',
-        info:'<strong>URL（网址）。</strong>简短、可读、含关键词最好。它既是用户点击前的线索，也帮引擎理解页面主题。别用一长串乱码参数。' },
+        info:'<strong>URL（网址）。</strong>尽量稳定、可读、能表达页面内容。参数本身没有错，但无意义的多种 URL 容易造成重复。不必为了塞关键词改动已有正常网址，改 URL 还需要处理跳转。' },
       { key:"title", btn:"Title", tag:"页面标题 <title>",
         html:'<span class="sr-title" style="font-size:16px">Interactive Resume：案例、模板与制作指南</span>',
-        info:'<strong>Title（页面标题）。</strong>搜索结果里最显眼的一行、点击率的关键，也是最重要的排名信号之一。页面正文里通常看不到它——它写在 HTML 的 &lt;title&gt; 标签里。第 9 课细讲。' },
+        info:'<strong>Title（页面标题）。</strong>写在 HTML 的 &lt;title&gt; 中，通常显示在浏览器标签页；也为搜索结果的标题链接提供重要来源，帮助理解页面主题。Google 可能根据 H1 等信息生成不同标题，不保证逐字展示。第 9 课细讲。' },
       { key:"meta", btn:"Meta 描述", tag:"meta description",
-        html:'<span class="pg-p">一段约 150 字的摘要，出现在搜索结果标题的下方……</span>',
-        info:'<strong>Meta description（描述）。</strong>不直接参与排名，但决定「用户要不要点你」。不写的话，引擎会自己从正文截一段。它也写在 HTML 里，正文上看不到。第 9 课细讲。' },
+        html:'<span class="pg-p">简洁准确的页面摘要，可能被用在搜索结果标题下方……</span>',
+        info:'<strong>Meta description（描述）。</strong>不是 Google 的直接排名信号，但适当的摘要能帮助用户判断是否点击。搜索引擎可能使用它，也可能按查询从正文选一段；没有保证完整展示的固定字数。第 9 课细讲。' },
       { key:"h1", btn:"H1", tag:"H1 大标题",
         html:'<div class="pg-h1">什么是互动简历？</div>',
-        info:'<strong>H1（页面大标题）。</strong>页面上最大的标题，对读者和引擎都在说「本页主题是什么」。一个页面通常只用一个 H1。第 10 课细讲标题层级。' },
+        info:'<strong>H1（页面主标题）。</strong>标明主要主题，不由字体大小决定。新手通常用一个明确的 H1，再按内容层级使用 H2、H3；多个 H1 不自动导致排名处罚。第 10 课细讲。' },
       { key:"h2", btn:"小标题", tag:"H2–H6 小标题",
         html:'<div class="pg-h2">▸ 互动简历的常见形式</div><div class="pg-h2">▸ 怎么制作</div>',
         info:'<strong>小标题（H2–H6）。</strong>正文的目录树，帮读者扫读、帮引擎理解结构，也更容易被「精选摘要」抽取。第 10 课细讲。' },
@@ -129,10 +141,10 @@
         info:'<strong>正文内容。</strong>SEO 的核心：页面到底有没有回答搜索者的问题。第 11 课讲内容质量与 E-E-A-T。' },
       { key:"links", btn:"链接", tag:"链接",
         html:'<div class="pg-p"><span class="sr-title" style="font-size:13.5px">→ 相关：把简历变成 Resume Chatbot</span></div>',
-        info:'<strong>链接。</strong>站内链接（内链）帮权重流动、帮爬虫发现页面；站外链接（别人链你）是信任票。第 12 课讲内链、第 17 课讲外链。' },
+        info:'<strong>链接。</strong>内链连接本站页面，帮助导航、发现和理解关系；出站链接是你链接其他网站；外部反向链接是其他网站链接你。第 12 课讲内链，第 17 课讲反向链接。' },
       { key:"img", btn:"图片 alt", tag:"图片 + alt",
         html:'<div class="pg-p">🖼 <span style="opacity:.7">alt=&quot;一份互动简历的示例截图&quot;</span></div>',
-        info:'<strong>图片的 alt 文本。</strong>图片本身引擎「看不懂」，靠 alt 文字说明内容——既是无障碍，也让图片能被搜到。第 12 课细讲。' }
+        info:'<strong>图片的 alt 文本。</strong>图片的替代说明，供屏幕阅读器或图片无法显示时使用，也帮助搜索引擎结合周围文字理解图片。引擎也有图像识别能力，并非只靠 alt。纯装饰图片可用空 alt；不要堆关键词。第 12 课细讲。' }
     ]
   });
 
@@ -140,7 +152,7 @@
   SEO.widgets.quizChoice(document.getElementById("w-q1"), {
     q:"① 下面哪个部件，通常在页面正文上「看不到」，却对 SEO 很重要？",
     options:[
-      { t:"H1 大标题", why:"H1 是页面上最大的标题，肉眼看得很清楚。" },
+      { t:"H1 主标题", why:"H1 通常对应可见的页面主标题；它是结构标签，不由字号大小决定。" },
       { t:"Meta description（描述）", ok:true, why:"对。它写在 HTML 里、主要出现在搜索结果中，页面正文上一般看不到。同类的还有 &lt;title&gt; 标签和图片 alt。" },
       { t:"正文内容", why:"正文就是页面上给人读的主体，当然看得到。" }
     ]
@@ -152,7 +164,7 @@
     options:[
       { t:"Title 和 H1 必须一模一样", why:"不必。两者可以不同：Title 更偏搜索结果里的门面，H1 更偏页面上的大标题，各自都要清楚表达主题。" },
       { t:"Title 主要出现在搜索结果里，H1 是页面上的大标题，两者都在说「本页主题」", ok:true, why:"对。一个在 SERP 上招呼点击，一个在页面上统领内容，方向一致但位置和写法可以不同。" },
-      { t:"一个页面放越多个 H1 越利于 SEO", why:"通常一个页面只用一个 H1。堆很多个 H1 反而让「主题是什么」变模糊。" }
+      { t:"一个页面放越多个 H1 越利于 SEO", why:"H1 不是靠数量加分。初学者用一个清楚的主标题最容易保持结构；多个 H1 也不等于会受处罚。" }
     ]
   });
 
@@ -160,8 +172,8 @@
     prompt:"③ 填空（填中文或英文标签名即可）",
     parts:[
       "搜索结果里最显眼、点击率关键的一行，是页面的", { a:["Title","标题","title","页面标题"] }, "（HTML 里的 &lt;title&gt;）；",
-      "　页面上最大的那个标题标签是", { a:["H1","h1"] }, "；",
-      "　图片本身引擎看不懂，靠", { a:["alt","alt文本","alt文字","替代文本"] }, " 文字说明它的内容。"
+      "　表达页面主要主题的标题标签是", { a:["H1","h1"] }, "；",
+      "　为图片提供替代说明的属性是", { a:["alt","alt文本","alt文字","替代文本"] }, "。"
     ],
     okText:"✓ 全对！Title、H1、alt 是最常打交道的三个部件，后面几课会逐个教你怎么写好。",
     revealText:"答案：搜索结果的门面是 <strong>Title</strong>；页面大标题是 <strong>H1</strong>；图片靠 <strong>alt</strong> 文字说明内容。"
@@ -172,7 +184,7 @@
     n:4,
     sections:[
       {id:"s1", label:"两种视角"}, {id:"s2", label:"页面骨架"}, {id:"s3", label:"各归各课"},
-      {id:"s4", label:"随堂自测"}
+      {id:"s4", label:"随堂自测"}, {id:"practice", label:"动手实践"}
     ]
   });
 })();

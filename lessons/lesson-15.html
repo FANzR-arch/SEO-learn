@@ -27,6 +27,7 @@
     <p class="eyebrow">第十五课 · 阶段四 技术 SEO</p>
     <h1>慢一秒、抖一下，用户就走了</h1>
     <p class="lede">页面快不快、稳不稳，是实实在在的体验。Google 把它拆成三个可量化的指标——<strong>Core Web Vitals（核心网页指标）</strong>。这一课认识这三个数，也把「它到底影不影响排名」这件事说清楚，不夸大也不忽视。</p>
+    <div class="callout"><div class="t">学完你能做什么</div>解释 LCP、INP、CLS 各测什么；区分真实用户数据与实验室诊断；读一份 PageSpeed Insights 报告，挑出最值得处理的体验问题。</div>
   </header>
 
   <section id="s1">
@@ -34,9 +35,9 @@
     <h2>加载、交互、稳定，各测一件事</h2>
     <p class="muted">Core Web Vitals 目前是三个指标，各盯着体验的一个侧面：</p>
     <div class="trio">
-      <div><div class="t">LCP</div><span class="sub">加载 · Largest Contentful Paint</span><p>最大那块内容（通常是主图或大标题）多久画出来。回答：<strong>「主要内容多快能看到？」</strong></p></div>
-      <div><div class="t">INP</div><span class="sub">交互 · Interaction to Next Paint</span><p>你点一下、敲一下，页面多久有反应。回答：<strong>「操作跟不跟手？」</strong></p></div>
-      <div><div class="t">CLS</div><span class="sub">稳定 · Cumulative Layout Shift</span><p>加载过程中版面乱不乱跳（正要点的按钮突然被挤走）。回答：<strong>「画面稳不稳？」</strong></p></div>
+      <div><div class="t">LCP</div><span class="sub">加载 · Largest Contentful Paint</span><p>首个视口中最大的符合条件的图片或文本块，多久呈现。它不等于整页全部加载完。回答：<strong>「主要内容多快能看到？」</strong></p></div>
+      <div><div class="t">INP</div><span class="sub">交互 · Interaction to Next Paint</span><p>衡量访问期间点击、轻触、键盘交互到下一次画面更新的响应表现，重点关注慢交互。回答：<strong>「操作跟不跟手？」</strong></p></div>
+      <div><div class="t">CLS</div><span class="sub">稳定 · Cumulative Layout Shift</span><p>衡量页面生命周期中非预期的版面位移（如正要点的按钮突然被挤走），按位移的会话窗口计算。回答：<strong>「画面稳不稳？」</strong></p></div>
     </div>
     <div class="callout">
       <div class="t">INP 已经取代了旧的 FID</div>
@@ -62,9 +63,10 @@
       <li>所以<strong>拿到满绿也不保证排到前面</strong>——内容相关性、质量仍是根本。体验好，是让好内容不被拖累，而不是让平庸内容逆袭。</li>
     </ul>
     <div class="callout">
-      <div class="t">排名看的是「真实用户数据」，不是你本地测的分</div>
-      衡量 CWV 有两种数据：<strong>实验室数据</strong>（lab，你用工具在固定环境跑一次，适合调试）和<strong>真实用户数据</strong>（field，来自真实访客，数据源是 Chrome 用户体验报告 CrUX）。<span class="hl">用于排名参考的是 field 真实数据</span>，而且是取第 75 百分位（<code>p75</code>）——要大多数访问都达标才算「良好」。所以本地 Lighthouse 跑了满分，不等于线上就达标。
+      <div class="t">一次实验室满分，不等于真实访问达标</div>
+      <strong>实验室数据</strong>（lab）在固定环境运行，适合找问题；<strong>真实用户数据</strong>（field）反映实际访问，PageSpeed Insights 和 Search Console 中常来自 CrUX。CWV 的良好评估按<strong>第 75 百分位（p75）</strong>，移动端与桌面端分开看；CrUX 报告通常覆盖最近 28 天。因此一次 Lighthouse 高分不等于真实体验良好，也不是排名分数。
     </div>
+    <p class="muted">PageSpeed Insights 上方看真实数据，下方看 Lighthouse 诊断，别混成一个分数。常规 Lighthouse 加载测试不能直接测出完整访问的 INP，可用 TBT（总阻塞时间）等诊断线索定位脚本问题。新站或流量少的页面可能没有足够 field 数据；「暂无数据」既不是通过，也不是失败。还要看报告显示的是该 URL 还是整个来源站点的数据。</p>
   </section>
 
   <section id="s4">
@@ -72,6 +74,9 @@
     <h2>每个优化手段，主要帮哪个指标？</h2>
     <p class="muted">三个指标的毛病不一样，药方也不同。下面每个做法，主要改善哪个指标？点错会给提示：</p>
     <div id="w-sort"></div>
+    <h3>速度之外：手机和渲染也要能读到内容</h3>
+    <p class="muted"><strong>移动优先索引（mobile-first indexing）</strong>指 Google 主要使用移动版内容来索引。手机端应保留与桌面端等价的主要正文、标题、图片说明和必要标记；布局可以不同，内容可以合理折叠，不要为了手机「清爽」删掉关键答案。响应式页面通常更容易保持一致。</p>
+    <p class="muted"><strong>JavaScript 渲染</strong>是脚本运行后才生成页面内容。自己浏览器里看得到，不等于爬虫一定读到：不要让关键正文只能在点击、滚动或登录后加载，也别屏蔽必要的脚本资源。有站点权限时，用 Search Console 网址检查的实时测试查看渲染后的 HTML 与截图，确认主要内容、链接和 meta 指令正确；无权限时检查手机预览与源代码，将爬虫渲染状态记录为未验证。</p>
   </section>
 
   <section id="s5">
@@ -82,13 +87,24 @@
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 真实页面练习 · 20 分钟</div>
+    <h2>读报告，选一项最影响使用的问题</h2>
+    <ol class="clean muted">
+      <li>把一个公开页面放入 <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer">PageSpeed Insights</a>，记录测试日期、移动端结果，以及是否有该 URL 的真实数据。</li>
+      <li>记录 LCP、INP、CLS 与数据范围；没有 field 数据就如实标记。查看实验室诊断，选一个具体问题，例如首屏大图过大、按钮响应被长任务阻塞或图片没有预留尺寸。</li>
+      <li>写出「现象—可能原因—拟改动—复测方法」。有站点权限时处理一项后用相同设备设置复测，并实际操作页面；field 改善要等数据窗口更新。对照手机与桌面主要内容，JS 页面另检查渲染后内容是否可读；无权限时交付检查清单，不改线上。</li>
+    </ol>
+    <div class="callout"><div class="t">验收</div>交付报告链接或截图、数据来源说明和一个优化任务。能说明是哪项指标受影响、如何验证；预览中内容与功能正常。实验室前后数值单独记录，不把一次跑分变化当成真实用户已达标或排名已提高。</div>
+  </section>
+
   <footer>
     <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
     <ul>
       <li><strong>Core Web Vitals = 三个体验指标</strong>：LCP 加载、INP 交互、CLS 稳定；</li>
       <li>良好线：<strong>LCP ≤ 2.5s、INP ≤ 200ms、CLS ≤ 0.1</strong>；INP 已取代旧的 FID；</li>
       <li>它<strong>是排名系统会看的信号之一，但不是单一信号、不保证排名</strong>；</li>
-      <li>排名参考的是<strong>真实用户数据（CrUX，p75）</strong>，不是你本地跑的实验室分数。</li>
+      <li><strong>真实数据用于评估访问体验，实验室数据用于诊断</strong>；看 p75、设备和数据范围，暂无数据不代表达标。</li>
     </ul></div>
     <div class="next">
       <a class="btn ghost" href="./lesson-14.html">← 上一课：sitemap 与 canonical</a>
@@ -104,8 +120,8 @@
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -123,10 +139,10 @@
     ],
     items:[
       { kw:"给图片写明 width / height（或用 aspect-ratio）提前占位", cat:"cls", why:"提前留好位置，图片加载时就不会把下面的内容挤走——正是治 CLS 的经典做法。" },
-      { kw:"给首屏主图加 fetchpriority=\"high\"、去掉 loading=\"lazy\"", cat:"lcp", why:"让最大那块内容尽早加载出来，直接改善 LCP。" },
+      { kw:"确认 LCP 是首屏主图后，给它适当提高请求优先级并去掉 lazy", cat:"lcp", why:"让关键主图尽早被发现和加载，有助于改善 LCP。不是所有图片都该 high 或 preload，应按实际瓶颈处理。" },
       { kw:"拆分很长的 JavaScript 任务，别长时间占着主线程", cat:"inp", why:"主线程被长任务堵住，点击就没反应。拆短它，交互才跟手——这是 INP 的关键。" },
       { kw:"压缩首屏大图，或用 preload 尽早加载关键图片", cat:"lcp", why:"首屏大图往往就是 LCP 那块内容，压小、提前加载能让它更快出现。" },
-      { kw:"页面动画只用 transform / opacity，不去改 margin、top", cat:"cls", why:"transform/opacity 不会触发重排，版面就不会跳动，避免制造 CLS。" },
+      { kw:"为晚加载的广告、嵌入内容预留固定空间", cat:"cls", why:"预留空间能避免内容加载后突然挤动现有元素，针对的是非预期版面位移。" },
       { kw:"用工具找出并删掉页面用不到的 JavaScript", cat:"inp", why:"少加载、少执行脚本，主线程更空闲，交互响应更快——帮的是 INP。" }
     ],
     doneText:"✓ 全对！LCP 靠「让主内容更快出现」，INP 靠「别堵住主线程」，CLS 靠「提前占好位、别乱动」。"
@@ -136,7 +152,7 @@
   SEO.widgets.quizChoice(document.getElementById("w-q1"), {
     q:"① 关于 Core Web Vitals 和排名，下面哪个说法最准确？",
     options:[
-      { t:"分数越高，排名就越靠前，是线性加分", why:"不对。它是「良好/需改进/差」的阈值达标制，也不是单一信号，达标不等于排名加分。" },
+      { t:"分数越高，排名就越靠前，是线性加分", why:"没有公开的这种线性换算。工具评级描述体验，Google 排名还综合许多因素，满绿不保证靠前。" },
       { t:"它是排名系统会参考的信号之一，但不保证排名，内容质量仍是根本", ok:true, why:"对。这正是官方分寸：会被用到，但不是单一信号、不保证排名。" },
       { t:"它跟排名完全无关，只是给开发者看的", why:"也不对。Google 明确说它会被排名系统使用，只是不该被夸大成决定性因素。" }
     ]
@@ -146,7 +162,7 @@
     q:"② 你本地用 Lighthouse 跑出满分，但 Search Console 里 CWV 却「需要改进」。最可能的原因是——",
     options:[
       { t:"Search Console 坏了", why:"更可能是数据来源不同，而不是工具出错。" },
-      { t:"排名参考的是真实用户数据（CrUX），和你本地的实验室环境不一样", ok:true, why:"对。你本地是固定环境的实验室数据；线上评估用的是真实访客的 field 数据，两者常有差距。" },
+      { t:"真实用户数据（CrUX）与单次实验室测试的环境、范围和时间窗口不同", ok:true, why:"对。Search Console 报告真实访问中的表现；Lighthouse 是一次加载诊断，还不能直接测出完整访问的 INP。" },
       { t:"因为你没填 priority 字段", why:"priority 是 sitemap 的字段，跟 CWV 无关，而且 Google 也不用它。" }
     ]
   });
@@ -167,7 +183,7 @@
     n:15,
     sections:[
       {id:"s1", label:"三个指标"}, {id:"s2", label:"红黄绿"}, {id:"s3", label:"和排名关系"},
-      {id:"s4", label:"各改各的"}, {id:"s5", label:"随堂自测"}
+      {id:"s4", label:"各改各的"}, {id:"s5", label:"随堂自测"}, {id:"practice", label:"报告练习"}
     ]
   });
 })();

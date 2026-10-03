@@ -49,9 +49,18 @@
       '<div class="lr-eyebrow">第'+cn(cfg.n)+'课</div>' +
       '<div class="lr-title">'+titleText+'</div>' +
       '<div class="lr-prog"><div class="lr-prog-bar"><span id="lr-fill"></span></div><div class="lr-prog-t" id="lr-ptext">第 1 / '+sections.length+' 节</div></div>' +
-      '<nav class="lr-list">'+railSteps+'</nav>';
+      '<nav class="lr-list">'+railSteps+'</nav>' +
+      '<a class="lr-back" href="../practice.html">练习手册与记录模板 →</a>';
     document.body.appendChild(rail);
     document.body.classList.add("has-rail");
+    var footerNext = document.querySelector("footer .next");
+    if(footerNext){
+      var practiceLink = document.createElement("a");
+      practiceLink.className = "btn ghost";
+      practiceLink.href = "../practice.html";
+      practiceLink.textContent = "练习手册";
+      footerNext.appendChild(practiceLink);
+    }
     var railLinks = Array.prototype.slice.call(rail.querySelectorAll(".lr-item"));
     var lrFill = document.getElementById("lr-fill"), lrPtext = document.getElementById("lr-ptext");
 

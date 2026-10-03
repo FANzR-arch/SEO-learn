@@ -28,6 +28,7 @@
     <nav class="steps" style="flex:1">
       <a href="./index.html#lessons">课程目录</a>
       <a href="./index.html#how">怎么学</a>
+      <a href="./practice.html">练习手册</a>
       <a href="./glossary.html">术语表</a>
       <a href="./references.html" class="on">参考资料</a>
     </nav>
@@ -54,6 +55,23 @@
       </ul>
       <p class="muted">凡与排名机制、收录规则相关的表述，本课程优先以这些官方文档为准；官方没有说明的部分会标注为行业经验或推断。</p>
     </div>
+    <h3>按主题查回原始规则</h3>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th scope="col">课程</th><th scope="col">资料入口</th><th scope="col">核对什么</th></tr></thead>
+      <tbody>
+        <tr><td>01–04 · 搜索基础</td><td><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer">SEO 新手指南</a> / <a href="https://developers.google.com/search/docs/appearance/featured-snippets" target="_blank" rel="noopener noreferrer">精选摘要</a></td><td>发现、索引、展示与版块资格；示意图不代替实时搜索结果。</td></tr>
+        <tr><td>05–08 · 关键词</td><td><a href="https://support.google.com/google-ads/answer/7337243" target="_blank" rel="noopener noreferrer">Keyword Planner 指标说明</a> / <a href="https://ahrefs.com/academy/keyword-research" target="_blank" rel="noopener noreferrer">Ahrefs 关键词研究教程</a></td><td>工具估算与广告竞争口径；意图四分类、聚类和映射属于分析方法。</td></tr>
+        <tr><td>09–10 · 标题与结构</td><td><a href="https://developers.google.com/search/docs/appearance/title-link" target="_blank" rel="noopener noreferrer">标题链接</a> / <a href="https://developers.google.com/search/docs/appearance/snippet" target="_blank" rel="noopener noreferrer">摘要</a></td><td>Google 会自动生成展示标题与摘要；没有固定字数或像素排名门槛。</td></tr>
+        <tr><td>11–12 · 内容、链接与图片</td><td><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener noreferrer">实用内容</a> / <a href="https://developers.google.com/search/docs/crawling-indexing/links-crawlable" target="_blank" rel="noopener noreferrer">可抓取链接</a> / <a href="https://developers.google.com/search/docs/appearance/google-images" target="_blank" rel="noopener noreferrer">图片最佳实践</a></td><td>E-E-A-T 的框架性质、链接语义与图像上下文。</td></tr>
+        <tr><td>13–14 · 抓取与规范化</td><td><a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro" target="_blank" rel="noopener noreferrer">robots</a> / <a href="https://developers.google.com/search/docs/crawling-indexing/block-indexing" target="_blank" rel="noopener noreferrer">noindex</a> / <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview" target="_blank" rel="noopener noreferrer">sitemap</a> / <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">规范化</a> / <a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors" target="_blank" rel="noopener noreferrer">HTTP 状态</a></td><td>抓取与收录不同；canonical 是信号，重定向和状态码有独立作用。</td></tr>
+        <tr><td>15 · 移动与体验</td><td><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals</a> / <a href="https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing" target="_blank" rel="noopener noreferrer">移动优先索引</a> / <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer">PageSpeed Insights</a></td><td>第 75 百分位与现场/实验室数据；移动端关键内容不能缺失。</td></tr>
+        <tr><td>16 · 结构化数据</td><td><a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies" target="_blank" rel="noopener noreferrer">通用政策</a> / <a href="https://developers.google.com/search/docs/appearance/structured-data/recipe" target="_blank" rel="noopener noreferrer">Recipe 要求</a> / <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer">Rich Results Test</a></td><td>支持类型、必填属性和内容一致性；语法通过不保证富媒体展示。</td></tr>
+        <tr><td>17–19 · 链接与品牌</td><td><a href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener noreferrer">垃圾内容政策</a> / <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" target="_blank" rel="noopener noreferrer">出站链接标注</a> / <a href="https://developers.google.com/search/docs/appearance/ranking-systems-guide" target="_blank" rel="noopener noreferrer">排名系统指南</a></td><td>PageRank 的现状、付费链接提示与违规边界；第三方权威分数不是 Google 分数。</td></tr>
+        <tr><td>20–24 · AI 与度量</td><td><a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener noreferrer">AI 功能</a> / <a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer">OpenAI bots</a> / <a href="https://support.google.com/webmasters/answer/7576553" target="_blank" rel="noopener noreferrer">GSC 效果报告</a></td><td>各产品抓取/展示控制及报告口径；提及、引用、点击与转化分开测量。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">脚本页面的补充阅读：<a href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics" target="_blank" rel="noopener noreferrer">Google：JavaScript SEO 基础</a>，了解渲染、可抓取链接与资源访问。</p>
+    <p class="muted">这些是按主题阅读原始规则的入口，并不表示本轮逐条在线复核了全部链接。课程内容修订于 2026-10-03；AI 产品的可用地区、模型与报告界面以其当前官方说明为准。</p>
   </section>
 
   <section>
@@ -73,8 +91,10 @@
     <h2>新兴领域的主要参考</h2>
     <div class="card pad">
       <ul class="clean muted">
-        <li><a href="https://arxiv.org/abs/2311.09735" target="_blank" rel="noopener noreferrer">GEO: Generative Engine Optimization</a>（Aggarwal et al., KDD 2024）——「GEO」一词的出处，系统研究了哪些内容特征能提升被生成引擎引用的概率。</li>
-        <li><a href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer">llms.txt 提案</a>——给大模型看的站点说明文件，第 23 课介绍。注意它仍是社区提案，各 AI 厂商的采纳程度不一。</li>
+        <li><a href="https://arxiv.org/abs/2311.09735" target="_blank" rel="noopener noreferrer">GEO: Generative Engine Optimization</a>（Aggarwal et al., KDD 2024）——在受控生成引擎与基准中研究来源可见性代理指标。「最高提升 40%」不是当前商业产品的引用概率或效果承诺。</li>
+        <li><a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer">OpenAI：机器人说明</a>——区分 OAI-SearchBot、GPTBot 与 ChatGPT-User 的用途和控制方式。</li>
+        <li><a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers#google-extended" target="_blank" rel="noopener noreferrer">Google-Extended 官方说明</a>——Gemini 的相关用途与 Google 搜索 AI 功能的控制方式不同。</li>
+        <li><a href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer">llms.txt 提案</a>——社区提出的 Markdown 内容入口文件，不是通用标准，也不是 Google AI 搜索的必要条件。采用前检查目标产品官方说明。</li>
       </ul>
       <p class="muted"><strong>特别提醒：</strong>GEO 是快速演变的新领域，行业共识远少于传统 SEO。课程会区分「论文/官方验证过的结论」与「行业普遍猜测」，后者随时可能过时。</p>
     </div>
@@ -86,7 +106,8 @@
     <div class="card pad">
       <ul class="clean muted">
         <li><strong>官方口径</strong>：来自搜索引擎官方文档的机制说明，如抓取流水线、noindex 的作用——可靠度最高；</li>
-        <li><strong>行业经验</strong>：从业者从实验与数据中总结的规律，如标题像素上限、CTR 分布——量级可信，精确数字会变；</li>
+        <li><strong>行业经验</strong>：从业者从观测或工具估算中总结的方法，如标题预览宽度、CTR 分布、KD、关键词聚类——适用范围依样本和工具而定，不是官方阈值或排名规则；</li>
+        <li><strong>论文实验</strong>：在指定基准、系统和指标下得到的结果。不能直接推广到当前商业 AI 搜索或转化收益；</li>
         <li><strong>教学示意</strong>：课程为了好懂而造的例子，如爬虫模拟的小网站、示意 SERP——用于建立直觉，不等于真实产品行为。</li>
       </ul>
       <p class="muted">课程中的交互组件（SERP 模拟、爬虫模拟、CTR 曲线）全部属于教学示意：真实系统还包含渲染、抓取预算、个性化、地域差异等这里省略的机制。</p>

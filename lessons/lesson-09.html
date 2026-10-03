@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>第九课：Title 与 Meta Description · SEO × GEO 入门课</title>
-<meta name="description" content="搜索结果里决定别人点不点你的两行字：Title（标题）和 Meta Description（描述）。学会写好它们，这是最先能动手、见效最直接的 On-Page 优化。">
+<meta name="description" content="学习 Title 与 Meta Description 的用途，区分你填写的标签和搜索引擎实际生成的标题、摘要，并为真实页面写出准确、有吸引力的版本。">
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1D5FBF">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="SEO × GEO · 入门课">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:title" content="第九课：Title 与 Meta Description · SEO × GEO 入门课">
-<meta property="og:description" content="搜索结果里决定点击的两行字：Title 与 Meta Description，怎么写好它们。">
+<meta property="og:description" content="为页面写准确的 Title 与 Meta Description，并区分标签内容与搜索引擎实际生成的标题、摘要。">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第九课：Title 与 Meta Description · SEO × GEO 入门课">
 <script src="../assets/js/theme.js"></script>
@@ -26,27 +26,28 @@
   <header class="hero">
     <p class="eyebrow">第九课 · 阶段三 页面优化</p>
     <h1>搜索结果里的门面：标题与描述</h1>
-    <p class="lede">一个页面在搜索结果里，靠两行字决定别人点不点你：<strong>Title（标题）</strong>和 <strong>Meta Description（描述）</strong>。这一课学会写好这两行——也是你最先能动手改、见效最直接的 On-Page 优化。</p>
+    <p class="lede">搜索结果里的标题和摘要，帮用户判断「这页是否值得打开」。你可以通过 <strong>Title（页面标题）</strong>和 <strong>Meta Description（页面描述）</strong>提供信息，但最终展示由搜索引擎生成。这一课从能动手修改的页面门面开始。</p>
+    <div class="callout"><div class="t">学完你能做什么</div>区分 Title、H1 和搜索结果标题；写出与正文一致的标题、描述；用真实结果验证展示，而不把字数或点击率当成排名保证。</div>
   </header>
 
   <section id="s1">
     <div class="kicker"><span class="num">1</span> 两行字，在哪、多重要</div>
-    <h2>一个管排名和点击，一个管点击</h2>
+    <h2>给搜索引擎提供标题与摘要线索</h2>
     <ul class="clean muted">
-      <li><strong>Title（&lt;title&gt; 标签）</strong>：搜索结果里那行蓝色大标题，也显示在浏览器标签上。它是<span class="hl">排名和点击最重要的一行字</span>之一；</li>
-      <li><strong>Meta Description</strong>：标题下方那段灰色摘要。它<strong>不直接参与排名</strong>，但决定「看到的人要不要点你」——本质是你免费的一句广告词。</li>
+      <li><strong>Title（&lt;title&gt; 标签）</strong>：浏览器标签页通常显示它；Google 也会参考它生成搜索结果的标题链接。准确的标题帮助理解页面主题，也影响用户是否点击；</li>
+      <li><strong>Meta Description</strong>：你为页面写的摘要建议。它<strong>不是 Google 的直接排名因素</strong>；当与查询相关时，可能被用作搜索摘要，帮助用户判断页面是否满足需要。</li>
     </ul>
     <p class="muted">两者都写在 HTML 的 <code>&lt;head&gt;</code> 里，页面正文上看不到（回顾第 4 课）。</p>
     <div class="callout">
       <div class="t">Title ≠ H1</div>
-      Title 是给<strong>搜索结果</strong>看的门面，H1 是<strong>页面上</strong>的大标题（第 10 课）。两者都要清楚表达主题，但可以不一样：Title 常更精炼、更带「点我」的钩子。
+      Title 是页面标题标签，H1 是<strong>正文的主标题</strong>（第 10 课）。两者可以措辞不同，但主题应一致。Google 生成标题链接时也可能参考 H1、其他显著文字与链接文本。
     </div>
   </section>
 
   <section id="s2">
     <div class="kicker"><span class="num">2</span> 亲手写，实时预览</div>
     <h2>改一改，看搜索结果长什么样</h2>
-    <p class="muted">编辑下面的标题和描述，右边会实时显示它在搜索结果里的样子，还会量出像素长度、给出建议。试试写太长会怎样、关键词放不放：</p>
+    <p class="muted">编辑下面的标题和描述，右边会显示<strong>教学预览</strong>，并估算像素长度。试试先说清主题、删掉冗余词，再观察效果。预览中的颜色和长度建议不代表 Google 的规则或实际展示。</p>
     <div id="w-serp"></div>
   </section>
 
@@ -54,13 +55,13 @@
     <div class="kicker"><span class="num">3</span> 怎么写好</div>
     <h2>两行字的实操要点</h2>
     <div class="trio">
-      <div><div class="t">Title 标题</div><span class="sub">排名 + 点击</span><p>含关键词、尽量靠前；简短（约 30 个汉字内，过长会被截成「…」）；每页唯一；别堆一串关键词；可加数字、年份或利益点增加吸引力。</p></div>
-      <div><div class="t">Meta 描述</div><span class="sub">决定点击</span><p>当广告文案写，回答「为什么点我」；约 150 字；自然含关键词（命中会加粗）；每页唯一；别空着——空着引擎会随便截一段正文。</p></div>
-      <div><div class="t">共同原则</div><span class="sub">别骗点击</span><p>标题党、和内容不符会被跳出、长期反噬。准确 + 有吸引力，两者都要。</p></div>
+      <div><div class="t">Title 标题</div><span class="sub">主题 + 区别</span><p>准确说明页面主题，使用读者熟悉的词；重要信息尽早出现；不同页面写出各自特点。避免堆词、重复模板和无依据的「最好」。没有固定字符上限，展示会随设备等因素截断。</p></div>
+      <div><div class="t">Meta 描述</div><span class="sub">这页能帮什么</span><p>用一两句概括页面的具体价值和适用对象；自然写出内容重点，避免复制所有页面的同一句话。Google 没有规定统一字数，摘要可能被截断，也可能来自正文。</p></div>
+      <div><div class="t">共同原则</div><span class="sub">承诺与内容一致</span><p>标题写「5 个步骤」，正文就要提供这些步骤；年份只在内容确实对应时使用。准确而有吸引力，帮助用户做出正确的点击选择。</p></div>
     </div>
     <div class="callout">
       <div class="t">Google 可能会「重写」你的标题和描述</div>
-      当它认为你的 Title/描述写得差、或和用户的搜索词不匹配时，会自己替换掉。这不代表你可以不写——写得清楚、贴合意图，被保留的概率才高。
+      Google 会综合多个来源生成标题链接；摘要则常依据当前查询从正文中提取，也可能使用 Meta Description。展示不同于标签，不一定说明你写错了。若主题错误，先核对 Title、H1、正文是否一致，再等重新抓取后观察。
     </div>
     <div id="w-q1" style="margin-top:16px"></div>
   </section>
@@ -72,12 +73,23 @@
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 真实页面练习 · 15 分钟</div>
+    <h2>为同一页面写两版门面</h2>
+    <ol class="clean muted">
+      <li>选自己的一个指南或服务页；没有网站，就选一个你熟悉的公开页面做改稿。记录网址、当前 Title、H1、描述和目标搜索词。</li>
+      <li>写两个标题版本：一版突出内容范围，一版突出适用对象；各配一段描述。逐句检查正文是否兑现了承诺，再放入上方预览。</li>
+      <li>选择一版并保留修改记录。有站点权限时再修改页面；待重新抓取后用相同查询检查真实结果。若有 Search Console 数据，比较相近时间范围、相同查询与设备，记录展示量和点击率。</li>
+    </ol>
+    <div class="callout"><div class="t">验收</div>交付「原文 + 两版改稿 + 选择理由」。标题能独立说清页面主题，描述提供正文确有的价值，重要内容不依赖结尾才能被理解。没有足够曝光数据时，只验收文案和展示，不宣称点击率或排名已经提高。</div>
+  </section>
+
   <footer>
     <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
     <ul>
-      <li><strong>Title</strong> 是搜索结果最重要的一行（排名 + 点击）；<strong>Meta 描述</strong>不排名，但决定点击；</li>
-      <li>Title：含关键词靠前、简短唯一、别堆词；Meta 描述：当广告文案写、回答「为什么点我」、别空着；</li>
-      <li><strong>Title ≠ H1</strong>；Google 可能重写它们，但写好仍是你的责任。</li>
+      <li><strong>Title</strong> 帮助表达主题；<strong>Meta 描述</strong>不是直接排名因素，但可能影响用户的点击选择；</li>
+      <li>两者准确、具体、与正文一致；<strong>没有统一的字符硬上限</strong>，预览只用于辅助检查；</li>
+      <li><strong>Title ≠ H1 ≠ 最终标题链接</strong>；搜索摘要也不一定使用 Meta Description。</li>
     </ul></div>
     <div class="next">
       <a class="btn ghost" href="./lesson-08.html">← 上一课：关键词映射</a>
@@ -93,8 +105,8 @@
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -113,8 +125,8 @@
     q:"① 关于 Meta Description（描述），下面哪个说法是对的？",
     options:[
       { t:"它是重要的排名因素，堆满关键词能提升排名", why:"描述不直接参与排名，堆关键词也没用，还可能显得像垃圾内容。" },
-      { t:"它不直接排名，但决定「看到的人要不要点」，该当广告文案来写", ok:true, why:"对。描述的任务是争取点击——清楚说明这页能帮读者解决什么，比塞关键词有用得多。" },
-      { t:"只要写了描述，Google 就一定会原样显示", why:"不一定。当描述写得差或和搜索词不匹配时，Google 可能自己从正文截一段替换掉。" }
+      { t:"它不是直接排名因素，可能被用于摘要，应准确概括页面价值", ok:true, why:"对。它是摘要的候选来源，清楚说明内容比塞关键词更有用。" },
+      { t:"只要写了描述，Google 就一定会原样显示", why:"不一定。Google 常根据当前查询从正文生成摘要，也可能使用你写的描述。" }
     ]
   });
 
@@ -123,7 +135,7 @@
     q:"② 下面哪个 Title 写得更好？（关键词：手冲咖啡 入门）",
     options:[
       { t:"手冲咖啡 手冲教程 手冲入门 咖啡入门 手冲手法 咖啡", why:"这是在堆关键词——又长又难读，还可能被判为垃圾。堆词不会提升排名。" },
-      { t:"手冲咖啡入门：器具、水温与粉水比完整指南", ok:true, why:"关键词靠前、长度合适、说清了页面内容，还带一点「完整指南」的吸引力。" },
+      { t:"手冲咖啡入门：器具、水温与粉水比完整指南", ok:true, why:"主题明确、范围具体，且假定正文确实完整覆盖这些内容。好标题的核心是准确和可读，不是刚好满足某个字数。" },
       { t:"首页", why:"太笼统，既没有关键词，也没告诉用户这页是什么——白白浪费最重要的一行字。" }
     ]
   });
@@ -131,12 +143,12 @@
   SEO.widgets.fillBlank(document.getElementById("w-fill"), {
     prompt:"③ 填空（填中文或英文标签名即可）",
     parts:[
-      "搜索结果里那行蓝色大标题，来自页面的", { a:["Title","标题","title","页面标题"] }, "标签；",
-      "　标题下方那段灰色摘要，来自", { a:["Meta Description","描述","meta description","meta 描述"] }, "。",
-      "　前者主要影响排名与", { a:["点击","点击率","CTR"] }, "，后者不直接排名，主要影响", { a:["点击","点击率","CTR"] }, "。"
+      "浏览器标签页常显示页面的", { a:["Title","标题","title","页面标题"] }, "标签；",
+      "　你在 head 中填写的摘要建议叫", { a:["Meta Description","描述","meta description","meta 描述"] }, "。",
+      "　两者都帮助用户决定是否", { a:["点击","打开"] }, "，但实际搜索标题和摘要由", { a:["搜索引擎","Google","google","引擎"] }, "生成。"
     ],
-    okText:"✓ 全对！标题争排名和点击，描述争点击——两行字是你最先能动手改的地方。",
-    revealText:"答案：蓝色标题来自 <strong>Title</strong> 标签；下方摘要来自 <strong>Meta Description</strong>；两者都影响 <strong>点击</strong>，Title 还影响排名。"
+    okText:"✓ 全对！写好标签提供线索，最终展示仍由搜索引擎生成。",
+    revealText:"答案：标签页常显示 <strong>Title</strong>；摘要建议是 <strong>Meta Description</strong>；它们帮助用户决定是否<strong>点击</strong>，实际结果由<strong>搜索引擎</strong>生成。"
   });
 
   // 外壳
@@ -144,7 +156,7 @@
     n:9,
     sections:[
       {id:"s1", label:"两行字"}, {id:"s2", label:"实时预览"}, {id:"s3", label:"怎么写好"},
-      {id:"s4", label:"随堂自测"}
+      {id:"s4", label:"随堂自测"}, {id:"practice", label:"页面练习"}
     ]
   });
 })();

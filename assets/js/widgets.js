@@ -9,7 +9,7 @@
 
   // ---- 基础工具 ----
   S.cssv = function(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); };
-  S.esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); };
+  S.esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); };
   var _redraws = [];
   S.registerRedraw = function(fn){ _redraws.push(fn); };
   S.redrawAll = function(){ _redraws.forEach(function(f){ try{ f(); }catch(e){} }); };
@@ -50,7 +50,7 @@
       url:   opts.url  || "example.com › article"
     };
     var T_MAX = 580, D_MAX = 920;   // 桌面端近似像素上限（教学近似值）
-    var T_PX = 20, D_PX = 14;       // 与 Google 桌面端一致的字号
+    var T_PX = 20, D_PX = 14;       // 本模拟器的字号，真实展示随设备与版式变化
     host.innerHTML =
       '<div class="card pad"><div class="spv">'+
         '<div class="spv-fields">'+
@@ -62,7 +62,7 @@
             '<div class="meter" data-el="dm"><span></span></div></div>'+
         '</div>'+
         '<div>'+
-          '<div class="spv-cap">搜索结果预览 · 桌面端示意</div>'+
+          '<div class="spv-cap">搜索结果预览 · 桌面端示意，非 Google 固定限制</div>'+
           '<div class="serp"><div class="serp-body" style="padding:12px 16px">'+
             '<div class="serp-block" style="padding:4px 0">'+srcRow(st.site, st.url)+
               '<span class="sr-title" data-el="pt"></span><p class="sr-desc" data-el="pd"></p></div>'+
@@ -85,17 +85,17 @@
       meter(host.querySelector('[data-el="tm"]'), tw, T_MAX);
       meter(host.querySelector('[data-el="dm"]'), dw, D_MAX);
       var msgs = [];
-      if(!st.title) msgs.push("✗ 标题还空着——它是排名和点击最重要的一行字。");
-      else if(tw > T_MAX) msgs.push("✗ 标题超宽，结果里会被截成「…」，关键信息尽量放前面。");
-      else if(tw < T_MAX*0.35) msgs.push("△ 标题偏短：门面还有空间，可以补上更具体的信息。");
-      else msgs.push("✓ 标题长度合适。");
+      if(!st.title) msgs.push("△ 标题还空着：请准确说明页面主题，搜索引擎也可能另生成展示标题。");
+      else if(tw > T_MAX) msgs.push("△ 标题超出本预览宽度，示意中会截断；请把关键信息放前面。");
+      else if(tw < T_MAX*0.35) msgs.push("△ 标题较短：只在能帮助读者理解时补充信息，不必凑满宽度。");
+      else msgs.push("✓ 标题在本预览宽度内；真实结果可能截断或改写。");
       if(opts.keyword){
         if(st.title.toLowerCase().indexOf(opts.keyword.toLowerCase()) > -1) msgs.push("✓ 标题包含关键词「"+esc(opts.keyword)+"」。");
-        else msgs.push("△ 标题里还没出现关键词「"+esc(opts.keyword)+"」——搜索者和引擎都靠它对上号。");
+        else msgs.push("△ 标题未包含示例词「"+esc(opts.keyword)+"」；可自然表达同一主题，不必强行逐字匹配。");
       }
       if(st.desc){
-        if(dw > D_MAX) msgs.push("✗ 描述超长，尾部会被截断。");
-        else msgs.push("✓ 描述长度合适。描述不直接参与排名，但决定「要不要点你」。");
+        if(dw > D_MAX) msgs.push("△ 描述超出本预览宽度，示意中会截断。");
+        else msgs.push("✓ 描述在本预览宽度内。Google 不把它作为直接排名信号，也可能从正文生成摘要。");
       }
       host.querySelector('[data-el="v"]').innerHTML = msgs.join("<br>");
     }
@@ -109,17 +109,17 @@
      opts: { query, parts:[...], ad, ai, snippet, organic:[], paa:[], related:[], intro?, info? } */
   var PART_META = {
     ad:      { btn:"广告",     tag:"广告位",
-               info:"<strong>广告。</strong>标着「赞助」，广告主按点击付费，位置来自竞价（这属于 SEM 的范围）。广告预算再多，也不会改变下面自然结果的排序。" },
+               info:"<strong>搜索广告。</strong>常标着「赞助」，常见按点击付费。广告展示由竞价、质量等共同影响，行业常将它称为 SEM；SEM 也有包含 SEO 的广义用法。付广告费不能买到更高自然排名。" },
     ai:      { btn:"AI 概览",  tag:"AI 概览",
                info:"<strong>AI 概览（AI Overview）。</strong>生成式 AI 汇总多个网页直接给出答案，并附引用来源。让 AI 在这里引用你，就是 GEO 要解决的问题（阶段六专讲）。" },
     snippet: { btn:"精选摘要", tag:"精选摘要",
-               info:"<strong>精选摘要（Featured Snippet）。</strong>算法从某条自然结果里「抽」出来直接展示的答案，位置在第 1 名之上，所以俗称「位置 0」。结构清晰的内容（步骤、定义、表格）更容易入选。" },
+               info:"<strong>精选摘要（Featured Snippet）。</strong>Google 自动从网页提取与问题相关的答案，位置和样式可能变化。清晰的步骤、定义或表格能帮助理解，但不能手动申请或保证入选。" },
     organic: { btn:"自然结果", tag:"自然结果",
                info:"<strong>自然结果（Organic）。</strong>免费、由算法按相关性与质量排序——SEO 的主战场。这门课的大部分内容，都是为了让页面在这里排得更好。" },
     paa:     { btn:"相关问题", tag:"相关问题",
-               info:"<strong>相关问题（People Also Ask）。</strong>围绕这次搜索的真实追问，点开每条都是一个新答案。它既是额外的曝光位，也是现成的内容选题库。" },
+               info:"<strong>相关问题（People Also Ask）。</strong>系统展示与查询相关的问题和答案，可作为选题线索；它不证明这些问题都有很高搜索量。本示意仅演示版块。" },
     related: { btn:"相关搜索", tag:"相关搜索",
-               info:"<strong>相关搜索。</strong>搜完这个词的人还会搜什么。做关键词研究时，这里是理解搜索路径、挖长尾词的免费线索。" }
+               info:"<strong>相关搜索。</strong>系统建议的相关查询，是扩展关键词的线索；不代表每位用户接下来都会搜索这些词，也不直接提供搜索量。" }
   };
   var SPARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2 6 6 2-6 2-2 6-2-6-6-2 6-2zM19.5 15l1 2.8 2.8 1-2.8 1-1 2.8-1-2.8-2.8-1 2.8-1z"/></svg>';
 
@@ -149,7 +149,7 @@
           html += block("organic", srcRow(r.site, r.url)+'<span class="sr-title">'+esc(r.title)+'</span><p class="sr-desc">'+esc(r.desc)+'</p>');
         });
       } else if(p === "paa" && opts.paa){
-        html += block("paa", '<div class="paa-head">其他人还搜了</div>'+
+        html += block("paa", '<div class="paa-head">相关问题</div>'+
           opts.paa.map(function(q){ return '<div class="paa-q"><span>'+esc(q)+'</span><span class="paa-x">⌄</span></div>'; }).join(""));
       } else if(p === "related" && opts.related){
         html += block("related", '<div class="paa-head">相关搜索</div><div class="serp-rel">'+
@@ -187,7 +187,7 @@
   };
 
   /* ---------- 爬虫模拟 ----------
-     链接是爬虫唯一的路：逐步抓取一个小站点，孤岛页永远不会被发现。
+     本模型只演示沿链接发现页面；真实爬虫也能通过 sitemap 等发现 URL。
      opts 可自定义 nodes / edges / start；默认自带教学用小站点。 */
   W.crawlerSim = function(host, opts){
     opts = opts || {};
@@ -241,14 +241,14 @@
         var dash = stt==="hidden" ? ' stroke-dasharray="4 3"' : '';
         f += '<rect x="'+(n.x-NW/2)+'" y="'+(n.y-NH/2)+'" width="'+NW+'" height="'+NH+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1.5"'+dash+'/>';
         f += '<text x="'+n.x+'" y="'+(n.y+4.5)+'" text-anchor="middle" font-size="13" font-weight="600" fill="'+txt+'">'+esc(n.label)+'</text>';
-        if(done && n.orphan) f += '<text x="'+n.x+'" y="'+(n.y+NH/2+17)+'" text-anchor="middle" font-size="11.5" font-weight="700" fill="'+red+'">从未被发现</text>';
+        if(done && n.orphan) f += '<text x="'+n.x+'" y="'+(n.y+NH/2+17)+'" text-anchor="middle" font-size="11.5" font-weight="700" fill="'+red+'">本模拟未发现</text>';
       });
       svg.innerHTML = defs() + f;
       var nC = Object.keys(crawled).length;
       status.innerHTML = '已抓取 <b>'+nC+'</b> 页' + (queue.length ? ' · 待抓取：'+queue.map(function(id){ return byId(id).label; }).join("、") : "");
       if(done){
         v.style.display = "";
-        v.innerHTML = '<strong>抓取结束。</strong>爬虫顺着链接找到了 '+nC+' 个页面——但<strong style="color:'+red+'">孤岛页从头到尾没有被发现</strong>：没有任何链接指向它，它就不存在于爬虫的世界里。给页面「修路」（内部链接，第 12 课）和「递地图」（sitemap，第 14 课）就是为了解决这个问题。';
+        v.innerHTML = '<strong>本轮抓取结束。</strong>模型沿链接找到了 '+nC+' 个页面。<strong style="color:'+red+'">孤岛页在本模拟中未被发现</strong>，因为模型没有演示 sitemap、外部链接等其他发现途径。真实网站仍应给重要页面添加内部链接（第 12 课），并用 sitemap 辅助发现（第 14 课）；被发现或抓取不保证收录。';
       } else {
         v.style.display = "none";
       }
@@ -276,13 +276,13 @@
     var data = opts.data || [27.6, 15.8, 11.0, 8.4, 6.3, 4.9, 3.9, 3.3, 2.7, 2.4];
     host.innerHTML =
       '<div class="card pad">'+
-        '<div class="chartbox"><svg viewBox="0 0 640 250" role="img" aria-label="不同排名位置的平均点击率柱状图"></svg></div>'+
+        '<div class="chartbox"><svg viewBox="0 0 640 250" role="img" aria-label="不同排名位置的教学示意点击率柱状图"></svg></div>'+
         '<div class="controls" style="margin-top:14px">'+
           '<div class="sld"><label>你的排名位置</label><input type="range" min="1" max="10" step="1" value="3" data-el="pos" aria-label="排名位置"><span class="v" data-el="pv"></span></div>'+
           '<div class="sld"><label>这个词每月搜索次数</label><input type="range" min="100" max="10000" step="100" value="1000" data-el="vol" aria-label="每月搜索次数"><span class="v" data-el="vv"></span></div>'+
         '</div>'+
         '<div class="verdict" data-el="v"></div>'+
-        '<p class="muted" style="font-size:12.5px;margin:10px 0 0">示意数据：取自公开 CTR 研究的平均量级（不同行业、不同 SERP 版块差异很大），用于建立直觉，不是精确预测。</p>'+
+        '<p class="muted" style="font-size:12.5px;margin:10px 0 0">教学假设：每月搜索量 × 示例 CTR ≈ 点击量。搜索量并不等于你实际获得的展示次数；真实 CTR = 点击次数 ÷ 展示次数。图中数值参考公开研究量级，不能预测真实站点流量。</p>'+
       '</div>';
     var svg = host.querySelector("svg"), pos = host.querySelector('[data-el="pos"]'), vol = host.querySelector('[data-el="vol"]');
     function draw(){
@@ -303,8 +303,8 @@
       host.querySelector('[data-el="vv"]').textContent = mv.toLocaleString()+" 次";
       var clicks = Math.round(mv*data[p-1]/100), top = Math.round(mv*data[0]/100);
       host.querySelector('[data-el="v"]').innerHTML =
-        '排在<strong>第 '+p+' 名</strong> ≈ '+data[p-1]+'% 的点击率 → 每月约 <strong>'+clicks.toLocaleString()+'</strong> 次访问。'+
-        (p === 1 ? " 你已经站在最值钱的位置上了。" : ' 如果爬到第 1 名，同样的搜索量能带来约 <strong>'+top.toLocaleString()+'</strong> 次——是现在的 '+Math.round(top/Math.max(clicks,1)*10)/10+' 倍。');
+        '教学情境：假设每次搜索都展示你的结果，第 <strong>'+p+' 名</strong>使用示例 CTR '+data[p-1]+'%，估算每月 <strong>'+clicks.toLocaleString()+'</strong> 次点击。'+
+        (p === 1 ? " 实际价值还需看转化与业务目标。" : ' 换用第 1 名的示例 CTR，会算出 <strong>'+top.toLocaleString()+'</strong> 次，是此情境的 '+Math.round(top/Math.max(clicks,1)*10)/10+' 倍；这不代表实际提升幅度。');
     }
     pos.addEventListener("input", draw);
     vol.addEventListener("input", draw);
@@ -546,5 +546,46 @@
       range.addEventListener("input", update);
       update();
     });
+  };
+
+  /* ---------- GEO 技术自查清单 ----------
+     可勾选清单：点每一项 → 打勾 + 展开讲解，进度条累计。纯自查，无对错。
+     opts: { intro?, items:[{t, why}], doneText? } */
+  W.geoChecklist = function(host, opts){
+    opts = opts || {};
+    var items = opts.items || [], total = items.length, doneN = 0;
+    var rows = items.map(function(it,i){
+      return '<div class="gck-item" role="button" tabindex="0" aria-pressed="false" data-i="'+i+'">'+
+        '<div class="gck-head"><span class="gck-box">✓</span><span class="gck-title">'+esc(it.t)+'</span></div>'+
+        '<div class="gck-why"><span>'+(it.why||"")+'</span></div>'+
+      '</div>';
+    }).join("");
+    host.innerHTML =
+      '<div class="card pad"><div class="gck">'+
+        (opts.intro ? '<p class="qtext" style="margin-top:0">'+opts.intro+'</p>' : '')+
+        '<div class="gck-list">'+rows+'</div>'+
+        '<div class="gck-bar"><span></span></div><div class="gck-progt"></div>'+
+        '<div class="gck-done"></div>'+
+      '</div></div>';
+    var bar = host.querySelector(".gck-bar span"), progt = host.querySelector(".gck-progt"), done = host.querySelector(".gck-done");
+    function refresh(){
+      bar.style.width = (total ? doneN/total*100 : 0) + "%";
+      progt.textContent = "已确认 " + doneN + " / " + total;
+      if(doneN === total && total){ done.className = "gck-done show"; done.innerHTML = opts.doneText || "✓ 全部确认完成！"; }
+      else { done.className = "gck-done"; }
+    }
+    Array.prototype.forEach.call(host.querySelectorAll(".gck-item"), function(row){
+      function toggle(){
+        var on = row.classList.toggle("on");
+        row.setAttribute("aria-pressed", on ? "true" : "false");
+        doneN += on ? 1 : -1;
+        refresh();
+      }
+      row.addEventListener("click", toggle);
+      row.addEventListener("keydown", function(e){
+        if(e.key === " " || e.key === "Enter"){ e.preventDefault(); toggle(); }
+      });
+    });
+    refresh();
   };
 })();

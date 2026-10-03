@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>第十四课：sitemap 与 canonical · SEO × GEO 入门课</title>
-<meta name="description" content="sitemap 主动把重要页面递给搜索引擎，帮助发现但不保证收录；canonical 在多个重复网址里指认「正版」，把分散的信号合并到一页。两件收录管理的基本工具。">
+<meta name="description" content="sitemap 推荐可索引的规范网址，canonical 声明重复内容的规范版本偏好。学习状态码、永久重定向与规范化的区别，并检查 Google 实际处理结果。">
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1D5FBF">
@@ -27,6 +27,7 @@
     <p class="eyebrow">第十四课 · 阶段四 技术 SEO</p>
     <h1>递名单，认正版：帮引擎收好每一页</h1>
     <p class="lede">上一课学的是「拦」。这一课反过来学「帮」：用 <strong>sitemap</strong> 主动把重要页面递给搜索引擎，用 <strong>canonical</strong> 在一堆长得差不多的网址里指认「哪个是正版」。两件都是收录管理的基本功。</p>
+    <div class="callout"><div class="t">学完你能做什么</div>筛选应进入 sitemap 的规范网址；区分 canonical 与重定向；检查 Google 实际选择的规范页，而不把声明等同处理结果。</div>
   </header>
 
   <section id="s1">
@@ -58,11 +59,23 @@
     <ul class="clean muted">
       <li><strong>加了 noindex 的页</strong>：你都不想收录它了，还推荐它，是自相矛盾；</li>
       <li><strong>被 robots.txt 屏蔽的页</strong>、重复网址、非规范版本：会给引擎发混乱信号。</li>
+      <li><strong>重定向、404、410 的网址</strong>：常规推荐清单应列出最终返回正常内容、可以索引的网址；旧址迁移的处理另看实际方案。</li>
     </ul>
     <div class="callout">
       <div class="t">两个字段别费心：priority 和 changefreq</div>
       老教程里常见 <code>&lt;priority&gt;</code>（重要度）和 <code>&lt;changefreq&gt;</code>（更新频率）两个标签。<strong>Google 官方多次确认它们不被使用</strong>——填了也白填。相比之下 <code>&lt;lastmod&gt;</code>（上次修改时间）会被参考，但前提是<span class="hl">如实填写</span>；如果每个页面都谎报「今天刚更新」，Google 会慢慢不再相信它。
     </div>
+    <h3>先看网址实际返回了什么</h3>
+    <p class="muted">HTTP 状态码是服务器对请求的答复，比页面上写「成功」或「找不到」更底层。筛选 sitemap 前，先分清这些常见情况：</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>状态</th><th>含义与处理</th></tr></thead>
+      <tbody>
+        <tr><td><code>200</code></td><td>正常返回内容，但不保证收录；还要检查正文、noindex 与规范化。</td></tr>
+        <tr><td><code>301 / 308</code></td><td>永久搬到新网址。站内链接与常规 sitemap 更新为最终网址；不要无限跳转或都跳到无关首页。</td></tr>
+        <tr><td><code>404 / 410</code></td><td>页面不存在 / 已移除。无相关替代内容时正常返回它们，不必把每个删除页都重定向。</td></tr>
+        <tr><td><strong>soft 404</strong></td><td>服务器返回 200，页面却为空、报错或缺少应有内容，Google 可能当作软 404 排除。修复内容，或对确已删除页面返回正确状态。</td></tr>
+      </tbody>
+    </table></div>
   </section>
 
   <section id="s3">
@@ -76,7 +89,7 @@ https://yoursite.com/pour-over-guide?ref=weibo     # 带分享跟踪参数
 https://yoursite.com/pour-over-guide?utm=ad         # 带广告参数
 https://www.yoursite.com/pour-over-guide            # 带 www</pre>
     </div>
-    <p class="muted">引擎把它们当成几个不同页面，会带来两个麻烦：<strong>信号被分散</strong>（外链、点击分给了好几个网址），以及<strong>重复内容</strong>。<code>rel="canonical"</code> 就是用来解决它的——在页面里指明「这一堆的正版是哪个」，引擎便把分散的信号<strong>合并</strong>到那一个网址上。</p>
+    <p class="muted">它们是不同网址，但可能被识别为重复或近似内容。Google 会在这组网址中选择一个<strong>规范网址（canonical URL）</strong>。你可以用 <code>rel="canonical"</code> 声明偏好，帮助整合链接等信号、减少重复抓取；Google 仍会综合其他信号决定。普通重复内容也不等于自动受到「重复内容处罚」。</p>
     <div class="codeblock">
       <div class="cb-cap">在每个变体页的 &lt;head&gt; 里指向正版</div>
 <pre>&lt;link rel=<span class="s">"canonical"</span> href=<span class="s">"https://yoursite.com/pour-over-guide"</span>&gt;</pre>
@@ -84,8 +97,10 @@ https://www.yoursite.com/pour-over-guide            # 带 www</pre>
     <ul class="clean muted">
       <li><strong>canonical 是「信号」不是「命令」</strong>：它告诉 Google 你的偏好，但 Google 会综合判断，最终可能选别的版本作正版；</li>
       <li><strong>推荐「自引用」</strong>：连正版页自己也放一条指向自己的 canonical，是 Google 推荐的做法，不是错误；</li>
-      <li><strong>别自相矛盾</strong>：一个页面别一边 noindex、一边又把 canonical 指向另一个页——这会给引擎互相打架的信号。</li>
+      <li><strong>目的要一致</strong>：canonical 用于重复或高度相似内容的规范化，noindex 用于排除当前页。不要用 noindex 代替规范化，也不要把不相关页面都 canonical 到首页；</li>
+      <li><strong>统一入口</strong>：sitemap、站内链接与 canonical 尽量都指向同一个可索引网址。参数页若内容实际不同（如不同语言或筛选结果），先判断是否真的重复。</li>
     </ul>
+    <div class="callout"><div class="t">canonical 不会把访客送走</div>旧网址已经永久搬家、不必继续单独访问时，通常使用 <code>301</code> 或 <code>308</code> 永久重定向。canonical 保留原网址可访问，只提供规范化信号。改完后在 Search Console 网址检查中比较「用户声明的规范网址」与「Google 选择的规范网址」，后者须等重新抓取与处理。</div>
   </section>
 
   <section id="s4">
@@ -103,13 +118,24 @@ https://www.yoursite.com/pour-over-guide            # 带 www</pre>
     <div id="w-fill" style="margin-top:16px"></div>
   </section>
 
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 真实页面练习 · 20 分钟</div>
+    <h2>把同一篇内容的入口对齐</h2>
+    <ol class="clean muted">
+      <li>选 5 个真实网址，包含一个规范文章、一个带跟踪参数的版本、一个重定向旧址、一个 noindex 页和一个新页；没有网站时用示例拟表，不实际改线上规则。</li>
+      <li>记录状态码、是否可抓取、是否允许索引、canonical 指向和是否在 sitemap 中。可用浏览器开发者工具的 Network（网络）面板查看文档响应；没有权限时只观察公开页面。只把期望被索引的规范内容页列入常规 sitemap。</li>
+      <li>检查文章内链是否指向规范网址。有 Search Console 权限时提交或查看 sitemap 状态，并检查一个重复版本实际选择的规范页。</li>
+    </ol>
+    <div class="callout"><div class="t">验收</div>交付 5 行网址表，解释每项取舍。规范目标可访问、内容匹配；sitemap 与内链没有误指向旧址或参数版；lastmod 对应实质内容更新。声明与 Google 实际选择不一致时记录为待排查，不宣称 canonical 已强制生效。</div>
+  </section>
+
   <footer>
     <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
     <ul>
       <li><strong>sitemap 帮助发现页面，但不保证收录</strong>；只放重要、可收录、规范的网址；</li>
       <li><code>priority</code> 和 <code>changefreq</code> Google 不使用；<code>lastmod</code> 有用，但要如实填；</li>
-      <li><strong>canonical 在重复网址里指认正版</strong>，把分散的信号合并到一页；</li>
-      <li>canonical 是<strong>信号不是命令</strong>；推荐自引用；别和 noindex 对同一页自相矛盾。</li>
+      <li><strong>canonical 声明规范网址偏好</strong>，用于重复或近似内容，不会让访客跳转；</li>
+      <li>它是<strong>信号不是命令</strong>；保持内链与 sitemap 一致，检查 Google 实际选择；永久搬家另用重定向。</li>
     </ul></div>
     <div class="next">
       <a class="btn ghost" href="./lesson-13.html">← 上一课：robots 与 noindex</a>
@@ -125,8 +151,8 @@ https://www.yoursite.com/pour-over-guide            # 带 www</pre>
   </footer>
 </div>
 
-<script src="../assets/js/shell.js"></script>
-<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
 <script>
 (function(){
   "use strict";
@@ -161,7 +187,7 @@ https://www.yoursite.com/pour-over-guide            # 带 www</pre>
   SEO.widgets.quizChoice(document.getElementById("w-q2"), {
     q:"② 同一篇文章有好几个网址（带不同跟踪参数），你想让引擎把它们当成一个。该怎么做？",
     options:[
-      { t:"在每个变体页用 rel=\"canonical\" 指向同一个正版网址", ok:true, why:"对。canonical 把分散在多个网址上的信号合并到你指定的正版页。" },
+      { t:"在重复变体页用 rel=\"canonical\" 指向同一个规范网址，并统一内链与 sitemap", ok:true, why:"对。这会提供一致的规范化信号，帮助整合信号；最终规范网址仍由 Google 综合选择。" },
       { t:"把每个变体都单独写进 sitemap，让引擎都收录", why:"这只会加剧重复和信号分散，正好帮倒忙。" },
       { t:"给每个变体都加 noindex", why:"noindex 会让它们都不被收录，但也没把信号合并到正版页——canonical 才是对症的工具。" }
     ]
@@ -171,10 +197,10 @@ https://www.yoursite.com/pour-over-guide            # 带 www</pre>
     prompt:"③ 填空（填中文或英文词即可）",
     parts:[
       "主动把重要网址递给搜索引擎的 XML 文件叫", { a:["sitemap","站点地图","sitemap.xml"] }, "，它帮助", { a:["发现","找到"] }, "页面但不保证收录。",
-      "　当同一内容有多个网址时，用", { a:["canonical","rel=canonical","规范标签","canonical标签"] }, "指认正版，把信号合并到一页。",
+      "　当同一内容有多个网址时，用", { a:["canonical","rel=canonical","规范标签","canonical标签"] }, "声明规范网址偏好，帮助整合信号。",
       "　它是一种", { a:["信号","提示","建议"] }, "，不是强制命令。"
     ],
-    okText:"✓ 全对！sitemap 递名单帮发现，canonical 认正版合并信号。",
+    okText:"✓ 全对！sitemap 递名单帮发现，canonical 声明规范版本、帮助整合信号。",
     revealText:"答案：递名单的是 <strong>sitemap</strong>，帮助<strong>发现</strong>页面；认正版用 <strong>canonical</strong>，它是一种<strong>信号</strong>而非命令。"
   });
 
@@ -183,7 +209,7 @@ https://www.yoursite.com/pour-over-guide            # 带 www</pre>
     n:14,
     sections:[
       {id:"s1", label:"sitemap"}, {id:"s2", label:"sitemap取舍"}, {id:"s3", label:"canonical"},
-      {id:"s4", label:"名单该收谁"}, {id:"s5", label:"随堂自测"}
+      {id:"s4", label:"名单该收谁"}, {id:"s5", label:"随堂自测"}, {id:"practice", label:"规范化练习"}
     ]
   });
 })();

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二十三课：GEO 技术清单 · SEO × GEO 入门课</title>
+<meta name="description" content="区分 AI 训练、搜索与用户触发的访问。认识 Google-Extended、Google 搜索摘要控制和 llms.txt 的边界，检查自己网站的 robots、索引和防火墙规则。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-23.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-23.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第二十三课：GEO 技术清单 · SEO × GEO 入门课">
+<meta property="og:description" content="让 AI 引用型爬虫进得来、别迷信 llms.txt——一份把全课串起来的 GEO 自查清单。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二十三课：GEO 技术清单 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第二十三课 · 阶段六 GEO 生成引擎优化</p>
+    <h1>让 AI 读得到你——技术这一关</h1>
+    <p class="lede">内容写好了，还要能被目标产品<strong>访问和理解</strong>。训练抓取、搜索抓取和用户要求读取网页，是不同用途；各家的控制规则也不同。先表达你的内容使用意愿，再检查网站是否按这个意愿放行或限制访问。</p>
+  </header>
+
+  <div class="callout"><div class="t">学完本课，你能</div><ul class="clean"><li>分别识别训练、搜索与用户触发的访问，避免屏蔽错对象。</li><li>说明 Google-Extended 与 Google 搜索的摘要 / 索引控制有何不同。</li><li>完成自己网站的访问规则审查，形成一份待确认的配置草稿。</li></ul></div>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 让爬虫进得来</div>
+    <h2>先分用途，再决定允许谁访问</h2>
+    <p class="muted">不要把所有带 AI 名字的访问一刀切。下面是常见用途的简化分类；Google-Extended 是 <strong>robots.txt 产品控制标识</strong>，并不是一个独立的 HTTP 爬虫 User-Agent。</p>
+    <div class="trio">
+      <div><div class="t">训练用途</div><span class="sub">GPTBot · ClaudeBot</span><p>厂商用来收集可能用于模型训练的内容。网站可用对应规则表达拒绝未来抓取的意愿；这不会自动撤回已收集的数据。</p></div>
+      <div><div class="t">搜索用途</div><span class="sub">OAI-SearchBot · Claude-SearchBot · PerplexityBot</span><p>支持发现或检索网页，供搜索结果和回答使用。希望通过这条渠道被发现时，需要检查访问规则；放行不保证收录或引用。</p></div>
+      <div><div class="t">用户触发</div><span class="sub">ChatGPT-User · Claude-User 等</span><p>用户要求读取网页时发生的访问。行为与 robots 遵守说明因厂商而异，不能直接套用搜索爬虫规则。</p></div>
+    </div>
+    <div class="callout">
+      <div class="t">抓取控制要按具体产品判断</div>
+      OpenAI 对 <code>OAI-SearchBot</code> 的说明把允许搜索抓取与出现在 ChatGPT 搜索答案中联系起来，但仍可能展示导航链接。不要扩大成「屏蔽一个 bot 后，任何 AI 都绝不会链接我」。抓取成功也只是访问记录，<strong>不能证明内容被引用，更不能证明已被用于训练</strong>。robots.txt 是抓取指令，私人内容应使用登录与访问权限保护。
+    </div>
+    <p class="muted">核对入口：<a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer">OpenAI bots</a>、<a href="https://privacy.claude.com/en/articles/7996861-how-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener noreferrer">Anthropic 爬虫说明</a>、<a href="https://docs.perplexity.ai/guides/bots" target="_blank" rel="noopener noreferrer">Perplexity bots</a>。实际配置前，以当前官方名称、用途和验证方式为准。</p>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 两个常见误解</div>
+    <h2>Google-Extended 与 llms.txt，别想当然</h2>
+    <p class="muted"><strong>误解一：屏蔽 Google-Extended 能让我从 AI 概览里消失。</strong><code>Google-Extended</code> 管理部分 Gemini 产品对内容的<strong>训练与检索增强（grounding，用网页依据支撑回答）</strong>用途；它不控制 Google 搜索中的收录、排名或 AI 搜索功能。Google 搜索由 Googlebot 及搜索控制规则管理。参考<a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer">Google 常见爬虫与产品控制标识</a>。</p>
+    <p class="muted">限制 Google 搜索的内容展示时，应按目标考虑 <code>nosnippet</code>（不显示文本摘要）、<code>data-nosnippet</code>（限制指定片段）、<code>max-snippet</code>（限制摘要长度）或 <code>noindex</code>（不编入搜索索引）。这些控制各有范围，也影响普通搜索呈现，<strong>不必一律屏蔽 Googlebot</strong>。如果使用 noindex，要让爬虫能抓到并读取它；第 13 课已讲过 robots 与 noindex 的区别。详情见<a href="https://developers.google.com/search/docs/appearance/ai-features#control-content" target="_blank" rel="noopener noreferrer">Google AI 功能的内容控制</a>。</p>
+    <div class="codeblock">
+      <div class="cb-cap">robots.txt · 拒绝部分训练抓取、允许对应搜索抓取的教学片段</div>
+<pre><span class="k">User-agent:</span> GPTBot          <span class="s"># OpenAI 训练爬虫</span>
+<span class="k">Disallow:</span> /
+
+<span class="k">User-agent:</span> ClaudeBot        <span class="s"># Anthropic 训练爬虫</span>
+<span class="k">Disallow:</span> /
+
+<span class="k">User-agent:</span> Google-Extended  <span class="s"># 部分 Gemini 训练与 grounding；不控制 Google 搜索</span>
+<span class="k">Disallow:</span> /
+
+<span class="k">User-agent:</span> OAI-SearchBot    <span class="s"># 允许搜索抓取，不保证引用</span>
+<span class="k">Allow:</span> /
+
+<span class="k">User-agent:</span> Claude-SearchBot <span class="s"># 允许搜索抓取，不保证引用</span>
+<span class="k">Allow:</span> /</pre>
+    </div>
+    <p class="muted">这段不是可覆盖整站的通用文件。<strong>合并现有规则</strong>，保留需要限制的目录；更具体的 User-agent 规则不能简单假定会继承 <code>User-agent: *</code> 的限制。robots 放行后，CDN 或防火墙仍可能阻挡请求，要分别检查。</p>
+    <p class="muted"><strong>误解二：加个 <code>llms.txt</code> 就能让大模型读懂我。</strong><a href="https://llmstxt.org/" target="_blank" rel="noopener noreferrer">llms.txt</a> 是提供网站内容与链接的<strong>社区提案</strong>，不是 robots.txt 的替代品，也不是搜索收录、模型训练或引用保证。Google 明确其 AI 搜索功能不要求新增 AI 文本文件；其他产品是否读取、如何使用，应看各自官方说明，<strong>不能仅凭网站放了文件就推断已被采用</strong>。有明确的文档使用场景可尝试，不应排在索引、可访问性和内容质量之前。</p>
+    <div class="callout">
+      <div class="t">也别指望「魔法结构化数据」</div>
+      回到第 20 课：Google 官方说过，出现在 AI 概览<strong>不需要专门的 AI 标记或特殊 schema</strong>。结构化数据（第 16 课）确实<strong>有助于</strong>机器正确理解「这段是什么、谁写的」，但它<strong>不是「引用开关」</strong>——加了不保证被引用，没加也照样可能被引用。别把它当捷径迷信。
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 自查清单</div>
+    <h2>把全课串成一份 GEO 清单</h2>
+    <p class="muted">GEO 没有玄学开关，它是<strong>前面所有功课的延伸</strong>。逐项点开，既是自查，也是对整门课的回顾（点一项打勾并看讲解）：</p>
+    <div id="w-ck"></div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q1"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 网站实操 · 约 25 分钟</div>
+    <h2>检查自己网站的三层访问规则</h2>
+    <ol class="clean muted"><li>写下你的意愿：希望参与哪些搜索体验，是否允许对应训练抓取，哪些内容必须保持私密。</li><li>打开网站根目录的 robots.txt，检查相关 User-agent、路径与现有通配组；再查看一个公开页面的 robots meta / X-Robots-Tag，以及它的可索引状态。</li><li>有权限时查看 CDN / 防火墙规则和近期日志。记录是否出现验证过的目标爬虫访问、请求是否成功；不要把仅有 User-Agent 字符串的请求当作已验证官方爬虫。</li><li>将期望与实际规则对照，写一份配置草稿及影响说明。无需修改线上配置就能完成本练习；无日志权限时明确写“未验证”。</li></ol>
+    <div class="callout"><div class="t">交付与验收</div>提交<strong>用途 / bot / 当前规则 / 预期行为</strong>对照表、一个页面的摘要与索引设置，以及必要的配置草稿。验收：不混淆 Google-Extended 与 Googlebot、不覆盖既有目录限制、不把放行或日志访问当成引用保证。模板见<a href="../practice.html">实操手册</a>。</div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li>区分<strong>训练、搜索与用户触发</strong>三种用途，按厂商规则分别控制；</li>
+      <li>搜索抓取是发现渠道之一；<strong>放行不保证引用，屏蔽也不能概括所有来源链接行为</strong>；</li>
+      <li><code>Google-Extended</code> 管理部分 Gemini 训练与 grounding，<strong>不控制 Google 搜索</strong>；摘要 / 索引控制另有规则；</li>
+      <li><code>llms.txt</code> 是社区提案；它和结构化数据都<strong>不是引用开关</strong>。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-22.html">← 上一课：为 AI 写作</a>
+      <a class="btn" href="./lesson-24.html">下一课：度量与闭环 →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。AI 爬虫的 user-agent 与行为以各厂商官方文档为准，且变动频繁；用户触发型抓取对 robots.txt 的遵守程度不一。llms.txt 为社区提案。示例 robots.txt 为教学演示，实际部署前请核对最新官方文档。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S3：GEO 自查清单（回顾全课）
+  SEO.widgets.geoChecklist(document.getElementById("w-ck"), {
+    intro:"逐项点开确认——这既是 GEO 自查，也是整门课的回顾：",
+    items:[
+      { t:"页面可被目标搜索产品访问，且索引 / 摘要设置符合自己的意愿", why:"Google AI 搜索支持链接要求可索引、可显示摘要；其他产品要按自己的检索渠道检查（第 13、21 课）。" },
+      { t:"按用途检查搜索与训练规则，以及 CDN / 防火墙是否另有阻挡", why:"希望通过搜索抓取被发现时，要检查对应 bot。可以分别控制用途，但放行不保证引用（本课第 1 节）。" },
+      { t:"内容开门见山、结构清晰，一小段能自成一体", why:"便于被生成引擎整段抽取综合进答案（第 10、22 课）。" },
+      { t:"关键事实有可核查依据，数字与引述保留条件和出处", why:"真实证据帮助人核查内容；论文实验结果不能直接当成真实产品引用保证（第 21、22 课）。" },
+      { t:"有清晰、真实的作者、日期、关于 / 联系信息", why:"帮助读者核查谁写的、凭什么判断。作者标签本身不等于 E-E-A-T 分数，也不是引用触发器（第 11 课）。" },
+      { t:"把品牌建成清晰一致的实体（Organization 结构化数据、sameAs）", why:"清晰的实体让 AI 更不容易搞混你是谁，也服务传统搜索（第 19 课）。" },
+      { t:"能说明 llms.txt 与结构化数据的适用范围", why:"llms.txt 是社区提案，Google AI 搜索不要求额外 AI 文件；是否被其他产品使用需另查。结构化数据不是引用开关（本课第 2 节）。" }
+    ],
+    doneText:"✓ 清单走完，你会发现：GEO 没有玄学，全是前 22 课的功课在 AI 时代的延伸。"
+  });
+
+  // S4：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 你想被 ChatGPT、Perplexity 引用，但又不想内容被拿去训练模型。较合理的做法是——",
+    options:[
+      { t:"不看用途，屏蔽所有带 AI 名字的访问", why:"会同时阻挡可能希望参与的搜索抓取；应按用途与厂商规则判断。" },
+      { t:"按厂商规则拒绝相关训练抓取，并检查对应搜索 bot 的放行与防火墙设置", ok:true, why:"对。不同用途可分别控制，但放行不保证引用，也不代表撤回过去已收集的数据。" },
+      { t:"只屏蔽 Google-Extended，就已控制所有 AI 产品的训练与搜索", why:"它只管理 Google 的特定产品用途，不控制 OpenAI、Anthropic 或 Perplexity，也不控制 Google 搜索。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"② 填空（填中文或英文词即可）",
+    parts:[
+      "常见用途包括训练、搜索和用户", { a:["触发","触发型"] }, "的访问，要按厂商规则分别判断。",
+      "　Google-Extended 不控制 Google ", { a:["搜索","Search","search"] }, "；它涉及部分 Gemini 的训练与 grounding 用途。",
+      "　llms.txt 是一个", { a:["社区提案","提案","提议"] }, "，不是收录或引用保证。",
+      "　希望页面不进入 Google 搜索索引时，可考虑", { a:["noindex","Noindex","NOINDEX"] }, "，并让爬虫能读取该指令。"
+    ],
+    okText:"✓ 全对！按访问用途控制，分清 Google 搜索与 Gemini 产品规则，并保留配置边界。",
+    revealText:"答案：还有用户<strong>触发</strong>的访问；Google-Extended 不控制 Google <strong>搜索</strong>；llms.txt 是<strong>社区提案</strong>；不编入搜索索引可使用 <strong>noindex</strong>，但要让爬虫读到它。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:23,
+    sections:[
+      {id:"s1", label:"让爬虫进来"}, {id:"s2", label:"两个误解"}, {id:"s3", label:"自查清单"},
+      {id:"s4", label:"随堂自测"}, {id:"practice", label:"网站实操"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>

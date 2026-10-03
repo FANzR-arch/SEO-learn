@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二十一课：AI 怎么挑选引用来源 · SEO × GEO 入门课</title>
+<meta name="description" content="区分检索资格、答案引用和访问结果。理解 GEO 论文对可见度的受控实验，避免把实验数字当作真实产品的引用保证，并核查一段自己网站的事实与来源。">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D5FBF">
+<link rel="canonical" href="https://seo-learn-eight.vercel.app/lessons/lesson-21.html">
+<meta property="og:url" content="https://seo-learn-eight.vercel.app/lessons/lesson-21.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO × GEO · 入门课">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="第二十一课：AI 怎么挑选引用来源 · SEO × GEO 入门课">
+<meta property="og:description" content="检索资格与引用选择是两回事。读懂 GEO 论文的可见度指标，并把来源核查落实到网页内容。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二十一课：AI 怎么挑选引用来源 · SEO × GEO 入门课">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="wrap" id="main" tabindex="-1">
+  <header class="hero">
+    <p class="eyebrow">第二十一课 · 阶段六 GEO 生成引擎优化</p>
+    <h1>AI 凭什么引用这一篇，而不是那一篇</h1>
+    <p class="lede">启用网页搜索的生成引擎可以<strong>检索</strong>网页、<strong>综合</strong>回答并附上来源。但搜到、采用和引用并不是同一件事。这一课用简化流程帮你理解问题，再把<strong>厂商公开说明、论文实验和行业推测</strong>分开。</p>
+  </header>
+
+  <div class="callout"><div class="t">学完本课，你能</div><ul class="clean"><li>区分页面可被检索与被答案选中，避免把资格当保证。</li><li>说明 GEO 论文的可见度指标为什么不等于真实产品引用率。</li><li>核查自己网页中三条事实的出处、适用范围与改写方式。</li></ul></div>
+
+  <section id="s1">
+    <div class="kicker"><span class="num">1</span> 引用是怎么发生的</div>
+    <h2>检索 → 筛选 → 合成 → 标注来源</h2>
+    <p class="muted">为了学习，可以把联网回答简化为：<strong>检索 → 筛选 → 合成 → 标注来源</strong>。真实系统可能重复检索、使用不同索引或直接读取用户指定的页面；公开信息不足以还原所有产品的内部步骤与权重。</p>
+    <p class="muted">你的页面首先要有机会<strong>被该产品检索或读取</strong>，然后它的内容才有机会被采用。搜索中排名靠前、爬虫访问过、甚至内容被用于回答，都不自动等于最终显示了指向你的引用链接。</p>
+    <div class="callout">
+      <div class="t">先能被找到，才谈得上被引用</div>
+      Google 的 AI 搜索支持链接要求页面已编入索引并可显示摘要；其他产品的检索渠道与抓取方式不同，不能一概推断「没被 Google 收录就绝不被任何 AI 引用」。第 23 课将按<strong>具体产品</strong>检查抓取与控制。先解决可访问性，再讨论内容是否值得采用。
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="kicker"><span class="num">2</span> 有证据的结论</div>
+    <h2>论文支持一个方向，但没有给出产品保证</h2>
+    <p class="muted"><a href="https://arxiv.org/abs/2311.09735" target="_blank" rel="noopener noreferrer">GEO: Generative Engine Optimization（arXiv 2311.09735）</a>最初发表于 2023 年，并发表于 KDD 2024。研究者在指定的引擎、查询集与改写方法下，比较网页在生成答案中的<strong>可见度指标</strong>：例如归属于某来源的答案篇幅，以及考虑出现位置的指标。它研究的是这些设定下的结果，不是所有 AI 产品的通用规律。</p>
+    <ul class="clean muted">
+      <li>研究中的<strong>引述、统计数字、引用来源</strong>等改写，在部分实验设定中改善了来源可见度；效果随领域、方法和指标而变。</li>
+      <li><strong>关键词堆砌</strong>没有形成稳定的有效策略。传统 SEO 也不推荐堆词；不应把它误讲成以前的正确做法。</li>
+    </ul>
+    <div class="callout">
+      <div class="t">重要：别把论文数字当成真实产品的承诺</div>
+      论文摘要报告的是<strong>可见度最高可提升约 40%</strong>，不能改写成「你的 ChatGPT 引用率会提高 40%」。可见度、被引用次数、点击与收入是不同指标；实验使用的引擎版本、查询集和改写条件也不等于今天的产品环境。正确用法是提出<strong>待验证的写作假设</strong>，再用自己的记录观察效果。实际写作必须使用真实数字、真实引述和可核查来源，不能为了套方法编造证据。
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="kicker"><span class="num">3</span> 行业观察</div>
+    <h2>有官方抓取指导，仍没有保证引用的配方</h2>
+    <p class="muted">厂商会公开部分技术要求：例如 <a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer">OpenAI bots 文档</a>介绍搜索与训练爬虫，Google 说明 AI 功能沿用 SEO 基础。这些文档<strong>不公开完整的引用权重，也不保证某种写法必被引用</strong>。把官方已说明的抓取条件，与从业者对「权威、更新、结构清晰」的观察分开记录。</p>
+    <div class="callout">
+      <div class="t">这些是「行业观察」，不是厂商确认</div>
+      清晰、有依据的内容值得做，因为它帮助读者理解与核查；是否改善特定产品的引用结果，还需要观测。看到 AI 附了链接，也要打开原文确认：<strong>来源是否真的支持这句话，日期和条件是否一致</strong>。一个引用标记本身不能证明答案正确。
+    </div>
+    <div id="w-sort" style="margin-top:16px"></div>
+  </section>
+
+  <section id="s4">
+    <div class="kicker"><span class="num">4</span> 随堂自测</div>
+    <h2>点一点、填一填，检查你会了没</h2>
+    <div id="w-q1"></div>
+    <div id="w-fill" style="margin-top:16px"></div>
+  </section>
+
+  <section id="practice">
+    <div class="kicker"><span class="num">练</span> 网站实操 · 约 20 分钟</div>
+    <h2>给自己的三条事实做证据审查</h2>
+    <ol class="clean muted"><li>沿用第 20 课的页面，选出三条读者可能依赖的事实：数字、功能条件、比较结论或操作建议。</li><li>为每条记录原句、来源 URL、原文对应位置、日期及适用条件。找不到依据的内容，标成经验判断、补做核查，或在草稿中删除。</li><li>改写其中一条：先回答问题，再给依据和限制。检查有没有把「样本中有效」扩大成「所有情况都有效」，或把相关性写成因果。</li></ol>
+    <div class="callout"><div class="t">交付与验收</div>交付<strong>三行证据表 + 一段改写</strong>。验收要求：链接可对应到原文、没有虚构数字 / 引语、经验与研究结论分开；不把一次 AI 回答当作引用概率。记录模板见<a href="../practice.html">实操手册</a>。</div>
+  </section>
+
+  <footer>
+    <div class="takeaway"><div class="tk-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 本课要点</div>
+    <ul>
+      <li><strong>检索 → 筛选 → 合成 → 标注来源</strong>是学习用的简化流程，检索资格与引用选择不同；</li>
+      <li>论文在受控设定中测试<strong>引述、数字与来源</strong>等方法，实际内容必须真实、可核查；</li>
+      <li>「最高约 40%」是研究的<strong>可见度结果</strong>，不是真实产品引用率、点击或收入承诺；</li>
+      <li>官方公开部分抓取指导，<strong>没有保证引用的配方</strong>；引用本身仍需核查。</li>
+    </ul></div>
+    <div class="next">
+      <a class="btn ghost" href="./lesson-20.html">← 上一课：什么是 GEO</a>
+      <a class="btn" href="./lesson-22.html">下一课：为 AI 写作 →</a>
+    </div>
+    <div class="follow">
+      <a href="../references.html">参考资料与适用边界</a>
+      <span class="follow-label">关注作者 · 课程持续更新</span>
+      <a href="https://x.com/Formulasearch" target="_blank" rel="noopener noreferrer" aria-label="在 X 上关注 @Formulasearch"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Formulasearch</a>
+      <a href="https://rzcthink.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 Philthink（rzcthink.top）"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>Philthink</a>
+    </div>
+    <p class="disclaim">本课用于 SEO / GEO 知识学习。GEO 论文结论来自受控实验的代理指标，非真实产品的引用率或流量承诺；各生成引擎的排序机制未公开，文中「行业观察」部分未经厂商确认，随产品迭代可能变化。</p>
+  </footer>
+</div>
+
+<script src="../assets/js/shell.js?v=20261003"></script>
+<script src="../assets/js/widgets.js?v=20261003"></script>
+<script>
+(function(){
+  "use strict";
+
+  // S3：更可能 vs 不太可能被引用
+  SEO.widgets.classify(document.getElementById("w-sort"), {
+    intro:"判断哪些内容更适合作为可核查的回答材料（不预测产品引用概率）：",
+    cats:[
+      { key:"more", label:"适合作为证据", hint:"有据 / 清晰" },
+      { key:"less", label:"需要改进", hint:"空泛 / 堆词" }
+    ],
+    items:[
+      { kw:"一段带具体数字、引用了官方研究并给出链接的说明", cat:"more", why:"还要核对数字与原文、样本和日期；有出处能帮助读者核查，不能单凭数字预测引用率。" },
+      { kw:"把「最好的手冲滤杯」这个词重复堆了 30 遍的段落", cat:"less", why:"重复词语没有增加事实，也没有帮助回答问题；传统 SEO 与 GEO 都不推荐堆词。" },
+      { kw:"开门见山先给结论、再分点展开的清晰回答", cat:"more", why:"结构清晰、开头就给答案，便于被抽取综合进 AI 回答（也呼应第 10 课）。" },
+      { kw:"一大段没有事实、没有出处的主观感慨", cat:"less", why:"没有可核查的事实和来源，AI 难以把它当作可靠证据引用。" },
+      { kw:"引用与结论相关的专家原话，逐字核对并注明出处与条件", cat:"more", why:"准确引述有助于核查；还要判断专家的领域、上下文和原话是否真的支持结论。" }
+    ],
+    doneText:"✓ 全对！方向就一句话：像证据一样写——带数字、带引述、带出处、结构清晰。"
+  });
+
+  // S4：自测
+  SEO.widgets.quizChoice(document.getElementById("w-q1"), {
+    q:"① 有人说「照 GEO 论文做，就能让 ChatGPT 多引用你 40%」。正确的态度是——",
+    options:[
+      { t:"完全相信，40% 是权威数字", why:"它是指定研究设定下的可见度结果，不是所有真实产品的引用率。" },
+      { t:"可作为写作实验方向，但 40% 是研究中的可见度结果，不是真实产品承诺", ok:true, why:"对。守住证据边界：提出待验证假设，别把研究指标直接当成现实引用率。" },
+      { t:"论文都是假的，别理", why:"也不对。论文的方向结论是有价值的，只是要理解它的适用边界。" }
+    ]
+  });
+
+  SEO.widgets.fillBlank(document.getElementById("w-fill"), {
+    prompt:"② 填空（填中文即可）",
+    parts:[
+      "生成引擎回答问题的大致流程是：检索 →", { a:["筛选","筛选","挑选"] }, "→ 合成 → 标注", { a:["来源","引用","出处"] }, "。",
+      "　论文实验测试了统计数字、引述和", { a:["来源","出处","引用来源","引用"] }, "等改写，不能将可见度直接当作真实产品的引用率。",
+      "　关键词", { a:["堆砌","堆词","堆叠"] }, "没有增加有效信息；也没有保证被引用的", { a:["配方","公式","方法"] }, "。"
+    ],
+    okText:"✓ 全对！分清实验指标与实际引用，使用真实证据，避免堆词。",
+    revealText:"答案：简化流程是检索→<strong>筛选</strong>→合成→标注<strong>来源</strong>；论文测试数字、引述与<strong>来源</strong>；不要做关键词<strong>堆砌</strong>，也没有保证引用的<strong>配方</strong>。"
+  });
+
+  // 外壳
+  SEO.initLesson({
+    n:21,
+    sections:[
+      {id:"s1", label:"引用怎么发生"}, {id:"s2", label:"有证据的结论"}, {id:"s3", label:"行业观察"},
+      {id:"s4", label:"随堂自测"}, {id:"practice", label:"网站实操"}
+    ]
+  });
+})();
+</script>
+</body>
+</html>

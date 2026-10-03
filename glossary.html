@@ -28,6 +28,7 @@
     <nav class="steps" style="flex:1">
       <a href="./index.html#lessons">课程目录</a>
       <a href="./index.html#how">怎么学</a>
+      <a href="./practice.html">练习手册</a>
       <a href="./glossary.html" class="on">术语表</a>
       <a href="./references.html">参考资料</a>
     </nav>
@@ -86,42 +87,42 @@
     { cat:"base", name:"SEO", en:"Search Engine Optimization", desc:"搜索引擎优化：让网页在自然结果中获得更好排名和更多点击的一系列工作。核心是让页面「值得排上去」，并让引擎能识别这一点。" },
     { cat:"base", name:"SERP", en:"Search Engine Results Page", desc:"搜索结果页。现代 SERP 是广告、AI 概览、精选摘要、自然结果、相关问题等版块的混合体（第 3 课）。" },
     { cat:"base", name:"自然结果", en:"Organic Results", desc:"不收费、由算法按相关性与质量排序的搜索结果——SEO 的主战场。与广告位彼此独立，花钱买不到。" },
-    { cat:"base", name:"SEM / 竞价广告", en:"Search Engine Marketing", desc:"通过付费广告获取搜索流量。按点击付费、位置靠竞价，即开即停；停止投放后流量归零。" },
-    { cat:"base", name:"点击率 CTR", en:"Click-Through Rate", desc:"看到你的结果的人里，有多少点了进来。排名位置对 CTR 影响巨大：第 1 名的平均 CTR 可能是第 10 名的十倍以上（示意量级）。" },
-    { cat:"base", name:"零点击搜索", en:"Zero-Click Search", desc:"用户在结果页直接得到答案（天气卡片、AI 概览等），不再点击任何链接。AI 时代零点击比例上升，是学 GEO 的重要理由。" },
+    { cat:"base", name:"SEM / 搜索广告", en:"Search Engine Marketing", desc:"搜索引擎营销。行业常用 SEM 指付费搜索广告，广义也包含 SEO。广告展示由竞价、质量等共同影响，广告费用不能购买自然排名（第 1 课）。" },
+    { cat:"base", name:"点击率 CTR", en:"Click-Through Rate", desc:"点击次数 ÷ 展示次数。排名、查询意图、品牌、设备及 SERP 版块都会影响它；课程曲线属于教学示意，不能预测你的网站流量。" },
+    { cat:"base", name:"零点击搜索", en:"Zero-Click Search", desc:"一次搜索后没有点击结果链接，可能已得到答案，也可能改换查询或放弃。不同研究的统计口径不同，不能把零点击全部归因于 AI。" },
     // —— 抓取与索引 ——
-    { cat:"crawl", name:"爬虫 / 蜘蛛", en:"Crawler / Spider", desc:"搜索引擎派出的自动程序（如 Googlebot），沿着链接发现并下载网页。链接是它唯一的路（第 2 课）。" },
-    { cat:"crawl", name:"抓取", en:"Crawl", desc:"爬虫发现并下载页面的过程——流水线第一步。没被抓取的页面，后面一切都无从谈起。" },
+    { cat:"crawl", name:"爬虫 / 蜘蛛", en:"Crawler / Spider", desc:"搜索引擎用于访问和下载网页的自动程序（如 Googlebot）。可通过链接、sitemap 等发现 URL；本课模拟器只演示沿链接发现（第 2 课）。" },
+    { cat:"crawl", name:"抓取", en:"Crawl", desc:"自动程序访问 URL 并下载内容的过程。URL 发现、抓取和索引是不同状态；未抓取的 URL 仍可能被系统获知，但通常需要抓取才能充分理解正文。" },
     { cat:"crawl", name:"索引", en:"Index", desc:"搜索引擎解析页面并存入数据库的过程（也指这个数据库本身）。收录是选择性的：太薄、重复或标了 noindex 的页面可能进不去。" },
-    { cat:"crawl", name:"孤岛页", en:"Orphan Page", desc:"没有任何链接指向的页面。爬虫顺链接爬行，走不到孤岛页——它几乎不会被发现和收录。" },
-    { cat:"crawl", name:"robots.txt", en:"", desc:"放在网站根目录的纯文本文件，告诉爬虫哪些路径不要抓取。写错一行可能让整站从搜索里消失（第 13 课）。" },
-    { cat:"crawl", name:"noindex", en:"", desc:"页面级指令：「可以抓，但请不要收录我」。用于后台页、感谢页等不想出现在搜索里的页面。" },
+    { cat:"crawl", name:"孤岛页", en:"Orphan Page", desc:"没有站内链接指向的页面。它仍可能通过 sitemap 或外链被发现，但不利于用户访问和站点结构理解；重要页面应有合理内链。" },
+    { cat:"crawl", name:"robots.txt", en:"", desc:"网站根目录的抓取规则文件。Disallow 控制抓取，不保证移除索引，也不能保护私密内容；错误屏蔽会妨碍内容更新（第 13 课）。" },
+    { cat:"crawl", name:"noindex", en:"", desc:"页面或 HTTP 响应中的索引指令。爬虫必须能读取它才会处理；敏感页面还需登录或访问控制，noindex 不提供保密。" },
     { cat:"crawl", name:"sitemap", en:"站点地图", desc:"XML 格式的页面清单，主动递给搜索引擎，帮爬虫发现页面——尤其是层级很深或链接很少的页面（第 14 课）。" },
-    { cat:"crawl", name:"canonical", en:"规范网址", desc:"当多个 URL 内容相同或高度相似时，用 canonical 标签指认「正版」，避免收录与权重分散（第 14 课）。" },
+    { cat:"crawl", name:"canonical", en:"规范网址", desc:"多个 URL 内容相同或高度相似时，声明偏好的规范版本，是信号而非强制命令。它不跳转用户，也不适合代替 noindex 或重定向（第 14 课）。" },
     // —— 关键词 ——
     { cat:"kw", name:"关键词", en:"Keyword", desc:"用户在搜索框里输入的词或短语。SEO 的起点是弄清楚：你的目标用户到底在搜什么。" },
-    { cat:"kw", name:"搜索意图", en:"Search Intent", desc:"一次搜索背后的真实目的。常分四类：找信息、找特定网站、比较研究、准备交易。给错意图的内容再好也排不上（第 5 课）。" },
-    { cat:"kw", name:"长尾关键词", en:"Long-tail Keyword", desc:"更长、更具体、单个搜索量小的词（如「手冲咖啡 水温 多少度」）。竞争小、意图明确，是新站的主要机会。" },
+    { cat:"kw", name:"搜索意图", en:"Search Intent", desc:"一次查询背后的目的，常分信息、导航、商业研究和交易四类；可能混合且随情境变化。SERP 是判断线索，匹配意图不保证排名（第 5 课）。" },
+    { cat:"kw", name:"长尾关键词", en:"Long-tail Keyword", desc:"搜索需求分布中单个搜索量较低的查询，往往更具体，但不以字数定义。低量不一定低竞争，仍需结合意图与内容能力判断。" },
     { cat:"kw", name:"搜索量", en:"Search Volume", desc:"一个词每月大约被搜多少次。工具给出的是估算值，量级参考意义大于精确数字。" },
-    { cat:"kw", name:"关键词难度", en:"Keyword Difficulty", desc:"在这个词上挤进前排有多难，通常由现有上榜页面的强度估算。难度与搜索量之间的权衡是选词的核心（第 7 课）。" },
-    { cat:"kw", name:"关键词映射", en:"Keyword Mapping", desc:"把关键词分配到具体页面：一页服务一个主题，避免多页争同一个词（内耗），也避免一页什么都想要（第 8 课）。" },
-    { cat:"kw", name:"流量潜力 TP", en:"Traffic Potential", desc:"排到第一名的页面，能从整个主题（不止这一个词）拿到的预估总流量。常远大于单词搜索量——所以做内容要瞄准「父主题」，一篇好文章能吃下一整簇词（第 7 课）。" },
+    { cat:"kw", name:"关键词难度", en:"Keyword Difficulty / KD", desc:"第三方工具的竞争估算，不是 Google 排名分数，各工具算法不同。Keyword Planner 的广告竞争也不等于自然搜索难度（第 7 课）。" },
+    { cat:"kw", name:"关键词映射", en:"Keyword Mapping", desc:"按主题与用户任务，把关键词簇分配到已有或计划页面，并记录内容目标、页面类型与下一步行动。多个页面含同一个词不自动构成内耗（第 8 课）。" },
+    { cat:"kw", name:"流量潜力 TP", en:"Traffic Potential", desc:"如 Ahrefs 等工具估计当前排名页面从多个查询获得的总自然流量，不是你做同主题后的收益保证；口径以工具说明为准（第 7 课）。" },
     { cat:"kw", name:"父主题", en:"Parent Topic", desc:"工具判断一个词更可能归属的更大主题。用来发现意图偏移（某词的父主题其实是别的东西）和关键词合并机会——它是线索，最终仍要看真实 SERP（第 7 课）。" },
     { cat:"kw", name:"内容缺口", en:"Content Gap", desc:"现有排名页面没有充分满足、用户却确实想要的那部分内容。补上它，就是你的页面有理由超过现有结果的地方——SEO 不是重写第一名，而是在他们停下的地方多走一步（第 8 课）。" },
     { cat:"kw", name:"关键词聚类", en:"Keyword Clustering", desc:"把表达不同、但搜索目的相同的词归到一起，由同一个页面承接（如「resume chatbot」和「chatbot resume」）。能否合并的快捷判断：看两个词的 SERP 前十是否大量重合（第 8 课）。" },
-    { cat:"kw", name:"关键词内耗", en:"Keyword Cannibalization", desc:"同一站点多个页面争夺同一个词，互相分散权重、都排不好，也叫「同类相食」。关键词映射与聚类正是为了避免它（第 8 课）。" },
+    { cat:"kw", name:"关键词内耗", en:"Keyword Cannibalization", desc:"同站多个页面服务相似意图时可能造成定位混乱或表现受损。多个页面出现于同一查询并不自动构成问题，需结合页面目的与数据判断（第 8 课）。" },
     // —— 页面优化 ——
-    { cat:"onpage", name:"Title 标签", en:"&lt;title&gt;", desc:"页面的标题，显示在搜索结果的蓝色链接处，是排名与点击最重要的一行字。过长会被截断（约 580px，第 9 课）。" },
-    { cat:"onpage", name:"Meta Description", en:"", desc:"页面描述，常显示在搜索结果标题下方。不直接参与排名，但决定「要不要点你」——它是你的广告文案。" },
+    { cat:"onpage", name:"Title 标签", en:"<title>", desc:"HTML 文档标题，是 Google 生成搜索标题的来源之一，也用于浏览器标签。Google 可能改写展示标题；课程像素宽度不是固定字数或排名限制（第 9 课）。" },
+    { cat:"onpage", name:"Meta Description", en:"", desc:"页面摘要建议。Google 不将其作为直接排名信号，可能使用它，也可能根据查询从正文生成摘要。准确的摘要可帮助读者决定是否点击。" },
     { cat:"onpage", name:"标题层级 H1–H6", en:"Headings", desc:"页面内容的目录树：H1 是全页主题（通常一页一个），H2/H3 划分小节。写给读者，也写给爬虫和 AI（第 10 课）。" },
-    { cat:"onpage", name:"alt 文本", en:"Alt Text", desc:"图片的文字描述。图片加载失败或使用屏幕阅读器时展示，也是搜索引擎理解图片内容的主要依据。" },
+    { cat:"onpage", name:"alt 文本", en:"Alt Text", desc:"图片的文字替代，帮助屏幕阅读器用户和搜索引擎理解图像。按图片在当前页面的作用填写；纯装饰图用空 alt，不堆关键词（第 12 课）。" },
     { cat:"onpage", name:"内部链接", en:"Internal Link", desc:"站内页面之间的链接。既是爬虫的路，也传递权重、告诉引擎哪些页面重要（第 12 课）。" },
     { cat:"onpage", name:"锚文本", en:"Anchor Text", desc:"链接上可点击的那几个字。它告诉用户和引擎：链接那头是什么内容。「点这里」是浪费，「手冲水温指南」才有信息量。" },
     { cat:"onpage", name:"E-E-A-T", en:"Experience, Expertise, Authoritativeness, Trust", desc:"经验、专业、权威、可信——Google 质量评估指南中衡量内容可信度的框架。不是直接的排名分数，但代表算法努力的方向（第 11 课）。" },
-    { cat:"onpage", name:"CTA 行动号召", en:"Call to Action", desc:"页面希望用户看完后采取的下一步动作（如「创建你的页面」）。注意：页面目标（用户理解什么）≠ CTA（用户接下来做什么）；搜索意图越偏学习，CTA 越轻，越接近产品越直接（第 8 课）。" },
+    { cat:"onpage", name:"CTA 行动号召", en:"Call to Action", desc:"希望用户采取的下一步动作，如阅读下一篇、订阅或创建产品。应与当前任务和价值相符；CTA 不同不一定要拆页，同一页也可有主次行动（第 8 课）。" },
     // —— 技术 ——
     { cat:"tech", name:"Core Web Vitals", en:"核心网页指标", desc:"Google 定义的三个真实体验指标：加载（LCP）、交互（INP）、视觉稳定（CLS）。是排名信号之一，更是用户体验的底线（第 15 课）。" },
-    { cat:"tech", name:"结构化数据 / Schema", en:"Structured Data", desc:"用 schema.org 词汇给页面加机器可读的标签（如「这是食谱，耗时 30 分钟」），换来富媒体展示，也帮 AI 准确理解内容（第 16 课）。" },
+    { cat:"tech", name:"结构化数据 / Schema", en:"Structured Data", desc:"用 schema.org 词汇描述页面内容。符合 Google 支持类型及政策时有机会获得富媒体展示；不保证排名或 AI 引用，标注应与可见内容一致（第 16 课）。" },
     { cat:"tech", name:"JSON-LD", en:"", desc:"Google 推荐的结构化数据写法：一段独立的 <script> 脚本，和正文分开，好加也好维护（另有 Microdata、RDFa 两种格式）。标注必须与页面可见内容一致（第 16 课）。" },
     { cat:"tech", name:"富媒体结果", en:"Rich Results", desc:"搜索结果里比普通蓝链接更丰富的展示：菜谱的图片星级、商品的价格库存、面包屑等。结构化数据让页面「有资格」获得它，但标对了也不保证一定出现（第 16 课）。" },
     { cat:"tech", name:"meta robots / noindex", en:"", desc:"写在页面 <head> 的指令，noindex 表示「可以抓，但别收录我」。要生效，页面就不能同时被 robots.txt 屏蔽——否则爬虫看不到这条指令（第 13 课）。" },
@@ -130,10 +131,12 @@
     { cat:"tech", name:"CLS", en:"Cumulative Layout Shift", desc:"累积布局偏移：加载时版面跳动的程度，衡量视觉稳定。是无单位分数，良好阈值 ≤ 0.1（第 15 课）。" },
     { cat:"tech", name:"CrUX / 现场数据", en:"Chrome UX Report", desc:"来自真实访客的体验数据（field data），是 Google 评估 Core Web Vitals、用于排名参考的数据源；与本地跑的实验室数据（lab）不同（第 15 课）。" },
     { cat:"tech", name:"HTTPS", en:"", desc:"加密的网页传输协议。是基本的信任门槛与轻量排名信号，现代网站的默认配置。" },
-    { cat:"tech", name:"移动优先索引", en:"Mobile-first Indexing", desc:"Google 主要以移动版页面为准进行收录与排名。移动端体验差，桌面版再好也吃亏。" },
+    { cat:"tech", name:"移动优先索引", en:"Mobile-first Indexing", desc:"Google 主要使用移动版内容进行索引。移动端应保留重要正文、链接和相关标注；它不是要求另建一个移动站。" },
+    { cat:"tech", name:"HTTP 状态码", en:"HTTP Status", desc:"服务器对请求的处理结果，如 200 正常、301/308 永久重定向、404/410 页面不存在。错误页返回 200 可能被识别为 soft 404（第 14 课）。" },
+    { cat:"tech", name:"重定向", en:"Redirect", desc:"让访问者和爬虫转到另一个 URL。永久迁移常用 301/308，并同步更新内链与 sitemap；canonical 只表达规范化偏好，不执行跳转。" },
     // —— 站外 ——
-    { cat:"off", name:"外链", en:"Backlink", desc:"其他网站指向你的链接，相当于一张投票。来源的质量与相关性远比数量重要（第 17 课）。" },
-    { cat:"off", name:"PageRank", en:"", desc:"Google 早期核心算法的名字：链接是投票，来自重要页面的投票更值钱。具体公式早已演化，但「链接传递信任」的直觉仍然成立。" },
+    { cat:"off", name:"外链", en:"Backlink", desc:"其他网站指向你的链接，可帮助发现页面并提供相关性信号。「投票」只是比喻，不是每条链接都等于背书或增加排名（第 17 课）。" },
+    { cat:"off", name:"PageRank", en:"", desc:"分析页面链接关系的算法，现仍是 Google 排名系统的一部分且已演化。不能用链接数或第三方权威分数直接推算 Google PageRank。" },
     { cat:"off", name:"nofollow / sponsored / ugc", en:"rel 属性", desc:"从自己站链出时的标注：sponsored 标付费/广告链接、ugc 标用户生成内容（评论/论坛）、nofollow 表示不为该链接背书。付费链接如实标注即合规。Google 把它们当「提示」而非硬指令（第 17 课）。" },
     { cat:"off", name:"链接垃圾", en:"Link Spam", desc:"为操纵排名而创建的链接：买卖传递权重的链接、过度互刷、批量建链、软文里不标注的付费链接等。属 Google 垃圾内容政策明确禁止（第 17–18 课）。" },
     { cat:"off", name:"白帽 / 黑帽", en:"White / Black Hat", desc:"行业说法，非 Google 官方术语。黑帽对应官方的「垃圾内容政策」：主要为操纵排名的手段（买链接、堆关键词、伪装、门页、AI 灌水）；白帽即遵循 Search Essentials、以人为先（第 18 课）。" },
@@ -141,16 +144,23 @@
     { cat:"off", name:"实体", en:"Entity", desc:"搜索引擎知识图谱里「知道的东西」：人、品牌、地点、概念——有唯一身份，而不只是一串可匹配的关键词。从匹配字符到识别实体，是搜索理解方式的大升级（第 19 课）。" },
     { cat:"off", name:"知识图谱 / 知识面板", en:"Knowledge Graph / Panel", desc:"知识图谱是 Google 2012 年推出的、理解真实世界事物及其关系的模型（things, not strings）；搜索一个实体时出现的信息框叫知识面板，本人或官方代表可认领并管理信息（第 19 课）。" },
     // —— GEO ——
-    { cat:"geo", name:"GEO", en:"Generative Engine Optimization", desc:"生成引擎优化：让 ChatGPT、Perplexity、AI 概览等 AI 产品在生成答案时引用你的内容。优化目标从「排名」变成「被引用」（阶段六）。" },
+    { cat:"geo", name:"GEO", en:"Generative Engine Optimization", desc:"围绕生成式搜索中内容可见性与引用的研究和实践称呼。它与 SEO 大量重合，是新增观察目标，并不取代排名、点击与业务结果（阶段六）。" },
     { cat:"geo", name:"生成引擎", en:"Generative Engine", desc:"用生成式 AI 直接合成答案的搜索类产品：AI 概览、ChatGPT 搜索、Perplexity 等。它们检索、筛选网页后引用其中一部分。" },
-    { cat:"geo", name:"AEO", en:"Answer Engine Optimization", desc:"答案引擎优化：让「直接给答案」的系统选中你的内容——精选摘要、语音助手、相关问题框，如今也包括 AI 问答。比 GEO 出现更早，核心动作是把内容组织成「一问一答」（第 1 课）。" },
-    { cat:"geo", name:"LLMO", en:"Large Language Model Optimization", desc:"大模型优化：让大模型「本身」记得你——即使不联网检索，训练语料中的品牌信息也让它在回答里提到你。核心是长期的品牌与实体建设，与 GEO / AEO 大量重合（第 1 课）。" },
-    { cat:"geo", name:"AI 概览", en:"AI Overviews", desc:"Google 搜索结果顶部由 AI 生成的摘要答案，附引用来源。占据最显眼的位置，深刻影响下方结果的点击。" },
-    { cat:"geo", name:"引用", en:"Citation", desc:"AI 在答案中标注的来源链接。GEO 语境下的「排名第一」，就是成为被引用的那几个来源之一。" },
-    { cat:"geo", name:"llms.txt", en:"", desc:"一个新兴提案：在网站根目录放一份给大模型看的站点说明文件，帮 AI 快速理解你的站点结构与核心内容（第 23 课）。" },
+    { cat:"geo", name:"AEO", en:"Answer Engine Optimization", desc:"围绕直接答案展示的行业称呼，可涉及精选摘要、语音问答或 AI 回答，与 GEO / LLMO 的定义有重合。清楚回答问题有助于读者理解，不保证被选中（第 1 课）。" },
+    { cat:"geo", name:"LLMO", en:"Large Language Model Optimization", desc:"围绕大语言模型中的内容可见性与品牌表现的行业称呼，定义尚不统一，与 GEO / AEO 多有重合。站长不能保证内容进入训练集、影响模型记忆或得到推荐（第 1 课）。" },
+    { cat:"geo", name:"AI 概览", en:"AI Overviews", desc:"Google 搜索中可能出现的生成式概览，通常附支持来源。是否出现及版式随查询和产品变化；没有要求专用 AI 文件或专用 Schema（第 20 课）。" },
+    { cat:"geo", name:"查询扇出", en:"Query Fan-out", desc:"Google 说明 AI 概览 / AI 模式可能使用的技术：对相关子主题发出多个查询，再综合来源。并非每次回答都遵循相同固定流程（第 20 课）。" },
+    { cat:"geo", name:"引用", en:"Citation", desc:"AI 答案标注的来源链接，应核对链接目的地与是否支持对应断言。引用、无链接品牌提及、点击访问和转化是不同指标（第 21、24 课）。" },
+    { cat:"geo", name:"AI 爬虫", en:"AI Crawlers", desc:"用于搜索索引、训练或用户请求访问的机器人。用途按产品区分，例如 OAI-SearchBot、GPTBot、ChatGPT-User；屏蔽一种机器人不能概括所有产品行为（第 23 课）。" },
+    { cat:"geo", name:"Google-Extended", en:"", desc:"robots.txt 控制令牌，涉及 Gemini 的部分训练及 grounding 用途，不是独立 HTTP 爬虫。它不控制 Google 搜索的 AI 概览 / AI 模式；这些依 Googlebot 与搜索展示指令（第 23 课）。" },
+    { cat:"geo", name:"llms.txt", en:"", desc:"2024 年提出的社区提案，用 Markdown 整理站点内容入口。不是通用抓取或索引标准，也不是 Google AI 搜索的必要条件；采用前查目标产品官方说明（第 23 课）。" },
+    { cat:"geo", name:"grounding / 依据补充", en:"Grounding", desc:"用检索到的网页或其他资料为模型回答提供依据。它不同于把资料加入训练集，也不意味着回答一定准确或一定展示引用。" },
     // —— 度量 ——
     { cat:"data", name:"Google Search Console", en:"GSC", desc:"Google 官方免费工具：看你的站在哪些词下展示、排第几、点击多少，还能提交 sitemap、排查收录问题。做 SEO 的标配（第 24 课）。" },
-    { cat:"data", name:"展示次数", en:"Impressions", desc:"你的结果在 SERP 上被「看到」的次数（出现即算，不要求点击）。展示多、点击少，常说明标题与描述需要优化。" }
+    { cat:"data", name:"展示次数", en:"Impressions", desc:"搜索结果链接按相应报告规则计入展示的次数，不要求点击。不同版块统计方式有差异；高曝光低点击还需结合位置、查询和设备判断。" },
+    { cat:"data", name:"点击次数", en:"Clicks", desc:"按搜索报告规则从结果点击到站点的次数。GSC 点击与分析工具的会话数口径不同，不能要求数值完全相等（第 24 课）。" },
+    { cat:"data", name:"平均位置", en:"Average Position", desc:"GSC 按展示计算的位置平均值，受查询、设备和搜索版式影响。分析时先限定页面与查询组，不是网站固定排名（第 24 课）。" },
+    { cat:"data", name:"转化", en:"Conversion", desc:"与业务目标相关的用户行动，如订阅、询盘或购买。应通过合适的站点分析或业务系统记录；排名和引用本身不等于转化。" }
   ];
 
   var grid = document.getElementById("glogrid"), empty = document.getElementById("gloempty");
@@ -161,6 +171,7 @@
   }).join("");
 
   function catName(k){ for(var i=0;i<CATS.length;i++) if(CATS[i].key===k) return CATS[i].name; return ""; }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
   function render(){
     var list = TERMS.filter(function(t){
@@ -170,9 +181,9 @@
     });
     grid.innerHTML = list.map(function(t){
       return '<div class="term-card">'+
-        '<span class="tc-cat">'+catName(t.cat)+'</span>'+
-        '<div class="tc-name">'+t.name+(t.en?' <span class="tc-en">'+t.en+'</span>':'')+'</div>'+
-        '<p class="tc-desc">'+t.desc+'</p>'+
+        '<span class="tc-cat">'+esc(catName(t.cat))+'</span>'+
+        '<div class="tc-name">'+esc(t.name)+(t.en?' <span class="tc-en">'+esc(t.en)+'</span>':'')+'</div>'+
+        '<p class="tc-desc">'+esc(t.desc)+'</p>'+
       '</div>';
     }).join("");
     empty.style.display = list.length ? "none" : "block";
